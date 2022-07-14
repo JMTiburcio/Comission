@@ -9,7 +9,7 @@ function Register() {
   const email = useRef();
   const password = useRef();
   const passwordAgain = useRef();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = async (e) => {
       e.preventDefault();
