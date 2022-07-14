@@ -40,7 +40,7 @@ function Register() {
                   </span>
               </div>
               <div className="registerRight">
-                  <form className="registerBox" onSubmit={handleClick}>
+                  <form className="registerBox">
                       <input 
                         placeholder="Username" 
                         required 
@@ -69,8 +69,8 @@ function Register() {
                         type="password" 
                         className="registerInput" 
                       />
-                      <button className="registerButton" type='submit'>Sign Up</button>
-                      <button className="registerRegisterButton">
+                      <button className="registerButton" type='submit' onClick={handleClick}>Sign Up</button>
+                      <button className="registerRegisterButton" onClick={() => navigate('/login')}>
                         Log into Account
                       </button>
                   </form>
