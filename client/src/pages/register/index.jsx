@@ -23,7 +23,7 @@ function Register() {
           }
           try {
             await axiosInstance.post("/auth/register", user);
-            history("/login");
+            navigate("/login");
           } catch (err) {
             console.log(err);
           }
