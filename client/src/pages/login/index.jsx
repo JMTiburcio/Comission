@@ -1,6 +1,8 @@
 import React from 'react';
-import { useRef, useContext } from 'react';
 import "./styles.css";
+import { useRef, useContext } from 'react';
+import { useNavigate } from 'react-router';
+
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -10,6 +12,7 @@ import { AuthContext } from '../../context/AuthContext';
 function Login() {
   const email = useRef();
   const password = useRef();
+  const navigate = useNavigate();
 
   const {user, isFetching, error, dispatch} = useContext(AuthContext);
 
@@ -33,7 +36,7 @@ function Login() {
                   </span>
               </div>
               <div className="loginRight">
-                  <form className="loginBox" onSubmit={handleClick}>
+                  <form className="loginBox">
                       <input 
                         placeholder="Email" 
                         type="email"
@@ -49,11 +52,11 @@ function Login() {
                         className="loginInput" 
                         ref={password}
                       />
-                      <button className="loginButton" type="submit" disabled={isFetching}>
+                      <button className="loginButton" type="submit" disabled={isFetching}  onClick={handleClick}>
                         {isFetching ? <CircularProgress size="25px" style={{'color':'white'}}/>: "Log In"}
                       </button>
                       <span className="loginForgot">Forgot Password?</span>
-                      <button className="loginRegisterButton">
+                      <button className="loginRegisterButton" onClick={() => navigate('/register')}>
                       {isFetching ? <CircularProgress size="25px" style={{'color':'white'}}/>: "Create Account"}
                       </button>
                   </form>
