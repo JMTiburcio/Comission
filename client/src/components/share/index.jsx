@@ -71,7 +71,7 @@ function Share() {
                             style={{display:"none"}} 
                             type="file" 
                             id="file" 
-                            accept='.png, .jpeg, .jpg, .mp4' 
+                            accept='.png, .jpeg, .jpg' 
                             onChange={(e) => setFile(e.target.files[0])}
                         />
                     </label>
