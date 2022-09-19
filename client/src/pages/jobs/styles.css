@@ -1,0 +1,221 @@
+.jobs__header {
+    padding: 0 5%;
+}
+
+.jobs__headerNav {
+    height: 40px;
+    padding: 20px 0;
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jobs__headerNav h1 {
+    color: #0a66c2;
+}
+
+.jobs__searchBar {
+    display: flex;
+    align-items: center;
+    flex-basis: 60%;
+}
+
+.jobs__searchBar > div {
+    background-color: whitesmoke;
+    padding: 10px;
+    width: 10%;
+}
+
+.jobs__headerForm {
+    display: flex;
+}
+
+.jobs__headerForm input {
+    border: none;
+    padding: 10px 0;
+    width: 250px;
+    background-color: whitesmoke;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 15px;
+}
+
+.jobs__searchBar button {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.jobs__headerNav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.jobs__headerNav a + a{
+    text-decoration: none;
+    color: #0a66c2;
+    padding: 10px;
+    border: 1px solid #0a66c2;
+    border-radius: 20px;
+}
+
+.jobs__sectionFilter {
+    margin-top: 20px;
+    padding-bottom: 15px;
+    padding-right: 5%;
+    padding-left: 5%;
+    display: flex;
+    border-bottom: 1px solid rgba(70, 70, 70, 0.1);
+}
+
+.jobs__sectionFilter a {
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+    padding: 10px;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.jobs__sectionFilter a:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.jobs__sectionFilter a:first-child {
+    background-color: rgb(6, 82, 6);
+    color: white;
+}
+
+.jobs__content {
+    padding: 0 5%;
+    margin-top: 20px;
+    display: flex;
+}
+
+.jobs__contentRight {
+    width: 55%;
+}
+
+.jobs__contentLeft {
+    width: 45%;
+    border-right: 1px solid rgba(70, 70, 70, 0.1);
+}
+
+.jobs__contentLeft h3 {
+    font-size: 18px;
+    font-weight: normal;
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.jobs__resultList {
+    padding: 0;
+    list-style: none;
+    background-color: white;
+}
+
+.jobs__result_first {
+    background-color: rgb(224, 243, 250);
+}
+
+.jobs__result, .jobs__result_first {
+    display: flex;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.jobs__result:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.jobs__result:hover h2, .jobs__result_first:hover h2{
+    text-decoration: underline;
+}
+
+.jobs__result img, .jobs__result_first img {
+    width: 50px;
+    height: 50px;
+}
+
+.jobs__information {
+    padding-left: 10px;
+}
+
+
+
+.jobs__contentRight {
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+}
+
+.jobs__contentRight h2 {
+    font-size: 30px;
+}
+
+.jobs__contentRight h4 {
+    margin: 20px 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.jobs__contentRight li {
+    margin: 5px 0;
+}
+
+.jobs__contentRightButton {
+    margin: 50px 0;
+}
+
+.jobs__contentRightButton a {
+    text-decoration: none;
+    background-color: #0a66c2;
+    color: white;
+    padding: 10px 16px;
+    border: 1px solid #0a66c2;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.jobs__contentRightButton a + a{
+    background-color: white;
+    color: #0a66c2;
+}
+
+.jobs__recruiter {
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 40px;
+}
+
+.jobs__recruiter section {
+    display: flex;
+    align-items: center;
+}
+
+.jobs__recruiter h3 {
+    margin-bottom: 10px;
+}
+
+.jobs__recruiter img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.jobs__recruiterDesc p {
+    font-size: 12px;
+}
+
+.jobs__recruiter a {
+    text-decoration: none;
+    color: rgb(121, 121, 121);
+    padding: 10px 16px;
+    border: 1px solid rgb(121, 121, 121);
+    border-radius: 20px;
+    font-weight: bold;
+    margin-left: 60px;
+    align-self: flex-start;
+}

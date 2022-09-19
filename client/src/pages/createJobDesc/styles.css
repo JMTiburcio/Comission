@@ -1,0 +1,150 @@
+.createJobDesc__container {
+    background-color: rgb(230, 230, 230);
+    padding: 50px 100px;
+    display: flex;
+}
+
+.createJobDesc__content {
+    background-color: white;
+    flex: 1;
+    padding: 24px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createJobDesc__content > h3 {
+    margin: 0;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobDesc__content > span {
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.createJobDesc__desc > h2{
+    margin: 12px 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobDesc__textEditor {
+    width: 100%;
+    height: 350px;
+    border: 1px solid black;
+    border-radius: 6px;
+}
+
+.createJobDesc__skill {
+    margin-top: 24px;
+}
+
+.createJobDesc__skill > h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobDesc__skill > p{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.createJobDesc__skill ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.createJobDesc__skill ul * {
+    display: flex;
+}
+
+.createJobDesc__skill a {
+    text-decoration: none;
+    margin: 4px 4px 4px 0;
+    padding: 8px 12px 8px 12px;
+    border-radius: 20px;
+    background-color: rgb(5, 118, 66);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#createJobDesc__addSkill {
+    color: rgb(70, 70, 70);
+    background-color: white;
+    border: 1px solid rgb(70, 70, 70);
+}
+
+.createJobDesc__source {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.createJobDesc__source > h2 {
+    margin: 12px 0 3px 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobDesc__source > select {
+    padding: 0 32px 0 8px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 400;
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 4px;
+}
+
+.createJobDesc__footer {
+    padding-top: 16px;
+    border-top: 1px solid rgb(230, 230, 230);
+    display: flex;
+    justify-content: space-between;
+}
+
+.createJobDesc__footer a {
+    color: rgb(10, 102, 194);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.createJobDesc__footer div a {
+    margin: 4px 4px 4px 0;
+    padding: 8px 15px 8px 15px;
+    border-radius: 20px;
+    color: rgb(70, 70, 70);
+    background-color: white;
+    border: 1px solid rgb(70, 70, 70);
+}
+
+.createJobDesc__footer div a + a {
+    background-color: rgb(10, 102, 194);
+    color: white;
+    border: none;
+}
+
+.createJobDesc__sideBar {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.createJobDesc__sideBarContainer {
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 16px;
+}
