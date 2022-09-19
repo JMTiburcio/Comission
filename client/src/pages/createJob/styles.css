@@ -1,0 +1,73 @@
+.createJob__container {
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.createJob__content {
+    background-color: white;
+    width: 350px;
+    padding: 24px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 12px;
+}
+
+.createJob__content > h1 {
+    margin: 0;
+    padding-bottom: 4px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.createJob__content > p {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.createJob__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.createJob__formOption {
+    display: flex;
+    flex-direction: column;
+    color: rgb(153, 153, 153);
+}
+
+.createJob__formOption > label {
+    margin: 12px 0 4px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.createJob__formOption > input {
+    height: 25px;
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 4px;
+} 
+
+.createJob__formOption > select {
+    height: 29px;
+    padding: 1px 2px 1px 2px;
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 4px;
+} 
+
+.createJob__form > button {
+    text-align: center;
+    text-decoration: none;
+    margin-top: 24px;
+    padding: 10px 24px;
+    background-color: rgb(10, 102, 194);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 24px;
+    border: 0;
+    cursor: pointer;
+}

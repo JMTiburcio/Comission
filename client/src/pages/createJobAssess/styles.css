@@ -1,0 +1,229 @@
+.createJobAssess__container {
+    background-color: rgb(230, 230, 230);
+    padding: 50px 100px;
+    display: flex;
+}
+
+.createJobAssess__content {
+    background-color: white;
+    flex: 1;
+    padding: 24px;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.createJobAssess__content > h3 {
+    margin: 0;
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgb(200, 200, 200);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobAssess__content > span {
+    padding: 8px 0;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.createJobAssess__applicantColl > h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobAssess__applicantColl > div{
+    display: flex;
+}
+
+.createJobAssess__receiveAppli, .createJobAssess__email {
+    display: flex;
+    flex-direction: column;
+}
+
+.createJobAssess__receiveAppli {
+    margin-right: 10px;
+    flex: 1;
+}
+
+.createJobAssess__email {
+    flex: 3;
+}
+
+.createJobAssess__applicantColl label{
+    margin: 12px 0 3px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
+
+.createJobAssess__receiveAppli select{
+    height: 34px;
+    padding: 0 10px;
+    border-radius: 4px;
+}
+
+.createJobAssess__email input{
+    height: 32px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.createJobAssess__questions {
+    margin: 24px 0;
+}
+
+.createJobAssess__questions > h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.createJobAssess__questions > p{
+    font-size: 14px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.createJobAssess__card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.createJobAssess__card > header {
+    background-color: rgb(235, 235, 255);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.createJobAssess__card h3 {
+    margin: 0 4px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.createJobAssess__card h3 + div {
+    margin-right: 16px;
+    padding: 4px 8px 4px 8px;
+    border-radius: 8px;
+    background-color: rgb(5, 118, 66);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.createJobAssess__cardListOptions {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.createJobAssess__cardOption {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+}
+
+.createJobAssess__cardOption label {
+    margin: 12px 0 3px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
+
+.createJobAssess__cardOption input {
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.createJobAssess__cardMustHave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.createJobAssess__cardMustHave input {
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+
+.createJobAssess__cardMustHave label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
+
+.createJobAssess__questions ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.createJobAssess__questions ul * {
+    display: flex;
+}
+
+.createJobAssess__questions a {
+    text-decoration: none;
+    margin: 4px 4px 4px 0;
+    padding: 8px 12px 8px 12px;
+    border-radius: 20px;
+    background-color: white;
+    color: rgb(110, 110, 110);
+    border: 1px solid rgb(110, 110, 110);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+.createJobAssess__footer {
+    padding-top: 16px;
+    border-top: 1px solid rgb(230, 230, 230);
+    display: flex;
+    justify-content: space-between;
+}
+
+.createJobAssess__footer a {
+    color: rgb(10, 102, 194);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.createJobAssess__footer div a {
+    margin: 4px 4px 4px 0;
+    padding: 8px 15px 8px 15px;
+    border-radius: 20px;
+    color: rgb(70, 70, 70);
+    background-color: white;
+    border: 1px solid rgb(70, 70, 70);
+}
+
+.createJobAssess__footer div a + a {
+    background-color: rgb(10, 102, 194);
+    color: white;
+    border: none;
+}
+
+.createJobAssess__sideBar {
+    flex: 0 0 350px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.createJobAssess__sideBarContainer {
+    background-color: white;
+    border: 1px solid rgb(200, 200, 200);
+    border-radius: 12px;
+    margin-bottom: 15px;
+    padding: 16px;
+}
