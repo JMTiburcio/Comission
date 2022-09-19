@@ -124,7 +124,7 @@ function Jobs() {
           <div className='jobs__recruiter'>
             <h3>Meet the hiring team</h3>
             <section>
-              <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGsZSFiNIlA6g/profile-displayphoto-shrink_200_200/0/1628780310740?e=1665619200&v=beta&t=TYsvDf9pqZtBG0gjQ2ueDNbIR8nTYMqP8T2Re-i6Sag" alt="#" />
+              <img src="#" alt="#" />
               <div className='jobs__recruiterDesc'>
                 <h5>João Tiburcio</h5>
                 <p>Tech Recruiter | Analista de Recrutamento e Seleção na Comission</p>
