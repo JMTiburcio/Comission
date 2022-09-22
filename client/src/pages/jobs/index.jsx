@@ -2,36 +2,33 @@ import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { axiosInstance } from '../../config';
 import { format } from "timeago.js";
+import Job from '../../newComponents/job';
 
 function Jobs() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [job, setJob] = useState({});
-  const [job2, setJob2] = useState({});
-  const [job3, setJob3] = useState({});
+  const [job1, setJob1] = useState({});
+  const [jobs, setJobs] = useState([]);
+
 
   useEffect(() => {
-      const fetchJobs = async () => {
+      const fetchJob = async () => {
           const res = await axiosInstance.get(`/jobs/63239cc014313b526720701a`);
-          setJob(res.data);
+          setJob1(res.data);
       }
-      fetchJobs();
+      fetchJob();
     }, [])
   
-  useEffect(() => {
-    const fetchJobs = async () => {
-        const res = await axiosInstance.get(`/jobs/6323a262812db5ae2a516440`);
-        setJob2(res.data);
-    }
-    fetchJobs();
-  }, [])
-
-  useEffect(() => {
-    const fetchJobs = async () => {
-        const res = await axiosInstance.get(`/jobs/6323a283812db5ae2a516442`);
-        setJob3(res.data);
-    }
-    fetchJobs();
-  }, [])
+    useEffect(() => {
+      const fetchJobs = async () => {
+        const res = await axiosInstance.get("/jobs/alljobs/get") 
+        setJobs(
+          res.data.sort((p1, p2) => {
+            return new Date(p2.createdAt) - new Date(p1.createdAt);
+          }));
+          console.log(res.data)
+      }
+      fetchJobs();
+    }, []);
 
   return (
     <div className="jobs">
@@ -71,49 +68,19 @@ function Jobs() {
         <div className='jobs__contentLeft'>
           <h3>6,822,000+ Jobs in United States</h3>
           <ul className='jobs__resultList'>
-            <li>
-              <div className='jobs__result_first'>
-                <img src={`${PF}${job.img}`} alt="#" />
-                <div className='jobs__information'>
-                  <h2>{job.title}</h2>
-                  <h4>{job.location}</h4>
-                  <p>/Static/ Avenida Cauaxi</p>
-                  <span>{format(job.createdAt)}</span>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='jobs__result'>
-                <img src={`${PF}${job2.img}`} alt="#" />
-                <div className='jobs__information'>
-                  <h2>{job2.title}</h2>
-                  <h4>{job2.location}</h4>
-                  <p>/Static/ Avenida Cauaxi</p>
-                  <span>{format(job2.createdAt)}</span>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div className='jobs__result'>
-                <img src={`${PF}${job3.img}`} alt="#" />
-                <div className='jobs__information'>
-                  <h2>{job3.title}</h2>
-                  <h4>{job3.location}</h4>
-                  <p>/Static/ Avenida Cauaxi</p>
-                  <span>{format(job3.createdAt)}</span>
-                </div>
-              </div>
-            </li>
+            { jobs.map((p) => (
+              <li key={p._id}><Job job={p}/></li>
+            ))}
           </ul>
         </div>
 
         <div className='jobs__contentRight'>
-          <h2>{job.title}</h2>
-          <h4>{job.location}  -  {format(job.createdAt)}  - /Static 3 applicants/</h4>
+          <h2>{job1.title}</h2>
+          <h4>{job1.location}  -  {format(job1.createdAt)}  - /Static 3 applicants/</h4>
           <ul>
-            <li><span>{job.type}</span></li>
+            <li><span>{job1.type}</span></li>
             <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
-            <li><span>See recent hiring trends on {job.company}</span></li>
+            <li><span>See recent hiring trends on {job1.company}</span></li>
             <li><span>/Static/ Actively recruiting</span></li>
           </ul>
           <div className='jobs__contentRightButton'>
@@ -132,7 +99,7 @@ function Jobs() {
               <a href="#">Message</a> 
             </section>
           </div>
-          <p>{job.desc}</p>
+          <p>{job1.desc}</p>
           
         </div>
       </section>
