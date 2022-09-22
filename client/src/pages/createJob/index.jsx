@@ -22,9 +22,9 @@ function CreateJob() {
             company: company.current.value,
             workPlace: "On site",
             location: location.current.value,
-            type: "Full-time"
+            type: "Full-time",
+            img: "post/4.jpeg",
         }
-        console.log(job)
         try {
             await axiosInstance.post("/jobs", job);
             navigate("/createJobDesc");
