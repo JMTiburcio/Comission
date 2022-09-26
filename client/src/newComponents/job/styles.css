@@ -8,7 +8,7 @@
     background-color: rgb(221, 221, 221);
 }
 
-.jobs__result:hover h2{
+.job__result:hover h2{
     text-decoration: underline;
 }
 

@@ -57,8 +57,10 @@
 }
 
 .topbarLink {
+    color: white;
     margin-right: 10px;
     font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
 }
 
