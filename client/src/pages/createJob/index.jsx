@@ -17,14 +17,14 @@ function CreateJob() {
 
     const handleClick = async (e) => {
         e.preventDefault();
-        
+
         const job = {
             userId: user._id,
             title: title.current.value,
             company: company.current.value,
-            workPlace: "On site",
+            workPlace: workPlace.current.value,
             location: location.current.value,
-            type: "Full-time",
+            type: type.current.value,
             img: "post/4.jpeg",
         }
         try {
@@ -54,9 +54,9 @@ function CreateJob() {
                     <div className='createJob__formOption'>
                         <label htmlFor="">Workplace type</label>
                         <select name="" id="" ref={workPlace}>
-                            <option value="">On site</option>
-                            <option value="">Hybrid</option>
-                            <option value="">Remote</option>
+                            <option value="On site">On site</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Remote">Remote</option>
                         </select>
                     </div>
                     <div className='createJob__formOption'>
@@ -65,14 +65,14 @@ function CreateJob() {
                     </div>
                     <div className='createJob__formOption'>
                         <label htmlFor="">Job type</label>
-                        <select name="" id="">
-                            <option value="">Full-time</option>
-                            <option value="">Part-time</option>
-                            <option value="">Contract</option>
-                            <option value="">Temporary</option>
-                            <option value="">Other</option>
-                            <option value="">Volunteer</option>
-                            <option value="">Internship</option>
+                        <select name="" id="" ref={type}>
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Temporary">Temporary</option>
+                            <option value="Other">Other</option>
+                            <option value="Volunteer">Volunteer</option>
+                            <option value="Internship">Internship</option>
                         </select>
                     </div>
                 </div>
