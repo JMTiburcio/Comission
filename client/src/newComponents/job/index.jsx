@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./styles.css";
 import { format } from "timeago.js";
+import { AuthContext } from "../../context/AuthContext";
+import { axiosInstance } from "../../config";
 
 function Job({ job }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const { user } = useContext(AuthContext);
 
     return (
         <div className='job__result'>

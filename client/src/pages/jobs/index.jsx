@@ -9,7 +9,6 @@ function Jobs() {
   const [job1, setJob1] = useState({});
   const [jobs, setJobs] = useState([]);
 
-
   useEffect(() => {
       const fetchJob = async () => {
           const res = await axiosInstance.get(`/jobs/63239cc014313b526720701a`);

@@ -113,35 +113,6 @@
     background-color: white;
 }
 
-.jobs__result_first {
-    background-color: rgb(224, 243, 250);
-}
-
-.jobs__result, .jobs__result_first {
-    display: flex;
-    padding: 10px;
-    cursor: pointer;
-}
-
-.jobs__result:hover {
-    background-color: rgb(221, 221, 221);
-}
-
-.jobs__result:hover h2, .jobs__result_first:hover h2{
-    text-decoration: underline;
-}
-
-.jobs__result img, .jobs__result_first img {
-    width: 50px;
-    height: 50px;
-}
-
-.jobs__information {
-    padding-left: 10px;
-}
-
-
-
 .jobs__contentRight {
     padding-top: 20px;
     padding-left: 50px;

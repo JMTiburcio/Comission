@@ -1,10 +1,12 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useRef, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { axiosInstance } from '../../config';
+import { AuthContext } from "../../context/AuthContext";
 import './styles.css';
 
 function CreateJob() {
+    const { user } = useContext(AuthContext);
     const title = useRef();
     const company = useRef();
     const workPlace = useRef();
@@ -17,7 +19,7 @@ function CreateJob() {
         e.preventDefault();
         
         const job = {
-            userId: "62604f6a2d65ef9cfa88a97b",
+            userId: user._id,
             title: title.current.value,
             company: company.current.value,
             workPlace: "On site",

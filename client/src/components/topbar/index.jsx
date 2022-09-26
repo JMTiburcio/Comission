@@ -27,8 +27,12 @@ function TopBar() {
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <span className="topbarLink">HomePage</span>
-          <span className="topbarLink">Timeline</span>
+          <Link to="/jobs" style={{textDecoration:"none"}}>
+            <span className="topbarLink">Jobs</span>
+          </Link>
+          <Link to="/createJob" style={{textDecoration:"none"}}>
+          <span className="topbarLink">Create a Job</span>
+          </Link>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
