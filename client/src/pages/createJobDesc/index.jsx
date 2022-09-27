@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-function CreateJobDesc() {
+function CreateJobDesc({ nextPage, previousPage }) {
   return (
     <section className='createJobDesc__container'>
       <section className='createJobDesc__content'>
@@ -42,8 +42,8 @@ function CreateJobDesc() {
         <footer className='createJobDesc__footer'>
           <a href="#">Preview</a>
           <div>
-            <a href="#">Back</a>
-            <a href="#">Next</a>
+            <button type='button' onClick={previousPage}>Back</button>
+            <button type='button' onClick={nextPage}>Next</button>
           </div>
         </footer>
       </section>
