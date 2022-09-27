@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-function CreateJobAssess() {
+function CreateJobAssess({ previousPage, submitForm }) {
   return (
     <section className='createJobAssess__container'>
       <section className='createJobAssess__content'>
@@ -109,8 +109,8 @@ function CreateJobAssess() {
         <footer className='createJobAssess__footer'>
           <a href="#">Preview</a>
           <div>
-            <a href="#">Back</a>
-            <a href="#">Post job for free</a>
+            <button type='button' onClick={previousPage}>Back</button>
+            <button type='button' onClick={submitForm}>Post job for free</button>
           </div>
         </footer>
       </section>

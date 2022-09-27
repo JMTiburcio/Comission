@@ -9,8 +9,6 @@ import { AuthContext } from "./context/AuthContext";
 
 import Jobs from "./pages/jobs";
 import CreateJob from "./pages/createJob";
-import CreateJobDesc from "./pages/createJobDesc";
-import CreateJobAssess from "./pages/createJobAssess";
 import NewHome from "./pages/newHome";
 
 import {
@@ -34,8 +32,6 @@ function App() {
         {/* New pages for jobs */}
         <Route path="/jobs" element={user ? <Jobs/> : <Login/>}/>
         <Route path="/createJob" element={user ? <CreateJob/> : <Login/>}/>
-        <Route path="/createJobDesc" element={user ? <CreateJobDesc/> : <Login/>}/>
-        <Route path="/createJobAssess" element={user ? <CreateJobAssess/> : <Login/>}/>
         <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
       </Routes>
     </BrowserRouter>

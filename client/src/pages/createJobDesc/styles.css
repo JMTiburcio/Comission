@@ -119,16 +119,17 @@
     font-weight: 600;
 }
 
-.createJobDesc__footer div a {
+.createJobDesc__footer div button {
     margin: 4px 4px 4px 0;
     padding: 8px 15px 8px 15px;
     border-radius: 20px;
     color: rgb(70, 70, 70);
     background-color: white;
     border: 1px solid rgb(70, 70, 70);
+    cursor: pointer;
 }
 
-.createJobDesc__footer div a + a {
+.createJobDesc__footer div button + button {
     background-color: rgb(10, 102, 194);
     color: white;
     border: none;
