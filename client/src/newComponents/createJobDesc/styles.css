@@ -34,11 +34,17 @@
     font-weight: 600;
 }
 
-.createJobDesc__textEditor {
-    width: 100%;
+.createJobDesc__textEditorInput {
+    width: 95%;
+    padding: 2.5%;
     height: 350px;
-    border: 1px solid black;
     border-radius: 6px;
+    overflow: auto;
+    resize: none;
+}
+
+.createJobDesc__textEditorInput:focus-visible {
+    outline: none;
 }
 
 .createJobDesc__skill {
