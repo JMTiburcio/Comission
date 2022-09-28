@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import "./styles.css";
 import { format } from "timeago.js";
-import { AuthContext } from "../../context/AuthContext";
-import { axiosInstance } from "../../config";
 
-function Job({ job }) {
+function Job({ job, selectedJob }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const { user } = useContext(AuthContext);
+    let selected = job === selectedJob ? 'selectedJob' : '';
 
     return (
-        <div className='job__result'>
+        <div className={`job__result ${selected}`}>
             <img src={`${PF}${job.img}`} alt="#" />
             <div className='job__information'>
                 <h2>{job.title}</h2>

@@ -4,7 +4,6 @@ import "./styles.css";
 import { format } from "timeago.js";
 
 function JobDesc({ selectedJob }) {
-    console.log(selectedJob.desc)
     return (
         <>
           {selectedJob.selected !== false ? 
