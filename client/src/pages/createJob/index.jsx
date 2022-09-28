@@ -1,8 +1,8 @@
 import React from 'react';
 import './styles.css';
-import InitialForm from '../initialForm';
-import CreateJobDesc from '../createJobDesc';
-import CreateJobAssess from "../createJobAssess";
+import InitialForm from '../../newComponents/initialForm';
+import CreateJobDesc from "../../newComponents/createJobDesc";
+import CreateJobAssess from "../../newComponents/createJobAssess";
 import { useState, useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
 import { axiosInstance } from "../../config";
@@ -16,10 +16,10 @@ function CreateJob() {
         userId: user._id,
         title: "",
         company: "",
-        workPlace: "Hybrid",
+        workPlace: "On site",
         location: "",
         type: "Full-time",
-        img: "post/4.jpeg",
+        img: "job.png",
     });
 
     const submitForm = async (e) => {
