@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-function CreateJobDesc({ nextPage, previousPage }) {
+function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
   return (
     <section className='createJobDesc__container'>
       <section className='createJobDesc__content'>
@@ -9,7 +9,14 @@ function CreateJobDesc({ nextPage, previousPage }) {
         <span>* indicates required</span>
         <div className='createJobDesc__desc'>
           <h2>Description *</h2>
-          <div className='createJobDesc__textEditor'></div>
+          <div>
+            <textarea
+              className='createJobDesc__textEditorInput'
+              type="text" 
+              value={jobData.desc}
+              onChange={(e) => setJobData({...jobData, desc:e.target.value})}
+            ></textarea>
+          </div>
         </div>
         <div className='createJobDesc__skill'>
           <h2>Skills</h2>

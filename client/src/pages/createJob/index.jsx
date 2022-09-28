@@ -19,6 +19,7 @@ function CreateJob() {
         workPlace: "On site",
         location: "",
         type: "Full-time",
+        desc: "",
         img: "job.png",
     });
 
@@ -43,7 +44,7 @@ function CreateJob() {
     return (
         <>
         {page === 1 ? <InitialForm nextPage={nextPage} jobData={jobData} setJobData={setJobData}/> 
-            : page === 2 ? <CreateJobDesc nextPage={nextPage} previousPage={previousPage}/> 
+            : page === 2 ? <CreateJobDesc nextPage={nextPage} previousPage={previousPage} jobData={jobData} setJobData={setJobData}/> 
                 : <CreateJobAssess previousPage={previousPage} submitForm={submitForm}/>
         }
         </>
