@@ -62,7 +62,7 @@ function Jobs() {
                 onClick={() => {setSelectedJob(p)}} 
                 key={p._id}
               >
-                <Job job={p}/>
+                <Job job={p} selectedJob={selectedJob}/>
               </li>
             ))}
           </ul>

@@ -5,7 +5,7 @@
 }
 
 .job__result:hover {
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(245, 245, 245);
 }
 
 .job__result:hover h2{
@@ -19,4 +19,8 @@
 
 .job__information {
     padding-left: 10px;
+}
+
+.selectedJob {
+    background: #e6f7ff;
 }
