@@ -6,17 +6,18 @@ import JobDesc from '../../newComponents/jobDesc';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
-  
-    useEffect(() => {
-      const fetchJobs = async () => {
-        const res = await axiosInstance.get("/jobs/alljobs/get") 
-        setJobs(
-          res.data.sort((p1, p2) => {
-            return new Date(p2.createdAt) - new Date(p1.createdAt);
-          }));
-      }
-      fetchJobs();
-    }, []);
+  const [selectedJob, setSelectedJob] = useState({});
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const res = await axiosInstance.get("/jobs/alljobs/get") 
+      setJobs(
+        res.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        }));
+    }
+    fetchJobs();
+  }, []);
 
   return (
     <div className="jobs">
@@ -57,11 +58,16 @@ function Jobs() {
           <h3>6,822,000+ Jobs in United States</h3>
           <ul className='jobs__resultList'>
             { jobs.map((p) => (
-              <li key={p._id}><Job job={p}/></li>
+              <li 
+                onClick={() => {setSelectedJob(p)}} 
+                key={p._id}
+              >
+                <Job job={p}/>
+              </li>
             ))}
           </ul>
         </div>
-        <JobDesc />
+        <JobDesc selectedJob={selectedJob}/>
       </section>
     </div>
   );
