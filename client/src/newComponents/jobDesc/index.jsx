@@ -1,27 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import "./styles.css";
-import { axiosInstance } from '../../config';
+
 import { format } from "timeago.js";
 
-function JobDesc() {
-    const [job1, setJob1] = useState({});
-    
-    useEffect(() => {
-        const fetchJob = async () => {
-            const res = await axiosInstance.get(`/jobs/63239cc014313b526720701a`);
-            setJob1(res.data);
-        }
-        fetchJob();
-      }, [])
+function JobDesc({ selectedJob }) {
 
     return (
         <div className='jobs__contentRight'>
-          <h2>{job1.title}</h2>
-          <h4>{job1.location}  -  {format(job1.createdAt)}  - /Static 3 applicants/</h4>
+          <h2>{selectedJob.title}</h2>
+          <h4>{selectedJob.location}  -  {format(selectedJob.createdAt)}  - /Static 3 applicants/</h4>
           <ul>
-            <li><span>{job1.type}</span></li>
+            <li><span>{selectedJob.type}</span></li>
             <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
-            <li><span>See recent hiring trends on {job1.company}</span></li>
+            <li><span>See recent hiring trends on {selectedJob.company}</span></li>
             <li><span>/Static/ Actively recruiting</span></li>
           </ul>
           <div className='jobs__contentRightButton'>
@@ -40,7 +31,7 @@ function JobDesc() {
               <a href="#">Message</a> 
             </section>
           </div>
-          <p>{job1.desc}</p>
+          <p>{selectedJob.desc}</p>
         </div>
     );
 }
