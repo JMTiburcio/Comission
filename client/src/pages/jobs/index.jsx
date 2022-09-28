@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css';
 import { axiosInstance } from '../../config';
-import { format } from "timeago.js";
 import Job from '../../newComponents/job';
 import JobDesc from '../../newComponents/jobDesc';
 
 function Jobs() {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [job1, setJob1] = useState({});
   const [jobs, setJobs] = useState([]);
-
-  useEffect(() => {
-      const fetchJob = async () => {
-          const res = await axiosInstance.get(`/jobs/63239cc014313b526720701a`);
-          setJob1(res.data);
-      }
-      fetchJob();
-    }, [])
   
     useEffect(() => {
       const fetchJobs = async () => {
@@ -48,8 +37,8 @@ function Jobs() {
               <button>Search</button>
             </form>
           </section>
-          <a href="#">Join now</a>
-          <a href="#">Sign In</a>
+          <a href="/">HomePage</a>
+          <a href="/createJob">Create Job</a>
         </nav>
       </header>
 
@@ -72,9 +61,7 @@ function Jobs() {
             ))}
           </ul>
         </div>
-        
         <JobDesc />
-        
       </section>
     </div>
   );

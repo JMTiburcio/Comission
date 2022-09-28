@@ -16,7 +16,7 @@ function TopBar() {
     <div className='topbarContainer'>
       <div className="topbarLeft">
         <Link to="/" style={{textDecoration:"none"}}>
-          <span className="Logo">Lamasocial</span>
+          <span className="Logo">Comission</span>
         </Link>
       </div>
       <div className="topbarCenter">
