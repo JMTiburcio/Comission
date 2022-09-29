@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./styles.css";
 
 import { format } from "timeago.js";
+import { axiosInstance } from '../../config';
 
 function JobDesc({ selectedJob }) {
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+      if(selectedJob){
+        const fetchUser = async () => {
+          const res = await axiosInstance.get(`/users/${selectedJob.userId}`) 
+          setUser(res);
+        }
+        fetchUser();
+      }
+    }, [selectedJob]);
+    
+    console.log(user)
+
     return (
         <>
           {selectedJob.selected !== false ? 
@@ -13,7 +28,7 @@ function JobDesc({ selectedJob }) {
             <ul>
               <li><span>{selectedJob.type}</span></li>
               <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
-              <li><span>See recent hiring trends on {selectedJob.company}</span></li>
+              <li><span>See recent hiring trends on <b>{selectedJob.company}</b></span></li>
               <li><span>/Static/ Actively recruiting</span></li>
             </ul>
             <div className='jobs__contentRightButton'>
