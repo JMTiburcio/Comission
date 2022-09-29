@@ -7,17 +7,17 @@ import { axiosInstance } from '../../config';
 function JobDesc({ selectedJob }) {
     const [user, setUser] = useState({})
 
-    useEffect(() => {
-      if(selectedJob){
-        const fetchUser = async () => {
-          const res = await axiosInstance.get(`/users/${selectedJob.userId}`) 
-          setUser(res);
-        }
-        fetchUser();
-      }
-    }, [selectedJob]);
+    // useEffect(() => {
+    //   if(selectedJob){
+    //     const fetchUser = async () => {
+    //       const res = await axiosInstance.get(`/users/${selectedJob.userId}`) 
+    //       setUser(res);
+    //     }
+    //     fetchUser();
+    //   }
+    // }, [selectedJob]);
     
-    console.log(user)
+    // console.log(user)
 
     return (
         <>
