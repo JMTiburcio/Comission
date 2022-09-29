@@ -35,15 +35,18 @@ function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
         </div>
         <div className='createJobDesc__source'>
           <h2>How did you hear about Linkedin Jobs?</h2>
-          <select>
+          <select 
+              value={jobData.hearAbout}
+              onChange={(e) => setJobData({...jobData, hearAbout:e.target.value})}
+          >
             <option value="">Select a source</option>
-            <option value="">In the email</option>
-            <option value="">Tv</option>
-            <option value="">Podcast</option>
-            <option value="">Online Ad</option>
-            <option value="">Streaming Audio</option>
-            <option value="">Radio</option>
-            <option value="">Other</option>
+            <option value="In the email">In the email</option>
+            <option value="TV">TV</option>
+            <option value="Podcast">Podcast</option>
+            <option value="Online Ad">Online Ad</option>
+            <option value="Streaming Audio">Streaming Audio</option>
+            <option value="Radio">Radio</option>
+            <option value="Other">Other</option>
           </select>
         </div>
         <footer className='createJobDesc__footer'>
