@@ -20,6 +20,7 @@ function CreateJob() {
         location: "",
         type: "Full-time",
         desc: "",
+        hearAbout: "",
         img: "job.png",
     });
 
