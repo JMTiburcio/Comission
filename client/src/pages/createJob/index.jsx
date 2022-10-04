@@ -20,6 +20,9 @@ function CreateJob() {
         location: "",
         type: "Full-time",
         desc: "",
+        skills: [{id:1, item:'SQL Database'}, 
+                {id:2, item:'Python'}, 
+                {id:3, item:'English'}],
         hearAbout: "",
         img: "job.png",
     });

@@ -29,7 +29,7 @@ function JobDesc({ selectedJob }) {
               <li><span>{selectedJob.type}</span></li>
               <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
               <li><span>See recent hiring trends on <b>{selectedJob.company}</b></span></li>
-              <li><span>/Static/ Actively recruiting</span></li>
+              <li><span>Actively recruiting</span></li>
             </ul>
             <div className='jobs__contentRightButton'>
               <a href="#">Apply</a>

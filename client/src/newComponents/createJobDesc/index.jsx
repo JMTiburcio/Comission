@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
+import AddButton from '../AddButton';
 
 function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
+  const [newSkill, setNewSkill] = useState('');
+  const [skillId, setSkillId] = useState(4);
+
+  const handleAddSkill = (e) => {
+    e.preventDefault()
+    if(newSkill){
+      setJobData({...jobData, skills: [...jobData.skills, {id:skillId, item: newSkill}]});
+      setSkillId(skillId + 1);
+      setNewSkill('')
+    }
+  }
+  
   return (
     <section className='createJobDesc__container'>
       <section className='createJobDesc__content'>
@@ -22,16 +35,18 @@ function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
           <h2>Skills</h2>
           <p>Add skill keyword to make your job more visible to the right candidates</p>
           <ul>
-            <li><a href="#">SQL Database X</a></li>
-            <li><a href="#">SQL X</a></li>
-            <li><a href="#">Databases X</a></li>
-            <li><a href="#">Programming X</a></li>
-            <li><a href="#">Computer Science X</a></li>
-            <li><a href="#">Programming Languages X</a></li>
-            <li><a href="#">Web Applications X</a></li>
-            <li><a href="#">Design X</a></li>
-            <li><a id='createJobDesc__addSkill' href="#">Add skill +</a></li>
+            { jobData.skills.map((p) => (
+              <li key={p.id}><AddButton jobData={jobData} setJobData={setJobData} skill={p} /></li>
+            ))}
           </ul>
+          <form>
+              <label htmlFor="">Skill: </label>
+              <input 
+                value={newSkill}
+                onChange={(e) => setNewSkill(e.target.value)}
+              />
+              <button onClick={handleAddSkill}>Add</button>
+          </form>
         </div>
         <div className='createJobDesc__source'>
           <h2>How did you hear about Linkedin Jobs?</h2>
