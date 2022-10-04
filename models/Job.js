@@ -35,11 +35,12 @@ const JobSchema = new mongoose.Schema(
         hearAbout: {
           type: String,
         },
-        applicantCollection: {
-          type: String,
+        applicantContact: {
+          type: Object,
+          required: true,
         },
         screeningQuestions: {
-          type: String,
+          type: Array,
         },
         desc: {
           type: String,

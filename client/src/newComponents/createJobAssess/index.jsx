@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css';
 
-function CreateJobAssess({ previousPage, submitForm }) {
+function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
   return (
     <section className='createJobAssess__container'>
       <section className='createJobAssess__content'>
@@ -13,7 +13,8 @@ function CreateJobAssess({ previousPage, submitForm }) {
             <div className='createJobAssess__receiveAppli'>
               <label htmlFor="">Receive applicants by</label>
               <select name="" id="">
-                <option value="">Email</option>
+                <option value="Email">Email</option>
+                <option value="External Website">External Website</option>
               </select>
             </div>
             <div className='createJobAssess__email'>
