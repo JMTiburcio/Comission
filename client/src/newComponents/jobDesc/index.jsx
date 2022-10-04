@@ -5,7 +5,7 @@ import { format } from "timeago.js";
 import { axiosInstance } from '../../config';
 
 function JobDesc({ selectedJob }) {
-    const [user, setUser] = useState({})
+    // const [user, setUser] = useState({})
 
     // useEffect(() => {
     //   if(selectedJob){
@@ -18,6 +18,8 @@ function JobDesc({ selectedJob }) {
     // }, [selectedJob]);
     
     // console.log(user)
+
+    console.log(selectedJob)
 
     return (
         <>

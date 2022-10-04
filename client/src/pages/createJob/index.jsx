@@ -29,6 +29,7 @@ function CreateJob() {
 
     const submitForm = async (e) => {
         e.preventDefault();
+        console.log(jobData)
         try {
             await axiosInstance.post("/jobs", jobData);
             navigate('/jobs')
