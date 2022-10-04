@@ -24,6 +24,16 @@ function CreateJob() {
                 {id:2, item:'Python'}, 
                 {id:3, item:'English'}],
         hearAbout: "",
+        applicantContact: {
+            option: 'Email',
+            address: ''
+        },
+        screeningQuestions: [{
+            type: 'Skill',
+            mustHave: true,
+            reponse: '', // yer or no, numerical
+            option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
+        }],
         img: "job.png",
     });
 
@@ -50,7 +60,7 @@ function CreateJob() {
         <>
         {page === 1 ? <InitialForm nextPage={nextPage} jobData={jobData} setJobData={setJobData}/> 
             : page === 2 ? <CreateJobDesc nextPage={nextPage} previousPage={previousPage} jobData={jobData} setJobData={setJobData}/> 
-                : <CreateJobAssess previousPage={previousPage} submitForm={submitForm}/>
+                : <CreateJobAssess previousPage={previousPage} submitForm={submitForm} jobData={jobData} setJobData={setJobData}/>
         }
         </>
     )
