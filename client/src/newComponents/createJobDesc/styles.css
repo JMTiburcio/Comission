@@ -73,7 +73,7 @@
     display: flex;
 }
 
-.createJobDesc__skill a {
+/* .createJobDesc__skill a {
     text-decoration: none;
     margin: 4px 4px 4px 0;
     padding: 8px 12px 8px 12px;
@@ -82,7 +82,7 @@
     color: white;
     font-size: 16px;
     font-weight: 600;
-}
+} */
 
 #createJobDesc__addSkill {
     color: rgb(70, 70, 70);
