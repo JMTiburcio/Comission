@@ -29,8 +29,16 @@ function CreateJob() {
             address: ''
         },
         screeningQuestions: [{
+            id: 1,
             type: 'Skill',
-            mustHave: true,
+            mustHave: false,
+            reponse: '', // yer or no, numerical
+            option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
+        },
+        {
+            id: 2,
+            type: 'Degree',
+            mustHave: false,
             reponse: '', // yer or no, numerical
             option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
         }],

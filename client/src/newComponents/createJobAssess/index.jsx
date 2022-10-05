@@ -1,6 +1,8 @@
 import React from 'react';
 import './styles.css';
 
+import ScreeningQuestion from '../screeningQuestion/index';
+
 function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
   return (
     <section className='createJobAssess__container'>
@@ -27,67 +29,10 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
         <div className='createJobAssess__questions'>
           <h2>Screening questions</h2>
           <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
+          {jobData.screeningQuestions.map((e) => (
+              <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
+          ))}
           
-          <section className='createJobAssess__card'>
-            <header>
-              <h3>How many years of work experience do you have with [Skill]?</h3>
-              <div>Recommended</div>
-            </header>
-            <div className='createJobAssess__cardListOptions'>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Skill*</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Ideal answer (minimum):</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardMustHave'>
-                <input type="checkbox" />
-                <label htmlFor="">Must-have qualifications</label>
-              </div>
-            </div>
-          </section>
-          <section className='createJobAssess__card'>
-            <header>
-              <h3>How many years of work experience do you have with [Skill]?</h3>
-              <div>Recommended</div>
-            </header>
-            <div className='createJobAssess__cardListOptions'>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Skill*</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Ideal answer (minimum):</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardMustHave'>
-                <input type="checkbox" />
-                <label htmlFor="">Must-have qualifications</label>
-              </div>
-            </div>
-          </section>
-          <section className='createJobAssess__card'>
-            <header>
-              <h3>How many years of work experience do you have with [Skill]?</h3>
-              <div>Recommended</div>
-            </header>
-            <div className='createJobAssess__cardListOptions'>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Skill*</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardOption'>
-                <label htmlFor="">Ideal answer (minimum):</label>
-                <input type="text" />
-              </div>
-              <div className='createJobAssess__cardMustHave'>
-                <input type="checkbox" />
-                <label htmlFor="">Must-have qualifications</label>
-              </div>
-            </div>
-          </section>
           <p>Add screening questions:</p>
           <ul>
             <li><a href="#">+ Background Check</a></li>

@@ -1,0 +1,74 @@
+
+.screeningQuestion__card {
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.screeningQuestion__card > header {
+    background-color: rgb(235, 235, 255);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.screeningQuestion__card h3 {
+    margin: 0 4px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.screeningQuestion__card h3 + div {
+    margin-right: 16px;
+    padding: 4px 8px 4px 8px;
+    border-radius: 8px;
+    background-color: rgb(5, 118, 66);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.screeningQuestion__cardListOptions {
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.screeningQuestion__cardOption {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+}
+
+.screeningQuestion__cardOption label {
+    margin: 12px 0 3px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
+
+.screeningQuestion__cardOption input {
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.screeningQuestion__cardMustHave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screeningQuestion__cardMustHave input {
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+
+.screeningQuestion__cardMustHave label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
