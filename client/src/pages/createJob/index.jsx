@@ -34,13 +34,6 @@ function CreateJob() {
             mustHave: false,
             reponse: '', // yer or no, numerical
             option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
-        },
-        {
-            id: 2,
-            type: 'Degree',
-            mustHave: false,
-            reponse: '', // yer or no, numerical
-            option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
         }],
         img: "job.png",
     });
