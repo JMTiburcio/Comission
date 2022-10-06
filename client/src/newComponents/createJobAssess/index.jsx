@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 
 import ScreeningQuestion from '../screeningQuestion/index';
 
 function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
+  const [quesitonId, setQuestionId] = useState(2)
+  const handleNew = () => {
+    setJobData({...jobData, screeningQuestions: [...jobData.screeningQuestions,
+      {
+          id: quesitonId,
+          type: 'Degree',
+          mustHave: false,
+          reponse: '', // yer or no, numerical
+          option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
+      }]})
+    setQuestionId(quesitonId + 1)
+  }
+
   return (
     <section className='createJobAssess__container'>
       <section className='createJobAssess__content'>
@@ -28,12 +41,15 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
 
         <div className='createJobAssess__questions'>
           <h2>Screening questions</h2>
-          <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
+          <div className='createJobAssess__wrapper'>
+            <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
+            <button onClick={handleNew}>New</button>
+          </div>
           {jobData.screeningQuestions.map((e) => (
               <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
           ))}
           
-          <p>Add screening questions:</p>
+          {/* <p>Add screening questions:</p>
           <ul>
             <li><a href="#">+ Background Check</a></li>
             <li><a href="#">+ Driver's License</a></li>
@@ -49,7 +65,7 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
             <li><a href="#">+ Visa Status</a></li>
             <li><a href="#">+ Work Experience</a></li>
             <li><a href="#">+ Custom Question</a></li>
-          </ul>
+          </ul> */}
         </div>
 
         <footer className='createJobAssess__footer'>

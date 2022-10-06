@@ -3,14 +3,14 @@ import './styles.css';
 import CloseIcon from '@mui/icons-material/Close';
 
 function ScreeningQuestion({ jobData, setJobData, selected }) {
-  // const handleDelete = () => {
-  //   setJobData({...jobData, skills: jobData.skills.filter(e => e.id !== skill.id)})
-  // }
+  const handleDelete = () => {
+    setJobData({...jobData, screeningQuestions: jobData.screeningQuestions.filter(e => e.id !== selected.id)})
+  }
 
   const handleCheckBox = () => {
     setJobData({...jobData, 
-      screeningQuestions: jobData.screeningQuestions.map((e, i) => {
-        if(i === selected.id - 1){
+      screeningQuestions: jobData.screeningQuestions.map((e) => {
+        if(e.id === selected.id){
           return {...e, mustHave: !e.mustHave}
         } else {
           return e
@@ -21,20 +21,27 @@ function ScreeningQuestion({ jobData, setJobData, selected }) {
   return (
     <section className='screeningQuestion__card'>
             <header>
-              {selected.type === 'Skill' ? 
-                <h3>How many years of work experience do you have with [{selected.type}]?</h3> :
-                <h3>Have you completed the following level of education: [{selected.type}] ?</h3>
-              }
-              <div>Recommended</div>
+                <h3>Write a custom screening question.</h3>
+                <CloseIcon onClick={handleDelete} className='screeningQuestion__icon'/>
             </header>
+            <div className='screeningQuestion__textInput'>
+              <span>Help keep Comission respectful and professional. Learn about our custom question guidelines. *</span>
+              <textarea></textarea>
+            </div>
             <div className='screeningQuestion__cardListOptions'>
               <div className='screeningQuestion__cardOption'>
-                <label htmlFor="">{selected.type}*</label>
-                <input type="text" />
+                <label htmlFor="">Response type:</label>
+                <select name="" id="">
+                  <option value="">Yes/No</option>
+                  <option value="">Numeric</option>
+                </select>
               </div>
               <div className='screeningQuestion__cardOption'>
-                <label htmlFor="">Ideal answer (minimum):</label>
-                <input type="text" />
+                <label htmlFor="">Ideal answer:</label>
+                <select name="" id="">
+                  <option value="">Yes</option>
+                  <option value="">No</option>
+                </select>
               </div>
               <div className='screeningQuestion__cardMustHave'>
                 <input 
