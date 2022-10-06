@@ -35,6 +35,7 @@ function CreateJob() {
             answer: 'Yes',
             question: '',
         }],
+        qualification: false,
         img: "job.png",
     });
 
