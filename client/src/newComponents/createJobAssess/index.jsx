@@ -11,8 +11,8 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
           id: quesitonId,
           type: 'Degree',
           mustHave: false,
-          reponse: '', // yer or no, numerical
-          option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
+          response: 'Boolean',
+          answer: 'Yes',
       }]})
     setQuestionId(quesitonId + 1)
   }
@@ -27,45 +27,40 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
           <div>
             <div className='createJobAssess__receiveAppli'>
               <label htmlFor="">Receive applicants by</label>
-              <select name="" id="">
+              <select 
+                value={jobData.applicantContact.option}
+                onChange={(e) => setJobData({...jobData, applicantContact: {option: e.target.value, address: ''}})}
+              >
                 <option value="Email">Email</option>
                 <option value="External Website">External Website</option>
               </select>
             </div>
-            <div className='createJobAssess__email'>
-              <label htmlFor="">Email address*</label>
-              <input type="text" />
+            <div className='createJobAssess__address'>
+              <label htmlFor="">
+                {jobData.applicantContact.option === 'Email' ? 'Email address *' : 'Website address *'}
+              </label>
+              <input 
+                placeholder={jobData.applicantContact.option === 'Email' ? "example@example.com" : "htttp://yourcompany.com/job123"}
+                type={jobData.applicantContact.option === 'Email' ? "email" : "url"}
+                value= {jobData.applicantContact.address}
+                onChange={(e) => setJobData({...jobData, applicantContact: {...jobData.applicantContact, address: e.target.value}})}
+              />
             </div>
           </div>
         </div>
 
-        <div className='createJobAssess__questions'>
+        <div className={'createJobAssess__questions'+
+          (jobData.applicantContact.option === 'Email' ? '' : ' no-display')}>
           <h2>Screening questions</h2>
           <div className='createJobAssess__wrapper'>
             <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
             <button onClick={handleNew}>New</button>
           </div>
+
           {jobData.screeningQuestions.map((e) => (
               <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
           ))}
-          
-          {/* <p>Add screening questions:</p>
-          <ul>
-            <li><a href="#">+ Background Check</a></li>
-            <li><a href="#">+ Driver's License</a></li>
-            <li><a href="#">+ Drug Test</a></li>
-            <li><a href="#">+ Education</a></li>
-            <li><a href="#">+ Expertise with Skill</a></li>
-            <li><a href="#">+ Hybrid Work</a></li>
-            <li><a href="#">+ Industry Experience</a></li>
-            <li><a href="#">+ Language</a></li>
-            <li><a href="#">+ Location</a></li>
-            <li><a href="#">+ Remote Work</a></li>
-            <li><a href="#">+ Urgent Hiring Need</a></li>
-            <li><a href="#">+ Visa Status</a></li>
-            <li><a href="#">+ Work Experience</a></li>
-            <li><a href="#">+ Custom Question</a></li>
-          </ul> */}
+
         </div>
 
         <footer className='createJobAssess__footer'>

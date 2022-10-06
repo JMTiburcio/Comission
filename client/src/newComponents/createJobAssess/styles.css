@@ -37,7 +37,7 @@
     display: flex;
 }
 
-.createJobAssess__receiveAppli, .createJobAssess__email {
+.createJobAssess__receiveAppli, .createJobAssess__address {
     display: flex;
     flex-direction: column;
 }
@@ -47,7 +47,7 @@
     flex: 1;
 }
 
-.createJobAssess__email {
+.createJobAssess__address {
     flex: 3;
 }
 
@@ -64,7 +64,7 @@
     border-radius: 4px;
 }
 
-.createJobAssess__email input{
+.createJobAssess__address input{
     height: 32px;
     padding: 0 10px;
     border: 1px solid black;
@@ -169,4 +169,8 @@
     border-radius: 12px;
     margin-bottom: 15px;
     padding: 16px;
+}
+
+.no-display {
+    display: none !important
 }

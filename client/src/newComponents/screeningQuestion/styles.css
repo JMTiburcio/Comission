@@ -67,18 +67,31 @@
     flex-basis: 33%;
 }
 
-.screeningQuestion__cardOption label {
+.screeningQuestion__select {
+    height: 29px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.screeningQuestion__number {
+    display: flex;
+}
+
+.screeningQuestion__label {
     margin: 15px 0 3px 0;
     font-size: 14px;
     font-weight: 400;
     color: rgb(70, 70, 70);
 }
 
-.screeningQuestion__cardOption input {
+.screeningQuestion__inputNumber {
     height: 28px;
     padding: 0 10px;
     border: 1px solid black;
     border-radius: 4px;
+    width: 50px;
+    margin-right: 10px;
 }
 
 .screeningQuestion__cardMustHave {
