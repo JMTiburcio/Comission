@@ -17,6 +17,10 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
     setQuestionId(quesitonId + 1)
   }
 
+  const handleQual = () => {
+    setJobData({...jobData, qualification: !jobData.qualification})
+  }
+
   return (
     <section className='createJobAssess__container'>
       <section className='createJobAssess__content'>
@@ -61,6 +65,17 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
               <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
           ))}
 
+          <h2 className='createJobAssess__title'>Qualification setting</h2>
+          <div className='createJobAssess__qual'>
+            <input 
+              className='createJobAssess__qualInput'
+              type="checkbox" 
+              onChange={handleQual}
+            />
+            <label className='createJobAssess__qualLabel'>
+              Filter out and send rejections to applicants who don’t meet any must-have qualifications.
+            </label>
+          </div>
         </div>
 
         <footer className='createJobAssess__footer'>

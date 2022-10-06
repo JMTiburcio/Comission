@@ -46,6 +46,9 @@ const JobSchema = new mongoose.Schema(
           type: String,
           max: 500,
         },
+        qualification: {
+          type: Boolean,
+        },
         img: {
           type: String,
         },

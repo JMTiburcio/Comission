@@ -126,6 +126,27 @@
     font-weight: 600;
 }
 
+.createJobAssess__title{
+    padding-top: 16px;
+    border-top: 1px solid rgb(230, 230, 230);
+}
+
+.createJobAssess__qual {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.createJobAssess__qualInput{
+    height: 20px;
+    width: 20px;
+}
+
+.createJobAssess__qualLabel {
+    font-size: 14px;
+    margin-left: 10px;
+}
+
 
 .createJobAssess__footer {
     padding-top: 16px;

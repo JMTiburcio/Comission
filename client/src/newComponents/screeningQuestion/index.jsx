@@ -3,8 +3,6 @@ import './styles.css';
 import CloseIcon from '@mui/icons-material/Close';
 
 function ScreeningQuestion({ jobData, setJobData, selected }) {
-  console.log(jobData)
-
   const handleDelete = () => {
     setJobData({...jobData, screeningQuestions: jobData.screeningQuestions.filter(e => e.id !== selected.id)})
   }
