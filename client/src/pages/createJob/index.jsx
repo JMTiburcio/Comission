@@ -30,10 +30,10 @@ function CreateJob() {
         },
         screeningQuestions: [{
             id: 1,
-            type: 'Skill',
             mustHave: false,
-            reponse: '', // yer or no, numerical
-            option: '', // Degree, Langugage, Industry, Skill, Job Function, Custom
+            response: 'Boolean',
+            answer: 'Yes',
+            question: '',
         }],
         img: "job.png",
     });
