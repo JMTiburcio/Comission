@@ -33,6 +33,9 @@ function TopBar() {
           <Link to="/createJob" style={{textDecoration:"none"}}>
           <span className="topbarLink">Create a Job</span>
           </Link>
+          <Link to="/manageJob" style={{textDecoration:"none"}}>
+          <span className="topbarLink">Manage Jobs</span>
+          </Link>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
