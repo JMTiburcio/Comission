@@ -1,0 +1,58 @@
+.manageMenu__aside {
+    flex: 1;
+    padding-right: 12px;
+}
+
+.manageMenu {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+}
+
+.manageMenu__header {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.manageMenu__navItem {
+    border-top: 1px solid rgb(180, 180, 180);
+    display: flex;
+}
+
+.manageMenu__item {
+    flex: 1;
+    align-items: center;
+    padding: 12px;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+}
+
+.manageMenu__itemSelected {
+    flex: 1;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 12px 12px 8px;
+    border-left: 4px solid rgb(10, 102, 194);
+}
+
+.manageMenu__itemName, .manageMenu__itemCount {
+    font-size: 14px;
+    font-weight: 400;
+    color:  black;
+}
+
+.manageMenu__itemNameSelected, .manageMenu__itemCountSelected {
+    font-size: 15px;
+    font-weight: 600;
+    color:  rgb(10, 102, 194);
+}
