@@ -52,31 +52,41 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
             </div>
           </div>
         </div>
+        {jobData.applicantContact.option === 'Email' ?
+          <div className='createJobAssess__questions'>
+            <h2>Screening questions</h2>
+            <div className='createJobAssess__wrapper'>
+              <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
+              <button onClick={handleNew}>New</button>
+            </div>
 
-        <div className={'createJobAssess__questions'+
-          (jobData.applicantContact.option === 'Email' ? '' : ' no-display')}>
-          <h2>Screening questions</h2>
-          <div className='createJobAssess__wrapper'>
-            <p>We recommend adding 3 or more question. Applicants must answer each question.</p>
-            <button onClick={handleNew}>New</button>
+            {jobData.screeningQuestions.map((e) => (
+                <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
+            ))}
+
+            <h2 className='createJobAssess__title'>Qualification setting</h2>
+            <div className='createJobAssess__qual'>
+              <input 
+                className='createJobAssess__qualInput'
+                type="checkbox" 
+                onChange={handleQual}
+              />
+              <label className='createJobAssess__qualLabel'>
+                Filter out and send rejections to applicants who don't meet any must-have qualifications.
+              </label>
+            </div>
+          </div> : 
+          <div className='createJobAssess__questions'>
+            <h2>Receive applicants by email to use screening questions</h2>
+            <div className='createJobAssess__wrapper'>
+              <p>
+                Screening questions can't be collected from applicants when they apply on an external site. 
+                If you would like to collect answers to screening questions, please choose to receive applicants by email.
+              </p>
+            </div>
           </div>
-
-          {jobData.screeningQuestions.map((e) => (
-              <ScreeningQuestion key={e.id} jobData={jobData} setJobData={setJobData} selected={e}/>
-          ))}
-
-          <h2 className='createJobAssess__title'>Qualification setting</h2>
-          <div className='createJobAssess__qual'>
-            <input 
-              className='createJobAssess__qualInput'
-              type="checkbox" 
-              onChange={handleQual}
-            />
-            <label className='createJobAssess__qualLabel'>
-              Filter out and send rejections to applicants who don’t meet any must-have qualifications.
-            </label>
-          </div>
-        </div>
+        }
+        
 
         <footer className='createJobAssess__footer'>
           <a href="#">Preview</a>
