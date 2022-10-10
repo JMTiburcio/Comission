@@ -3,7 +3,7 @@ import './styles.css';
 
 function ManageAside({ }) {
   return (
-    <aside>
+    <aside className='manageAside'>
       <a href="#">Post a free job</a>
       <div>
         <p>Save up to 35% by purchasing job posting budget in advance.</p>
