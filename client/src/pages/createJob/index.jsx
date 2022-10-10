@@ -7,6 +7,7 @@ import { useState, useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
 import { axiosInstance } from "../../config";
 import { useNavigate } from 'react-router';
+import TopBar from '../../components/topbar'
 
 function CreateJob() {
     const { user } = useContext(AuthContext);
@@ -60,6 +61,7 @@ function CreateJob() {
 
     return (
         <>
+        <TopBar/>
         {page === 1 ? <InitialForm nextPage={nextPage} jobData={jobData} setJobData={setJobData}/> 
             : page === 2 ? <CreateJobDesc nextPage={nextPage} previousPage={previousPage} jobData={jobData} setJobData={setJobData}/> 
                 : <CreateJobAssess previousPage={previousPage} submitForm={submitForm} jobData={jobData} setJobData={setJobData}/>
