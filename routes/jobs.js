@@ -67,16 +67,15 @@ router.get("/alljobs/get", async (req, res) => {
   }
 });
 
-// //get user's posts
+// //get user's jobs
 
-// router.get("/profile/:username", async (req, res) => {
-//   try {
-//     const user = await User.findOne({username:req.params.username});
-//     const posts = await Post.find({userId: user._id});
-//     res.status(200).json(posts);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+router.get("/userjobs/:id", async (req, res) => {
+  try {    
+    const jobs = await Jobs.find({userId: req.params.id});
+    res.status(200).json(jobs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
