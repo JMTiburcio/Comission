@@ -33,7 +33,7 @@ function ManageContainer({ }) {
         <ul className='manageContainer__resultList'>
           {jobData.map(job => (
             <li key={job._id}>
-              <ManageItem job={job}/>
+              <ManageItem job={job} user={user}/>
             </li>  
           ))}
         </ul>

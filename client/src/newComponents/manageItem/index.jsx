@@ -1,11 +1,18 @@
 import React from 'react';
 import './styles.css';
+import { axiosInstance } from "../../config";
 import { format } from "timeago.js";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import DeleteIcon from '@mui/icons-material/Delete';
+import WorkIcon from '@mui/icons-material/Work';
 
-function ManageItem({ job }) {
+function ManageItem({ job, user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log(job)
+
+  const handleDelete = async () => {
+    const res = await axiosInstance.delete(`/jobs/${job._id}`, {"userId":user._id})
+    console.log(res) 
+  }
 
   return (
     <div className='manageItem'>
@@ -24,7 +31,15 @@ function ManageItem({ job }) {
         </div>
       </div>
       <div className='manageItem__action'>
-        <MoreHorizIcon style={{fontSize:24}}/>
+        {/* <button className='manageItem__button'>
+          <MoreHorizIcon style={{fontSize:24}}/>
+        </button> */}
+        <button onClick={handleDelete} className='manageItem__button'>
+          <DeleteIcon style={{fontSize:24}}/>
+        </button>
+        <button className='manageItem__button'>
+          <WorkIcon style={{fontSize:24}}/>
+        </button>
       </div>
     </div>
   );

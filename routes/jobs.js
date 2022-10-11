@@ -38,7 +38,7 @@ router.delete("/:id", async (req, res) => {
       await job.deleteOne();
       res.status(200).json("the job has been deleted");
     } else {
-      res.status(403).json("you can delete only your job");
+      res.status(403).json(`user._id: ${req.body.userId} job._id: ${req.params.id} job.userId: ${job.userId}`);
     }
   } catch (err) {
     res.status(500).json(err);
