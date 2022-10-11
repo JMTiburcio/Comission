@@ -34,6 +34,7 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const job = await Jobs.findById(req.params.id);
+    console.log(`user._id: ${req.body.userId} job._id: ${req.params.id} job.userId: ${job.userId}`)
     if (job.userId === req.body.userId) {
       await job.deleteOne();
       res.status(200).json("the job has been deleted");
