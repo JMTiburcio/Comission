@@ -1,3 +1,48 @@
 .manageAside {
     flex: 1;
+    padding: 0 12px;
+}
+
+
+.manageAside__wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+}
+
+.manageAside__post {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(10, 102, 194);
+    border: 1px solid rgb(10, 102, 194);
+    border-radius: 24px;
+}
+
+.manageAside__post:hover {
+    background-color: rgb(226, 240, 254);
+    border: 2px solid rgb(10, 102, 194);
+    padding: 9px 20px;
+}
+
+.manageAside__disc {
+    display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.manageAside__discLink {
+    text-decoration: none;
+    font-weight: 500;
+    color: rgb(10, 102, 194);
+    margin-top: 5px;
 }
