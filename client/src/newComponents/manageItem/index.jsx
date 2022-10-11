@@ -20,7 +20,7 @@ function ManageItem({ }) {
         </div>
       </div>
       <div className='manageItem__action'>
-        <MoreHorizIcon className='manageItem__dropdown'/>
+        <MoreHorizIcon style={{fontSize:24}}/>
       </div>
     </div>
   );
