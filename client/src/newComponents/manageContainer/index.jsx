@@ -1,33 +1,34 @@
 import React from 'react';
 import './styles.css';
+import ManageItem from '../manageItem';
 
 function ManageContainer({ }) {
   return (
-    <section className='manageContainer'>
-      <h1>Posted Jobs</h1>
-      <div>
-        <ul className='manageContainer__filterList'>
-          <li><button>Draft</button></li>
-          <li><button>Filter</button></li>
-          <li><button>Save</button></li>
+    <section className='manageContainer__section'>
+      <div className='manageContainer'>
+        <h1 className='manageContainer__header'>Posted Jobs</h1>
+        <div className='manageContainer__filterBar'>
+          <ul className='manageContainer__filterList'>
+            <li><button className='manageContainer__button'>Draft</button></li>
+            <li><button className='manageContainer__button'>Filter</button></li>
+            <li><button className='manageContainer__button'>Save</button></li>
+          </ul>
+        </div>
+        <ul className='manageContainer__resultList'>
+          <li>
+            <ManageItem/>
+          </li>
+          <li>
+            <ManageItem/>
+          </li>
+          <li>
+            <ManageItem/>
+          </li>
+          <li>
+            <ManageItem/>
+          </li>
         </ul>
       </div>
-      <ul className='manageContainer__resultList'>
-        <li>
-          <div className='manageContainer__resultItem'>
-            <div className='manageContainer__resultImg'><img src="#" alt="#" /></div>
-            <div className='manageContainer__resultContent'>Content</div>
-            <div className='manageContainer__resultAction'>dropdown menu</div>
-          </div>
-        </li>
-        <li>
-          <div className='manageContainer__resultItem'>
-            <div className='manageContainer__resultImg'><img src="#" alt="#" /></div>
-            <div className='manageContainer__resultContent'>Content</div>
-            <div className='manageContainer__resultAction'>dropdown menu</div>
-          </div>
-        </li>
-      </ul>
     </section>
   );
 }
