@@ -12,11 +12,7 @@ function ManageItem({ job, user, jobData, setJobData }) {
   const handleDelete = async () => {
     try {
       await axiosInstance.delete(`/jobs/${job._id}`, {data: {userId:user._id}})
-      const res = await axiosInstance.get(`/jobs/userjobs/${user._id}`) 
-      setJobData(
-        res.data.sort((p1, p2) => {
-          return new Date(p2.createdAt) - new Date(p1.createdAt);
-        }));
+      setJobData([...jobData.filter(e => e._id !== job._id)])
     } catch(err) {
       console.log(err)
     }
