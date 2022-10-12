@@ -5,13 +5,21 @@ import { format } from "timeago.js";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
-import axios from 'axios';
 
-function ManageItem({ job, user }) {
+function ManageItem({ job, user, jobData, setJobData }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleDelete = async () => {
-    const res = await axiosInstance.delete(`/jobs/${job._id}`, {data: {userId:user._id}})
+    try {
+      await axiosInstance.delete(`/jobs/${job._id}`, {data: {userId:user._id}})
+      const res = await axiosInstance.get(`/jobs/userjobs/${user._id}`) 
+      setJobData(
+        res.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        }));
+    } catch(err) {
+      console.log(err)
+    }
   }
 
   return (
