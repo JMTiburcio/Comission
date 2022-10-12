@@ -19,8 +19,6 @@ function JobDesc({ selectedJob }) {
     
     // console.log(user)
 
-    console.log(selectedJob)
-
     return (
         <>
           {selectedJob.selected !== false ? 
