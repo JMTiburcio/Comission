@@ -5,23 +5,22 @@ import { format } from "timeago.js";
 import { axiosInstance } from '../../config';
 
 function JobDesc({ selectedJob }) {
-    // const [user, setUser] = useState({})
+    const [user, setUser] = useState({})
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
-    // useEffect(() => {
-    //   if(selectedJob){
-    //     const fetchUser = async () => {
-    //       const res = await axiosInstance.get(`/users/${selectedJob.userId}`) 
-    //       setUser(res);
-    //     }
-    //     fetchUser();
-    //   }
-    // }, [selectedJob]);
-    
-    // console.log(user)
+    useEffect(() => {
+      if(Object.keys(selectedJob).length){
+        const fetchUser = async () => {
+          const res = await axiosInstance.get(`/users/?userId=${selectedJob.userId}`) 
+          setUser(res.data);
+        }
+        fetchUser();
+      }
+    }, [selectedJob]);
 
     return (
         <>
-          {selectedJob.selected !== false ? 
+          {Object.keys(selectedJob).length ? 
           <div className='jobs__contentRight'>
             <h2>{selectedJob.title}</h2>
             <h4>{selectedJob.location}  -  {format(selectedJob.createdAt)}  - /Static 3 applicants/</h4>
@@ -39,9 +38,9 @@ function JobDesc({ selectedJob }) {
             <div className='jobs__recruiter'>
               <h3>Meet the hiring team</h3>
               <section>
-                <img src="#" alt="#" />
+                <img src={user.profilePicture ? PF+user.profilePicture : PF+"person/noAvatar.png"}  alt="#" />
                 <div className='jobs__recruiterDesc'>
-                  <h5>João Tiburcio</h5>
+                  <h5>{user.username}</h5>
                   <p>Tech Recruiter | Analista de Recrutamento e Seleção na Comission</p>
                 </div>
                 <a href="#">Message</a> 

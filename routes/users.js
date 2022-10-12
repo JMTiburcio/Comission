@@ -40,7 +40,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-//get a user Problem with this route
+//get a user
 router.get("/", async (req, res) => {
   const userId = req.query.userId;
   const username = req.query.username;
