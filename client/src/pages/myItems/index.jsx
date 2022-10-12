@@ -5,11 +5,11 @@ import ManageMenu from '../../newComponents/manageMenu';
 import ManageContainer from '../../newComponents/manageContainer';
 import ManageAside from '../../newComponents/manageAside';
 
-function ManageJob() {
+function MyItems() {
     return (
         <>
         <TopBar/>
-        <main className='manageJob'>
+        <main className='myItems'>
             <ManageMenu />
             <ManageContainer />
             <ManageAside />
@@ -18,4 +18,4 @@ function ManageJob() {
     )
 }
 
-export default ManageJob;
+export default MyItems;
