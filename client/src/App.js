@@ -35,7 +35,7 @@ function App() {
         <Route path="/jobs" element={user ? <Jobs/> : <Login/>}/>
         <Route path="/createJob" element={user ? <CreateJob/> : <Login/>}/>
         <Route path="/MyItems" element={user ? <MyItems/> : <Login/>}/>
-        <Route path="/MyJob/:jobId" element={user ? <MyJob/> : <Login/>}/>
+        <Route path="/myJob/:username" element={user ? <MyItems/> : <Login/>}/>
         <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
       </Routes>
     </BrowserRouter>
