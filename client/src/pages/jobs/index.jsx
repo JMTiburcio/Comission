@@ -6,7 +6,7 @@ import JobDesc from '../../newComponents/jobDesc';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
-  const [selectedJob, setSelectedJob] = useState({selected:false});
+  const [selectedJob, setSelectedJob] = useState({});
 
   useEffect(() => {
     const fetchJobs = async () => {
