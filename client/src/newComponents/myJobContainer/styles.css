@@ -1,0 +1,52 @@
+.manageContainer__section {
+    flex: 2;
+    padding: 0 12px;
+    margin-bottom: 32px;
+}
+
+.manageContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+    padding-top: 16px;
+}
+
+.manageContainer__header {
+    padding: 0 24px;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.manageContainer__filterBar {
+    margin: 0 16px;
+    padding: 0 8px;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.manageContainer__filterList {
+    padding: 0;
+    margin: 8px 0;
+    display: flex;
+    list-style: none;
+}
+
+.manageContainer__button {
+    text-decoration: none;
+    padding: 5px 12px;
+    border: none;
+    border-radius: 15px;
+    margin-right: 8px;
+    background-color: rgb(5, 118, 66);
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.manageContainer__resultList {
+    padding: 0;
+    margin-top: 8px;
+    list-style: none;
+}

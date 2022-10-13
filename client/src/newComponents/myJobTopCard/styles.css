@@ -1,0 +1,81 @@
+.myJob__info {
+    display: flex;
+    margin: 0 10%;
+    padding: 12px 0;
+}
+
+.myJob__imgWrapper {
+    margin: 16px 20px 12px 0;
+}
+
+.myJob__img {
+    width: 48px;
+    height: 48px;
+}
+
+.myJob__content {
+    flex: 1;
+    padding: 12px 0;
+}
+
+.myJob__desc {
+    margin-bottom: 4px;
+}
+
+.myJob__title {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.myJob__company {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.myJob__draft {
+    margin-top: 8px;
+}
+
+.myJob__draftTime {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.myJob__action {
+    display: flex;
+    align-items: center;
+}
+
+.myJob__post {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(10, 102, 194);
+    border: 1px solid rgb(10, 102, 194);
+    border-radius: 24px;
+}
+
+.myJob__post:hover {
+    background-color: rgb(226, 240, 254);
+    border: 2px solid rgb(10, 102, 194);
+    padding: 9px 20px;
+}
+
+.myJob__button {
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background: none;
+    cursor: pointer;
+}
+
+.myJob__button:hover {
+    background: rgb(240, 240, 240);
+}
