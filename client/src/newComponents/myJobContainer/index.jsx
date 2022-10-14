@@ -1,42 +1,89 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React from 'react';
 import './styles.css';
-import { AuthContext } from "../../context/AuthContext";
-import { axiosInstance } from "../../config";
-import ManageItem from '../manageItem';
 
-function MyJobContainer({ }) {
-  const { user } = useContext(AuthContext);
-  const [jobData, setJobData] = useState([])
-
-  useEffect(() => {
-      const fetchJobs = async () => {
-        const res = await axiosInstance.get(`/jobs/userjobs/${user._id}`) 
-        setJobData(
-          res.data.sort((p1, p2) => {
-            return new Date(p2.createdAt) - new Date(p1.createdAt);
-          }));
-      }
-      fetchJobs();
-    }, [user]);
-
+function MyJobContainer({ job, selected={response:'Boolean'} }) {
+  console.log(job)
   return (
-    <section className='manageContainer__section'>
-      <div className='manageContainer'>
-        <h1 className='manageContainer__header'>Posted Jobs</h1>
-        <div className='manageContainer__filterBar'>
-          <ul className='manageContainer__filterList'>
-            <li><button className='manageContainer__button'>Draft</button></li>
-            <li><button className='manageContainer__button'>Filter</button></li>
-            <li><button className='manageContainer__button'>Save</button></li>
-          </ul>
-        </div>
-        <ul className='manageContainer__resultList'>
-          {jobData.map(job => (
-            <li key={job._id}>
-              <ManageItem job={job} user={user} jobData={jobData} setJobData={setJobData} />
-            </li>  
-          ))}
-        </ul>
+    <section className='myJobContainer__section'>
+      <div className='myJobContainer'>
+        <h1 className='myJobContainer__header'>Job Description</h1>
+        <article className='myJobContainer__content'>
+          <section className='myJobContainer__description'>
+            {job.desc}
+          </section>
+          <section className='myJobContainer__details'>
+            <h4>Employment type</h4>
+            <div>{job.type}</div>
+          </section>
+        </article>
+      </div>
+
+
+      <div className='myJobContainer'>
+        <h1 className='myJobContainer__header'>Screening Questions</h1>
+        <section className='screeningQuestion__card'>
+            <header>
+                <h3>Write a custom screening question.</h3>
+            </header>
+            <div className='screeningQuestion__textInput'>
+              <span>Help keep Comission respectful and professional. Learn about our custom question guidelines. *</span>
+              <textarea
+                type="text" 
+                // value={selected.question}
+                // onChange={handleText}
+              ></textarea>
+            </div>
+            <div className='screeningQuestion__cardListOptions'>
+              <div className='screeningQuestion__cardOption'>
+                <label className='screeningQuestion__label'>Response type:</label>
+                <select 
+                  className='screeningQuestion__select'
+                  // value={selected.response}
+                  // onChange={handleResponse}
+                >
+                  <option value="Boolean">Yes / No</option>
+                  <option value="Numeric">Numeric</option>
+                </select>
+              </div>
+              {
+                selected.response === 'Boolean' ?
+                <div className='screeningQuestion__cardOption'>
+                  <label className='screeningQuestion__label'>Ideal answer:</label>
+                  <select 
+                    className='screeningQuestion__select'
+                    // value={selected.answer}
+                    // onChange={handleAnswer}
+                  >
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>  
+                 :
+                <div className='screeningQuestion__cardOption'>
+                  <label className='screeningQuestion__label'>Ideal answer:</label>
+                  <div className='screeningQuestion__number'>
+                    <input
+                      className='screeningQuestion__inputNumber'
+                      type='number'
+                      min='0'
+                      // value= {selected.answer}
+                      // onChange={handleAnswer}
+                    >
+                    </input>
+                    <label className='screeningQuestion__label'>minimum</label>
+
+                  </div>
+                </div>
+              }
+              <div className='screeningQuestion__cardMustHave'>
+                <input 
+                  type="checkbox" 
+                  // onChange={handleCheckBox}
+                />
+                <label className='screeningQuestion__label'>Must-have qualifications</label>
+              </div>
+            </div>
+          </section>
       </div>
     </section>
   );

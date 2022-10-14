@@ -1,19 +1,35 @@
-.manageAside {
+.myJobAside {
     flex: 1;
     padding: 0 12px;
 }
 
-
-.manageAside__wrapper {
+.myJobAside__wrapper, .myJobAside__counterWrapper {
     display: flex;
     flex-direction: column;
     padding: 16px;
+    margin-bottom: 16px;
     background-color: white;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 10px;
 }
 
-.manageAside__post {
+.myJobAside__counterWrapper {
+    flex-direction: row;
+    padding: 24px 16px 38px 16px;
+}
+
+.myJobAside__counter {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.myJobAside__counterValue {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.myJobAside__post {
     padding: 10px 20px;
     display: flex;
     justify-content: center;
@@ -26,13 +42,13 @@
     border-radius: 24px;
 }
 
-.manageAside__post:hover {
+.myJobAside__post:hover {
     background-color: rgb(226, 240, 254);
     border: 2px solid rgb(10, 102, 194);
     padding: 9px 20px;
 }
 
-.manageAside__disc {
+.myJobAside__disc {
     display: flex;
     flex-direction: column;
     margin-top: 24px;
@@ -40,7 +56,7 @@
     font-weight: 400;
 }
 
-.manageAside__discLink {
+.myJobAside__discLink {
     text-decoration: none;
     font-weight: 500;
     color: rgb(10, 102, 194);
