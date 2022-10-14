@@ -1,8 +1,9 @@
 import React from 'react';
 import './styles.css';
+import ScreeningQuestionView from '../screeningQuestionView';
 
-function MyJobContainer({ job, selected={response:'Boolean'} }) {
-  console.log(job)
+function MyJobContainer({ job }) {
+  // console.log(job.screeningQuestions[0])
   return (
     <section className='myJobContainer__section'>
       <div className='myJobContainer'>
@@ -18,72 +19,12 @@ function MyJobContainer({ job, selected={response:'Boolean'} }) {
         </article>
       </div>
 
-
-      <div className='myJobContainer'>
-        <h1 className='myJobContainer__header'>Screening Questions</h1>
-        <section className='screeningQuestion__card'>
-            <header>
-                <h3>Write a custom screening question.</h3>
-            </header>
-            <div className='screeningQuestion__textInput'>
-              <span>Help keep Comission respectful and professional. Learn about our custom question guidelines. *</span>
-              <textarea
-                type="text" 
-                // value={selected.question}
-                // onChange={handleText}
-              ></textarea>
-            </div>
-            <div className='screeningQuestion__cardListOptions'>
-              <div className='screeningQuestion__cardOption'>
-                <label className='screeningQuestion__label'>Response type:</label>
-                <select 
-                  className='screeningQuestion__select'
-                  // value={selected.response}
-                  // onChange={handleResponse}
-                >
-                  <option value="Boolean">Yes / No</option>
-                  <option value="Numeric">Numeric</option>
-                </select>
-              </div>
-              {
-                selected.response === 'Boolean' ?
-                <div className='screeningQuestion__cardOption'>
-                  <label className='screeningQuestion__label'>Ideal answer:</label>
-                  <select 
-                    className='screeningQuestion__select'
-                    // value={selected.answer}
-                    // onChange={handleAnswer}
-                  >
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>  
-                 :
-                <div className='screeningQuestion__cardOption'>
-                  <label className='screeningQuestion__label'>Ideal answer:</label>
-                  <div className='screeningQuestion__number'>
-                    <input
-                      className='screeningQuestion__inputNumber'
-                      type='number'
-                      min='0'
-                      // value= {selected.answer}
-                      // onChange={handleAnswer}
-                    >
-                    </input>
-                    <label className='screeningQuestion__label'>minimum</label>
-
-                  </div>
-                </div>
-              }
-              <div className='screeningQuestion__cardMustHave'>
-                <input 
-                  type="checkbox" 
-                  // onChange={handleCheckBox}
-                />
-                <label className='screeningQuestion__label'>Must-have qualifications</label>
-              </div>
-            </div>
-          </section>
+      <div>
+        {
+          job.screeningQuestions.map(scr => (
+            <ScreeningQuestionView scrQuestion={scr}/>
+          ))
+        }
       </div>
     </section>
   );

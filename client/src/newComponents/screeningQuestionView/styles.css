@@ -1,0 +1,113 @@
+
+.screeningQuestionView__card {
+    margin: 16px 0;
+    border-radius: 8px;
+    border: 1px solid rgb(200, 200, 200);
+}
+
+.screeningQuestionView__card > header {
+    background-color: rgb(235, 235, 255);
+    height: 30px;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.screeningQuestionView__card h3 {
+    margin: 0 4px 0 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.screeningQuestionView__icon {
+    cursor: pointer;
+    padding: 4px;
+}
+
+.screeningQuestionView__icon:hover {
+    background-color: lightgrey;
+    border-radius: 50%;
+}
+
+
+.screeningQuestionView__textInput {
+    padding: 15px 15px 0 15px;
+}
+
+.screeningQuestionView__textInput > span {
+    font-size: 13px;
+}
+
+.screeningQuestionView__textInput > textarea{
+    width: 98%;
+    height: 120px;
+    padding: 1%;
+    margin-top: 3px;
+    border-radius: 6px;
+    overflow: auto;
+    resize: none;
+}
+
+
+.screeningQuestionView__textInput > textarea {
+    outline: none;
+}
+
+.screeningQuestionView__cardListOptions {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.screeningQuestionView__cardOption {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 33%;
+}
+
+.screeningQuestionView__select {
+    height: 29px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.screeningQuestionView__number {
+    display: flex;
+}
+
+.screeningQuestionView__label {
+    margin: 15px 0 3px 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
+
+.screeningQuestionView__inputNumber {
+    height: 28px;
+    padding: 0 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 50px;
+    margin-right: 10px;
+}
+
+.screeningQuestionView__cardMustHave {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screeningQuestionView__cardMustHave input {
+    margin-right: 10px;
+    height: 24px;
+    width: 24px;
+}
+
+.screeningQuestionView__cardMustHave label {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(70, 70, 70);
+}
