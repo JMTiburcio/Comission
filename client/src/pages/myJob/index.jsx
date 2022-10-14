@@ -30,8 +30,8 @@ function MyJob() {
         <main className='myJob'>
             <MyJobTopCard job={job}/>
             <section className='myJob__container'>
-                <MyJobContainer />
-                <MyJobAside />
+                <MyJobContainer job={job}/>
+                <MyJobAside job={job}/>
             </section>
         </main>
         </>
