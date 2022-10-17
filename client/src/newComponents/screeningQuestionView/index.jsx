@@ -3,13 +3,22 @@ import './styles.css';
 
 
 function ScreeningQuestionView({ scrQuestion }) {
+  console.log(scrQuestion)
   return (
     <section className='screeningQuestionView__card'>
-      <div className='screeningQuestionView__textInput'>
-        {scrQuestion.question}
+      <div className='screeningQuestionView__question'>
+        <h3>{scrQuestion.question}</h3>
       </div>
-      <label className='screeningQuestionView__label'>Ideal answer:</label>
-      <span>{scrQuestion.answer}</span>
+      <div className="screeningQuestionView__answers">
+        <div className='screeningQuestionView__answer'>
+          <label className='screeningQuestionView__label'>Ideal answer:</label>
+          <span>{scrQuestion.answer}</span>
+        </div>
+        <div className='screeningQuestionView__answer'>
+          <label className='screeningQuestionView__label'>Must-have:</label>
+          <span>{scrQuestion.have ? 'Yes' : 'No'}</span>
+        </div>
+      </div>
     </section>      
   );
 }

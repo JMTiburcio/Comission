@@ -21,7 +21,9 @@ function ManageItem({ job, user, jobData, setJobData }) {
   return (
     <div className='manageItem'>
       <div className='manageItem__imgWrapper'>
-        <img className='manageItem__img' src={`${PF}${job.img}`} alt="#" />
+        <a href={"/myjob/"+job._id}>
+          <img className='manageItem__img' src={`${PF}${job.img}`} alt="#" />
+        </a>
       </div>
       <div className='manageItem__content'>
         <div className='manageItem__desc'>
