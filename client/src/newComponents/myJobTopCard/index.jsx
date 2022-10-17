@@ -22,7 +22,7 @@ function MyJobTopCard({ job }) {
             </div>
         </div>
         <div className='myJob__action'>
-          <a className='myJob__post' href="#">Complete Draft</a>
+          <a className='myJob__post' href={"/myJob/form/"+job._id}>Complete Draft</a>
           <button className='myJob__button'>
             <MoreHorizIcon style={{fontSize:24}}/>
           </button>
