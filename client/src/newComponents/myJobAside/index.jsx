@@ -7,13 +7,15 @@ function MyJobAside({ job }) {
     <aside className='myJobAside'>
       <div className='myJobAside__counterWrapper'>
         <div className='myJobAside__counter'>
-          <span className='myJobAside__counterValue'>0/Static/</span>
+          <span className='myJobAside__counterValue'>
+            {Object.keys(job).length ? job.applicants.length : ''}
+          </span>
           <span>Applicants</span>
         </div>
-        <div className='myJobAside__counter'>
+        {/* <div className='myJobAside__counter'>
           <span  className='myJobAside__counterValue'>0/Static/</span>
           <span>Views</span>
-        </div>
+        </div> */}
       </div>
       
       <div className='myJobAside__wrapper'>

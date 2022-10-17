@@ -3,7 +3,6 @@ import './styles.css';
 
 
 function ScreeningQuestionView({ scrQuestion }) {
-  console.log(scrQuestion)
   return (
     <section className='screeningQuestionView__card'>
       <div className='screeningQuestionView__question'>
