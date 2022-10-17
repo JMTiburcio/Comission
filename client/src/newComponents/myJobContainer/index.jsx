@@ -20,11 +20,15 @@ function MyJobContainer({ job }) {
       </div>
 
       <div>
-        {
+        { Object.keys(job).length ?
           job.screeningQuestions.map(scr => (
-            <ScreeningQuestionView scrQuestion={scr}/>
+            <ScreeningQuestionView key={scr.id} scrQuestion={scr}/>
           ))
+        : 
+        <>
+        </>
         }
+        {/* <ScreeningQuestionView job={job}/> */}
       </div>
     </section>
   );
