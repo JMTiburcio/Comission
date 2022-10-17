@@ -33,7 +33,7 @@ function ManageItem({ job, user, jobData, setJobData }) {
         </div>
         <div className='manageItem__draft'>
           <span className='manageItem__draftTime'>Draft • Created {format(job.createdAt)}</span>
-          <a className='manageItem__draftLink' href="#">Complete draft</a>
+          <a className='manageItem__draftLink' href={"/myJob/form/"+job._id}>Complete draft</a>
         </div>
       </div>
       <div className='manageItem__action'>
@@ -44,7 +44,9 @@ function ManageItem({ job, user, jobData, setJobData }) {
           <DeleteIcon style={{fontSize:24}}/>
         </button>
         <button className='manageItem__button'>
-          <WorkIcon style={{fontSize:24}}/>
+          <a href={"/myJob/"+job._id}>
+            <WorkIcon style={{fontSize:24, color:'black'}}/>
+          </a>
         </button>
       </div>
     </div>

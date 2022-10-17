@@ -59,8 +59,8 @@ function UpdateJob() {
         e.preventDefault();
         console.log(jobData)
         try {
-            await axiosInstance.post("/jobs", jobData);
-            navigate('/jobs')
+            await axiosInstance.put("/jobs/"+jobId, jobData);
+            navigate('/myItems')
         } catch (err) {
             console.log(err);
         }
