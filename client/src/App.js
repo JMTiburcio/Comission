@@ -9,6 +9,7 @@ import { AuthContext } from "./context/AuthContext";
 
 import Jobs from "./pages/jobs";
 import CreateJob from "./pages/createJob";
+import UpdateJob from "./pages/updateJob";
 import MyItems from "./pages/myItems";
 import MyJob from "./pages/myJob";
 import NewHome from "./pages/newHome";
@@ -36,6 +37,7 @@ function App() {
         <Route path="/createJob" element={user ? <CreateJob/> : <Login/>}/>
         <Route path="/MyItems" element={user ? <MyItems/> : <Login/>}/>
         <Route path="/myJob/:jobId" element={user ? <MyJob/> : <Login/>}/>
+        <Route path="/myJob/form/:jobId" element={user ? <UpdateJob/> : <Login/>}/>
         <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
       </Routes>
     </BrowserRouter>
