@@ -22,7 +22,7 @@
     margin: 50px 0;
 }
 
-.jobs__contentRightButton a {
+.jobs__contentRightButton button {
     text-decoration: none;
     background-color: #0a66c2;
     color: white;
@@ -31,9 +31,10 @@
     border-radius: 20px;
     font-weight: bold;
     margin-right: 15px;
+    cursor: pointer;
 }
 
-.jobs__contentRightButton a + a{
+.jobs__contentRightButton button + button{
     background-color: white;
     color: #0a66c2;
 }

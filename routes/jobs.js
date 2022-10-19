@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// //update a job
+//update a job
 
 router.put("/:id", async (req, res) => {
   try {
@@ -29,7 +29,25 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-// //delete a job
+
+//update apply for job
+
+router.put("apply/:id", async (req, res) => {
+  try {
+    const job = await Jobs.findById(req.params.id);
+    if (!job.applicants.includes(req.body.userId)) {
+      await job.updateOne({ $push: { applicants: req.body.userId } });
+      res.status(200).json("you applied for the job");
+    } else {
+      await job.updateOne({ $pull: { applicants: req.body.userId } });
+      res.status(200).json("your application for the job was cancelled");
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//delete a job
 
 router.delete("/:id", async (req, res) => {
   try {
@@ -45,7 +63,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-// //get a job
+//get a job
 
 router.get("/:id", async (req, res) => {
   try {
@@ -67,7 +85,7 @@ router.get("/alljobs/get", async (req, res) => {
   }
 });
 
-// //get user's jobs
+//get user's jobs
 
 router.get("/userjobs/:id", async (req, res) => {
   try {    
