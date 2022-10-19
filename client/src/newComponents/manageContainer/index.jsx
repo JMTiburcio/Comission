@@ -25,9 +25,9 @@ function ManageContainer({ }) {
         <h1 className='manageContainer__header'>Posted Jobs</h1>
         <div className='manageContainer__filterBar'>
           <ul className='manageContainer__filterList'>
+            <li><button className='manageContainer__button'>Open</button></li>
             <li><button className='manageContainer__button'>Draft</button></li>
-            <li><button className='manageContainer__button'>Filter</button></li>
-            <li><button className='manageContainer__button'>Save</button></li>
+            <li><button className='manageContainer__button'>Close</button></li>
           </ul>
         </div>
         <ul className='manageContainer__resultList'>
