@@ -16,6 +16,7 @@ function JobDesc({ selectedJob }) {
         const fetchRecruiter = async () => {
           const res = await axiosInstance.get(`/users/?userId=${selectedJob.userId}`) 
           setRecruiter(res.data);
+          setIsApplied(selectedJob.applicants.includes(user._id))
         }
         fetchRecruiter();
       }
@@ -27,8 +28,7 @@ function JobDesc({ selectedJob }) {
       } catch (err) {
           console.log(err)
       }
-      setIsApplied(!isApplied);
-      console.log(isApplied)
+      setIsApplied(selectedJob.applicants.includes(user._id));
   }
 
     return (
