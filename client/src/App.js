@@ -10,7 +10,8 @@ import { AuthContext } from "./context/AuthContext";
 import Jobs from "./pages/jobs";
 import CreateJob from "./pages/createJob";
 import UpdateJob from "./pages/updateJob";
-import MyItems from "./pages/myItems";
+import PostedJob from "./pages/postedJob";
+import SavedJob from "./pages/savedJob";
 import MyJob from "./pages/myJob";
 import NewHome from "./pages/newHome";
 
@@ -35,7 +36,8 @@ function App() {
         {/* New pages for jobs */}
         <Route path="/jobs" element={user ? <Jobs/> : <Login/>}/>
         <Route path="/createJob" element={user ? <CreateJob/> : <Login/>}/>
-        <Route path="/MyItems" element={user ? <MyItems/> : <Login/>}/>
+        <Route path="/postedJobs" element={user ? <PostedJob/> : <Login/>}/>
+        <Route path="/savedJobs" element={user ? <SavedJob/> : <Login/>}/>
         <Route path="/myJob/:jobId" element={user ? <MyJob/> : <Login/>}/>
         <Route path="/myJob/form/:jobId" element={user ? <UpdateJob/> : <Login/>}/>
         <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
