@@ -5,17 +5,17 @@ import ManageMenu from '../../newComponents/manageMenu';
 import ManageContainer from '../../newComponents/manageContainer';
 import ManageAside from '../../newComponents/manageAside';
 
-function MyItems() {
+function SavedJob() {
     return (
         <>
         <TopBar/>
-        <main className='myItems'>
-            <ManageMenu />
-            <ManageContainer />
-            <ManageAside />
+        <main className='savedJob'>
+            <ManageMenu page={"savedJob"}/>
+            <ManageContainer page={"savedJob"}/>
+            <ManageAside page={"savedJob"}/>
         </main>
         </>
     )
 }
 
-export default MyItems;
+export default SavedJob;
