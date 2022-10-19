@@ -52,6 +52,9 @@ const JobSchema = new mongoose.Schema(
         img: {
           type: String,
         },
+        active: {
+          type: Boolean,
+        }
     },
     {timestamps: true}
 );
