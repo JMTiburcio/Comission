@@ -32,7 +32,7 @@ router.put("/:id", async (req, res) => {
 
 //update apply for job
 
-router.put("apply/:id", async (req, res) => {
+router.put("/apply/:id", async (req, res) => {
   try {
     const job = await Jobs.findById(req.params.id);
     if (!job.applicants.includes(req.body.userId)) {
