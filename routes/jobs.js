@@ -85,7 +85,7 @@ router.get("/alljobs/get", async (req, res) => {
   }
 });
 
-//get user's jobs
+//get user's posted jobs
 
 router.get("/userjobs/:id", async (req, res) => {
   try {    
@@ -95,5 +95,23 @@ router.get("/userjobs/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+//get user's applied jobs
+
+router.get("/appliedjobs/:id", async (req, res) => {
+  try {    
+    const { applications } = await User.find({user_id: req.params.id});
+
+    // const appliedJobs = await Promise.all(
+    //   applications.map((jobId) => {
+    //     return Jobs.find({ _id: jobId });
+    //   })
+    // );
+    res.status(200).json(applications);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 
 module.exports = router;
