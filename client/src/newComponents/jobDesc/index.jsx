@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from "../../context/AuthContext";
 import "./styles.css";
-
 import { format } from "timeago.js";
 import { axiosInstance } from '../../config';
+
+import CloseIcon from '@mui/icons-material/Close';
+import CreateIcon from '@mui/icons-material/Create';
+
 
 function JobDesc({ jobs, setJobs, selectedJob, setSelectedJob }) {
     const [recruiter, setRecruiter] = useState({})
@@ -47,12 +50,15 @@ function JobDesc({ jobs, setJobs, selectedJob, setSelectedJob }) {
               <li><span>/Static/ Actively recruiting</span></li>
             </ul>
             <div className='jobs__contentRightButton'>
-              <button onClick={applyHandler}>
-                Apply
+              <button 
+                className={'jobs__applyButton' + (selectedJob.applicants.includes(user._id) ? '--cancel' : '')} 
+                onClick={applyHandler}>
+                  {(selectedJob.applicants.includes(user._id) ? "" : <CreateIcon style={{fontSize: 18}}/>)}
+                  {(selectedJob.applicants.includes(user._id) ? 'Cancel' : 'Apply')}
               </button>
-              <button>
+              {/* <button className='jobs__saveButton'>
                 Save
-              </button>
+              </button> */}
             </div>
 
             <div className='jobs__recruiter'>
