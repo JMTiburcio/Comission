@@ -67,7 +67,7 @@ function Jobs() {
             ))}
           </ul>
         </div>
-        <JobDesc selectedJob={selectedJob}/>
+        <JobDesc selectedJob={selectedJob} jobs={jobs} setJobs={setJobs} setSelectedJob={setSelectedJob}/>
       </section>
     </div>
   );

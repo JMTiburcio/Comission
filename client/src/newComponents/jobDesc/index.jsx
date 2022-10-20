@@ -5,9 +5,8 @@ import "./styles.css";
 import { format } from "timeago.js";
 import { axiosInstance } from '../../config';
 
-function JobDesc({ selectedJob }) {
+function JobDesc({ jobs, setJobs, selectedJob, setSelectedJob }) {
     const [recruiter, setRecruiter] = useState({})
-    const [isApplied, setIsApplied] = useState(false)
     const { user } = useContext(AuthContext);
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
@@ -16,19 +15,21 @@ function JobDesc({ selectedJob }) {
         const fetchRecruiter = async () => {
           const res = await axiosInstance.get(`/users/?userId=${selectedJob.userId}`) 
           setRecruiter(res.data);
-          setIsApplied(selectedJob.applicants.includes(user._id))
         }
         fetchRecruiter();
       }
-    }, [selectedJob]);
+    }, [selectedJob, user]);
 
-    const applyHandler = () => {
+    const applyHandler = async () => {
       try {
-          axiosInstance.put("/jobs/apply/"+selectedJob._id, { userId: user._id })
+          await axiosInstance.put("/jobs/apply/"+selectedJob._id, { userId: user._id })
+          const updatedJob = await axiosInstance.get("/jobs/"+selectedJob._id)
+          setJobs([...jobs.slice(0, jobs.indexOf(selectedJob)), 
+            updatedJob.data, ...jobs.slice(jobs.indexOf(selectedJob)+1)])
+          setSelectedJob(updatedJob.data)
       } catch (err) {
           console.log(err)
       }
-      setIsApplied(selectedJob.applicants.includes(user._id));
   }
 
     return (
