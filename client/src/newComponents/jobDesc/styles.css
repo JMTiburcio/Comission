@@ -22,23 +22,29 @@
     margin: 50px 0;
 }
 
-.jobs__contentRightButton button {
-    text-decoration: none;
+.jobs__applyButton, .jobs__applyButton--cancel, .jobs__saveButton{
     background-color: #0a66c2;
     color: white;
     padding: 10px 16px;
+    margin-right: 15px;
     border: 1px solid #0a66c2;
     border-radius: 20px;
-    font-weight: bold;
-    margin-right: 15px;
+    font-size: 18px !important;
+    font-weight: bold !important;
     cursor: pointer;
 }
 
-.jobs__contentRightButton button + button{
+.jobs__saveButton{
     background-color: white;
     color: #0a66c2;
 }
 
+.jobs__applyButton--cancel{
+    background-color: white;
+    color: gray;
+    border: 1px solid gray;
+
+}
 
 .jobs__recruiter {
     border: 1px solid rgb(192, 192, 192);
