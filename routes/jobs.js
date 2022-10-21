@@ -35,11 +35,14 @@ router.put("/:id", async (req, res) => {
 router.put("/apply/:id", async (req, res) => {
   try {
     const job = await Jobs.findById(req.params.id);
+    const user = await User.findById(req.body.userId)
     if (!job.applicants.includes(req.body.userId)) {
       await job.updateOne({ $push: { applicants: req.body.userId } });
+      await user.updateOne({ $push: { applications: req.params.id } });
       res.status(200).json("you applied for the job");
     } else {
       await job.updateOne({ $pull: { applicants: req.body.userId } });
+      await user.updateOne({ $pull: { applications: req.params.id } });
       res.status(200).json("your application for the job was cancelled");
     }
   } catch (err) {
@@ -87,7 +90,7 @@ router.get("/alljobs/get", async (req, res) => {
 
 //get user's posted jobs
 
-router.get("/userjobs/:id", async (req, res) => {
+router.get("/postedjobs/:id", async (req, res) => {
   try {    
     const jobs = await Jobs.find({userId: req.params.id});
     res.status(200).json(jobs);
@@ -100,14 +103,13 @@ router.get("/userjobs/:id", async (req, res) => {
 
 router.get("/appliedjobs/:id", async (req, res) => {
   try {    
-    const { applications } = await User.find({user_id: req.params.id});
-
-    // const appliedJobs = await Promise.all(
-    //   applications.map((jobId) => {
-    //     return Jobs.find({ _id: jobId });
-    //   })
-    // );
-    res.status(200).json(applications);
+    const user = await User.findById(req.params.id);
+    const appliedJobs = await Promise.all(
+      user.applications.map((jobId) => {
+        return Jobs.findById(jobId);
+      })
+    );
+    res.status(200).json(appliedJobs);
   } catch (err) {
     res.status(500).json(err);
   }
