@@ -7,18 +7,18 @@ import ManageItem from '../manageItem';
 function ManageContainer({ page }) {
   const { user } = useContext(AuthContext);
   const [jobData, setJobData] = useState([])
-  console.log(user._id)
+  // console.log(user._id)
 
   useEffect(() => {
       const fetchJobs = async () => {
         if(page === 'postedJob'){
-          const res = await axiosInstance.get(`/jobs/userjobs/${user._id}`) 
+          const res = await axiosInstance.get(`/jobs/postedjobs/${user._id}`) 
           setJobData(
             res.data.sort((p1, p2) => {
               return new Date(p2.createdAt) - new Date(p1.createdAt);
             }));
         } else {
-          const res = await axiosInstance.get(`/jobs/userjobs/${user._id}`) 
+          const res = await axiosInstance.get(`/jobs/appliedjobs/${user._id}`) 
           setJobData(
             res.data.sort((p1, p2) => {
               return new Date(p2.createdAt) - new Date(p1.createdAt);
