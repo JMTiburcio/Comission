@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Job = require("../models/Job");
 const router = require("express").Router();
 const bcrypt = require("bcrypt");
 
@@ -120,5 +121,34 @@ router.put("/:id/unfollow", async (req, res) => {
       res.status(403).json("you cant unfollow yourself");
     }
   });
+
+
+  
+//get posted jobs
+
+router.get("/postedjobs/:id", async (req, res) => {
+  try {    
+    const jobs = await Job.find({userId: req.params.id});
+    res.status(200).json(jobs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//get applied jobs
+
+router.get("/appliedjobs/:id", async (req, res) => {
+  try {    
+    const user = await User.findById(req.params.id);
+    const appliedJobs = await Promise.all(
+      user.applications.map((jobId) => {
+        return Job.findById(jobId);
+      })
+    );
+    res.status(200).json(appliedJobs);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

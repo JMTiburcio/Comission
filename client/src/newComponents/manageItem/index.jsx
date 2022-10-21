@@ -6,7 +6,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
 
-function ManageItem({ job, user, jobData, setJobData }) {
+function ManageItem({ job, user, jobData, setJobData, page }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const handleDelete = async () => {
