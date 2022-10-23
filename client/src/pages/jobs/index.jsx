@@ -12,7 +12,7 @@ function Jobs() {
 
   useEffect(() => {
     const fetchJobs = async () => {
-      const res = await axiosInstance.get("/jobs//all/search/") 
+      const res = await axiosInstance.get("/jobs/all/search/") 
       setJobs(
         res.data.sort((p1, p2) => {
           return new Date(p2.createdAt) - new Date(p1.createdAt);
