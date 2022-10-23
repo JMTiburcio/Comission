@@ -77,12 +77,25 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-//get all jobs
+//get a query
 
-router.get("/alljobs/get", async (req, res) => {
+router.get("/all/search/", async (req, res) => {
+  const query = {}
+  const qTitle = req.query.title
+  const qCompany = req.query.company
+  const qWorkPlace = req.query.workPlace
+  const qLocation = req.query.location
+  const qType = req.query.type
+  
+  if(qTitle) { query.title = qTitle }
+  if(qCompany) { query.company = qCompany }
+  if(qWorkPlace) { query.workPlace = qWorkPlace }
+  if(qLocation) { query.location = qLocation }
+  if(qType) { query.type = qType }
+  
   try {
-    const allJobs = await Jobs.find({});
-    res.status(200).json(allJobs)
+    const result = await Jobs.find(query)
+    res.status(200).json(result)
   } catch (err) {
     res.status(500).json(err);
   }
