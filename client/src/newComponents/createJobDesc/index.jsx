@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './styles.css';
-import AddButton from '../AddButton';
+import AddSkill from '../addSkill';
 
 function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
   const [newSkill, setNewSkill] = useState('');
@@ -36,7 +36,7 @@ function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
           <p>Add skill keyword to make your job more visible to the right candidates</p>
           <ul>
             { jobData.skills.map((p) => (
-              <li key={p.id}><AddButton jobData={jobData} setJobData={setJobData} skill={p} /></li>
+              <li key={p.id}><AddSkill jobData={jobData} setJobData={setJobData} skill={p} /></li>
             ))}
           </ul>
           <form>

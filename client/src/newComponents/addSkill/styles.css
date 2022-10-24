@@ -1,4 +1,4 @@
-.addButton__button{
+.addSkill__button{
     margin: 4px 4px 4px 0;
     padding: 8px 12px 8px 12px;
     border-radius: 20px;
@@ -8,13 +8,13 @@
     align-items: center;
 }
 
-.addButton__text{
+.addSkill__text{
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
 }
 
-.addButton__icon{
+.addSkill__icon{
     font-size: 18px !important;
     margin-left: 5px;
 }

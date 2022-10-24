@@ -67,22 +67,13 @@
     border-bottom: 1px solid rgba(70, 70, 70, 0.1);
 }
 
-.jobs__sectionFilter a {
-    text-decoration: none;
-    color: rgb(70, 70, 70);
-    padding: 10px;
-    border: 1px solid rgb(70, 70, 70);
-    border-radius: 20px;
-    margin-right: 20px;
-}
-
-.jobs__sectionFilter a:hover {
-    background-color: rgb(221, 221, 221);
-}
-
-.jobs__sectionFilter a:first-child {
-    background-color: rgb(6, 82, 6);
-    color: white;
+.jobFilter__reset {
+    background-color: white;
+    border: none;
+    color: gray;
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
 }
 
 .jobs__content {
