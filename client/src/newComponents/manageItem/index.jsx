@@ -50,10 +50,27 @@ function ManageItem({ job, user, jobData, setJobData, filter }) {
           <span className='manageItem__company'>{job.company}</span>
           <span className='manageItem__location'>{job.location} ({job.type})</span>
         </div>
-        <div className='manageItem__draft'>
-          <span className='manageItem__draftTime'>Draft • Created {format(job.createdAt)}</span>
-          <a className='manageItem__draftLink' href={"/myJob/form/"+job._id}>Complete draft</a>
-        </div>
+        {
+          filter === "Draft" ? 
+          <div className='manageItem__draft'>
+            <span className='manageItem__draftTime'><b>Draft</b> • Created {format(job.createdAt)}</span>
+            <a className='manageItem__draftLink' href={"/myJob/form/"+job._id}>Complete draft</a>
+          </div> :
+
+          filter === "Open" ?
+          <div className='manageItem__draft'>
+            <span className='manageItem__draftTime'><b>Active</b> • Posted {format(job.createdAt)}</span>
+            <span className='manageItem__draftTime'>
+              <b>{Object.keys(job).length ? job.applicants.length : ""}</b> applicant(s)
+            </span>
+          </div> :
+
+          filter === "Close" ?
+          <div className='manageItem__draft'>
+            <span className='manageItem__draftTime'><b>Closed</b> • Posted {format(job.createdAt)}</span>
+          </div>
+          : <></>
+        }
       </div>
       <div className='manageItem__action' ref={menuRef}>
         <button className="manageItem__button" onClick={() => setOpen(!open)}>
