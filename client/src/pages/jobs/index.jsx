@@ -7,6 +7,7 @@ import JobFilter from '../../newComponents/jobFilter';
 
 function Jobs() {
   const [jobs, setJobs] = useState([]);
+  const [selectedJob, setSelectedJob] = useState({});
   const [query, setQuery] = useState({
     "date":'Any Time',
     "title":"",
@@ -15,7 +16,6 @@ function Jobs() {
     "workPlace":[],
     "type":[]
   });
-  const [selectedJob, setSelectedJob] = useState({});
 
   useEffect(() => {
     const fetchJobs = async () => {
