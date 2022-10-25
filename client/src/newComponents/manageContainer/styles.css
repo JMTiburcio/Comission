@@ -44,6 +44,10 @@
     cursor: pointer;
 }
 
+.manageContainer__filter:hover {
+    background-color: rgb(221, 221, 221);
+}
+
 .manageContainer__filter--active {
     color: white;
     background-color: #057642;
