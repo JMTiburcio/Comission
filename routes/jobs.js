@@ -87,8 +87,16 @@ router.get("/all/search/", async (req, res) => {
   const qLocation = req.query.location
   const qType = req.query.type
   
-  if(qTitle) { query.title = qTitle }
-  if(qCompany) { query.company = qCompany }
+  if(qTitle) { 
+    const regexTitle = new RegExp(qTitle, 'gi')
+    query.title = {$regex: regexTitle} 
+  }
+
+  if(qCompany) {
+    const regexCompany = new RegExp(qCompany, 'gi')
+    query.company = {$regex: regexCompany}
+  }
+  
   if(qWorkPlace) { query.workPlace = qWorkPlace }
   if(qLocation) { query.location = qLocation }
   if(qType) { query.type = qType }
