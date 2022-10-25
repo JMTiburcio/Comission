@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './styles.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function JobFilter({ filter, options, handleSearch, query, setQuery, param }) {
   const [open, setOpen] = useState(false);
-
-  const handleDropDown = () => {
-    setOpen(!open)
-  }
+  let menuRef = useRef();
 
   const handleBtnFilled = () => {
     if(param === "date"){ return query.date === "Any Time" }
@@ -17,12 +14,27 @@ function JobFilter({ filter, options, handleSearch, query, setQuery, param }) {
     return true
   }
 
+  useEffect(() => {
+    let handler = (e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setOpen(false);
+      }      
+    };
+
+    document.addEventListener("mousedown", handler);    
+
+    return() =>{
+      document.removeEventListener("mousedown", handler);
+    }
+
+  });
+
   const toggleDropdown = open ? "--show" : ""
   const toggleBtnFilled = handleBtnFilled() ? "" : "--filled"
   
   return (
-    <div className='jobFilter'>
-      <button className={`jobFilter__button${toggleBtnFilled}`} onClick={handleDropDown}>
+    <div className='jobFilter' ref={menuRef}>
+      <button className={`jobFilter__button${toggleBtnFilled}`} onClick={() => setOpen(!open)}>
         <span>{filter}</span>
         <ArrowDropDownIcon />
       </button>
@@ -72,7 +84,7 @@ function JobFilter({ filter, options, handleSearch, query, setQuery, param }) {
         
         <footer className='jobFilter__footer'>
           <button className='jobFilter__search' onClick={handleSearch}>Search</button>
-          <button className='jobFilter__cancel' onClick={handleDropDown}>Cancel</button>
+          <button className='jobFilter__cancel' onClick={() => setOpen(!open)}>Cancel</button>
         </footer>
       </div>
     </div>
