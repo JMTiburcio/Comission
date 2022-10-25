@@ -3,13 +3,13 @@ import './styles.css';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 function JobFilter({ filter, options, handleSearch, query, setQuery, param }) {
-  const [btnState, setBtnState] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleDropDown = () => {
-    setBtnState(!btnState)
+    setOpen(!open)
   }
 
-  const handleButtonFilled = () => {
+  const handleBtnFilled = () => {
     if(param === "date"){ return query.date === "Any Time" }
     if(param === "type"){ return !query.type.length }
     if(param === "workPlace"){ return !query.workPlace.length }
@@ -17,12 +17,12 @@ function JobFilter({ filter, options, handleSearch, query, setQuery, param }) {
     return true
   }
 
-  const toggleDropdown = btnState ? "--show" : ""
-  const toggleButtonFilled = handleButtonFilled() ? "" : "--filled"
+  const toggleDropdown = open ? "--show" : ""
+  const toggleBtnFilled = handleBtnFilled() ? "" : "--filled"
   
   return (
     <div className='jobFilter'>
-      <button className={`jobFilter__button${toggleButtonFilled}`} onClick={handleDropDown}>
+      <button className={`jobFilter__button${toggleBtnFilled}`} onClick={handleDropDown}>
         <span>{filter}</span>
         <ArrowDropDownIcon />
       </button>
