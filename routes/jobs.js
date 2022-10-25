@@ -83,6 +83,7 @@ router.get("/all/search/", async (req, res) => {
   const query = {}
   const qTitle = req.query.title
   const qCompany = req.query.company
+  const qDate = req.query.date
   const qWorkPlace = req.query.workPlace
   const qLocation = req.query.location
   const qType = req.query.type
@@ -96,7 +97,25 @@ router.get("/all/search/", async (req, res) => {
     const regexCompany = new RegExp(qCompany, 'gi')
     query.company = {$regex: regexCompany}
   }
-  
+
+  if(qDate) {
+    if(qDate === "Past Month"){
+      query.createdAt = {
+        $gte: new Date((new Date().getTime() - (31 * 24 * 60 * 60 * 1000))) 
+      }
+    } 
+    if(qDate === "Past Week"){
+      query.createdAt = {
+        $gte: new Date((new Date().getTime() - (7 * 24 * 60 * 60 * 1000))) 
+      }
+    } 
+    if(qDate === "Past 24 hours"){
+      query.createdAt = {
+        $gte: new Date((new Date().getTime() - (1 * 24 * 60 * 60 * 1000))) 
+      }
+    }
+  }
+
   if(qWorkPlace) { query.workPlace = qWorkPlace }
   if(qLocation) { query.location = qLocation }
   if(qType) { query.type = qType }
