@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import './styles.css';
 import { axiosInstance } from "../../config";
 import { format } from "timeago.js";
@@ -6,8 +6,25 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
 
-function ManageItem({ job, user, jobData, setJobData, page }) {
+function ManageItem({ job, user, jobData, setJobData, filter }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [open, setOpen] = useState(false);
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e)=>{
+      if(!menuRef.current.contains(e.target)){
+        setOpen(false);
+      }      
+    };
+
+    document.addEventListener("mousedown", handler);    
+    
+    return() =>{
+      document.removeEventListener("mousedown", handler);
+    }
+
+  });
 
   const handleDelete = async () => {
     try {
@@ -17,6 +34,8 @@ function ManageItem({ job, user, jobData, setJobData, page }) {
       console.log(err)
     }
   }
+
+  const toggleDropdown = open ? "--show" : ""
 
   return (
     <div className='manageItem'>
@@ -36,18 +55,25 @@ function ManageItem({ job, user, jobData, setJobData, page }) {
           <a className='manageItem__draftLink' href={"/myJob/form/"+job._id}>Complete draft</a>
         </div>
       </div>
-      <div className='manageItem__action'>
-        {/* <button className='manageItem__button'>
+      <div className='manageItem__action' ref={menuRef}>
+        <button className="manageItem__button" onClick={() => setOpen(!open)}>
           <MoreHorizIcon style={{fontSize:24}}/>
-        </button> */}
-        <button onClick={handleDelete} className='manageItem__button'>
-          <DeleteIcon style={{fontSize:24}}/>
         </button>
-        <button className='manageItem__button'>
-          <a href={"/myJob/"+job._id}>
-            <WorkIcon style={{fontSize:24, color:'black'}}/>
+
+        <div className={`manageItem__dropdown${toggleDropdown}`}>
+          <div className="manageItem__dropdownOption" onClick={handleDelete}>
+            <DeleteIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+            <span>delete draft</span>
+          </div>
+          <a className='manageItem__link' href={"/myJob/"+job._id}>
+            <div className='manageItem__dropdownOption'>
+              <WorkIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+              <span>manage job</span>
+            </div>
           </a>
-        </button>
+        </div>
+        
+        
       </div>
     </div>
   );

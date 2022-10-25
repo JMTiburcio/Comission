@@ -61,6 +61,7 @@
     padding: 16px 30px 0 20px;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .manageItem__button {
@@ -71,6 +72,35 @@
     cursor: pointer;
 }
 
-.manageItem__button:hover {
+.manageItem__button:hover, .manageItem__dropdownOption:hover {
     background: rgb(240, 240, 240);
+}
+
+.manageItem__dropdown, .manageItem__dropdown--show {
+    display: none;
+    width: 180px;
+    position: absolute;
+}
+
+.manageItem__dropdown--show {
+    display: block;
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+    top: 62px;
+    right: 35px;
+    box-shadow: 0px 10px 11px -1px rgba(0,0,0,0.25);
+    z-index: 999;
+}
+
+.manageItem__dropdownOption {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    color: #5e5e5e
+}
+
+.manageItem__link {
+    text-decoration: none;
 }
