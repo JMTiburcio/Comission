@@ -38,7 +38,23 @@ function Jobs() {
         }));
   }
 
-  console.log(query)
+  const handleReset = async (e) => {
+    e.preventDefault();
+    setQuery({
+      "date":'Any Time',
+      "title":"",
+      "location":"",
+      "company":"",
+      "workPlace":[],
+      "type":[]
+    })
+    
+    const res = await axiosInstance.get("/jobs/all/search/") 
+      setJobs(
+        res.data.sort((p1, p2) => {
+          return new Date(p2.createdAt) - new Date(p1.createdAt);
+        }));
+  }
 
   return (
     <div className="jobs">
@@ -112,14 +128,7 @@ function Jobs() {
         />
         <button 
           className='jobFilter__reset'
-          onClick={e => setQuery({
-            "date":'Any Time',
-            "title":"",
-            "location":"",
-            "company":"",
-            "workPlace":[],
-            "type":[]
-          })}
+          onClick={handleReset}
         >
           Reset
         </button>
