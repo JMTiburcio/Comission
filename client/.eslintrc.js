@@ -17,8 +17,8 @@ const config = {
       sourceType: 'module'
     },
     settings: {
-      paths: ['src'],
-      react: { version: '17' },
+      paths: ['client'],
+      react: { version: '18' },
       'import/resolver': { node: { extensions: ['.js', '.jsx'] } }
     },
     rules: {
