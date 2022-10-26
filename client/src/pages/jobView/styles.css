@@ -1,5 +1,3 @@
-.jobView__container {
-    background-color: rgb(235, 235, 235);
+.jobView {
     display: flex;
-    padding: 20px 10% 100px 10%;
 }

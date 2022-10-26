@@ -3,7 +3,6 @@ import './styles.css';
 import ScreeningQuestionView from '../screeningQuestionView';
 
 function MyJobContainer({ job }) {
-  // console.log(job.screeningQuestions[0])
   return (
     <section className='myJobContainer__section'>
       <div className='myJobContainer'>
@@ -24,11 +23,8 @@ function MyJobContainer({ job }) {
           job.screeningQuestions.map(scr => (
             <ScreeningQuestionView key={scr.id} scrQuestion={scr}/>
           ))
-        : 
-        <>
-        </>
+          : <></>
         }
-        {/* <ScreeningQuestionView job={job}/> */}
       </div>
     </section>
   );
