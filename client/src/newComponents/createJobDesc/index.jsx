@@ -65,7 +65,6 @@ function CreateJobDesc({ nextPage, previousPage, jobData, setJobData }) {
           </select>
         </div>
         <footer className='createJobDesc__footer'>
-          <a href="#">Preview</a>
           <div>
             <button type='button' onClick={previousPage}>Back</button>
             <button type='button' onClick={nextPage}>Next</button>
