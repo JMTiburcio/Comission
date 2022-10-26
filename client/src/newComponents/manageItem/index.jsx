@@ -5,6 +5,7 @@ import { format } from "timeago.js";
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
+import CreateIcon from '@mui/icons-material/Create';
 
 function ManageItem({ job, user, jobData, setJobData, filter }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -95,26 +96,36 @@ function ManageItem({ job, user, jobData, setJobData, filter }) {
           : <></>
         }
       </div>
-      <div className='manageItem__action' ref={menuRef}>
-        <button className="manageItem__button" onClick={() => setOpen(!open)}>
-          <MoreHorizIcon style={{fontSize:24}}/>
-        </button>
 
-        <div className={`manageItem__dropdown${toggleDropdown}`}>
-          <div className="manageItem__dropdownOption" onClick={handleDelete}>
-            <DeleteIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
-            <span>delete draft</span>
-          </div>
-          <a className='manageItem__link' href={"/myJob/"+job._id}>
-            <div className='manageItem__dropdownOption'>
-              <WorkIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
-              <span>manage job</span>
+      {
+        filter === "Open" || filter === "Draft" ?
+          <div className='manageItem__action' ref={menuRef}>
+            <button className="manageItem__button" onClick={() => setOpen(!open)}>
+              <MoreHorizIcon style={{fontSize:24}}/>
+            </button>
+            <div className={`manageItem__dropdown${toggleDropdown}`}>
+              <div className="manageItem__dropdownOption" onClick={handleDelete}>
+                <DeleteIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+                <span>delete draft</span>
+              </div>
+              <a className='manageItem__link' href={"/myJob/"+job._id}>
+                <div className='manageItem__dropdownOption'>
+                  <WorkIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+                  <span>manage job</span>
+                </div>
+              </a>
+              { 
+                filter === "Open" ? 
+                <a className='manageItem__link' href={"/myJob/"+job._id+"/applicants"}>
+                  <div className='manageItem__dropdownOption'>
+                    <CreateIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+                    <span>applicants</span>
+                  </div>
+                </a> : <></>
+              }
             </div>
-          </a>
-        </div>
-        
-        
-      </div>
+          </div> : <></>
+      }
     </div>
   );
 }
