@@ -14,9 +14,9 @@ function ManageMenu({ page }) {
                 <div className={'manageMenu__itemName'+ (page === 'postedJob' ? 'Selected' : '')}>
                   Posted Jobs
                 </div>
-                <div className={'manageMenu__itemCount'+ (page === 'postedJob' ? 'Selected' : '')}>
+                {/* <div className={'manageMenu__itemCount'+ (page === 'postedJob' ? 'Selected' : '')}>
                   1
-                </div>
+                </div> */}
               </div>
             </div>
           </Link>
@@ -26,9 +26,9 @@ function ManageMenu({ page }) {
                 <div className={'manageMenu__itemName'+ (page === 'savedJob' ? 'Selected' : '')}>
                   My Jobs
                 </div>
-                <div className={'manageMenu__itemCount'+ (page === 'savedJob' ? 'Selected' : '')}>
+                {/* <div className={'manageMenu__itemCount'+ (page === 'savedJob' ? 'Selected' : '')}>
                   1
-                </div>
+                </div> */}
               </div>
             </div>
           </Link>
