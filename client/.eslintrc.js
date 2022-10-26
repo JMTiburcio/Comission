@@ -13,13 +13,13 @@ const config = {
     parserOptions: {
       warnOnUnsupportedTypeScriptVersion: false,
       ecmaVersion: 2020,
-      ecmaFeatures: { jsx: true, modules: true, tsx: true, ts: true },
+      ecmaFeatures: { jsx: true, modules: true },
       sourceType: 'module'
     },
     settings: {
       paths: ['src'],
       react: { version: '17' },
-      'import/resolver': { node: { extensions: ['.ts', '.tsx'] } }
+      'import/resolver': { node: { extensions: ['.js', '.jsx'] } }
     },
     rules: {
       // IGNORE (0)
@@ -41,7 +41,6 @@ const config = {
       'no-shadow': 0,
       // WARNS (1)
       'import/no-relative-packages': 1,
-      'jsx-a11y/label-has-associated-control': 1,
       'max-len': [1, { code: 140, tabWidth: 2 }],
       'no-confusing-arrow': 0,
       'no-console': 1,
