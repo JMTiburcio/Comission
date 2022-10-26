@@ -7,7 +7,7 @@ import ManageItem from '../manageItem';
 function ManageContainer({ page }) {
   const { user } = useContext(AuthContext);
   const [jobData, setJobData] = useState([])
-  const [filter, setFilter] = useState(page==='postedJob' ? "Open" : "Saved")
+  const [filter, setFilter] = useState(page==='postedJob' ? "Open" : "Applied")
   
   useEffect(() => {
       const fetchJobs = async () => {
@@ -74,12 +74,12 @@ function ManageContainer({ page }) {
             </ul>
             :
             <ul className='manageContainer__filterList'>
-              <li><button 
+              {/* <li><button 
                 className={"manageContainer__filter"+(filter === "Saved" ? '--active' : '')}
                 onClick={() => setFilter("Saved")}
               >
                 Saved
-              </button></li>
+              </button></li> */}
               <li><button 
                 className={"manageContainer__filter"+(filter === "Applied" ? '--active' : '')}
                 onClick={() => setFilter("Applied")}
