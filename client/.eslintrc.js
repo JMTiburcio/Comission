@@ -39,16 +39,23 @@ const config = {
       'react/react-in-jsx-scope': 0,
       'react/require-default-props': 0,
       'no-shadow': 0,
+      'jsx-a11y/anchor-is-valid': 0,
+      'jsx-a11y/label-has-associated-control': 0,
+      'jsx-a11y/no-noninteractive-element-interactions': 0,
+      'jsx-a11y/click-events-have-key-events': 0,
+      'react/button-has-type': 1,
       // WARNS (1)
       'import/no-relative-packages': 1,
       'max-len': [1, { code: 140, tabWidth: 2 }],
       'no-confusing-arrow': 0,
       'no-console': 1,
       'react/destructuring-assignment': [1, 'always', { ignoreClassFields: true }],
-      'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
+      'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
       'react/jsx-props-no-spreading': 1,
       'react/no-unused-prop-types': 1,
       'react/self-closing-comp': 1,
+      'no-underscore-dangle': 1,
+      'no-nested-ternary': 1,
       // ERRORS (2)
       strict: [2, 'never'],
       'no-implicit-coercion': 2,
@@ -67,12 +74,6 @@ const config = {
       '@typescript-eslint/no-unused-vars': [2, { vars: 'all', args: 'none', ignoreRestSiblings: false }],
       '@typescript-eslint/no-use-before-define': 2,
       'no-else-return': 2,
-      "testing-library/no-node-access": [2, { 'allowContainerFirstChild': true }],
-      'testing-library/no-await-sync-events': 2,
-      'testing-library/no-await-sync-query': 2,
-      'testing-library/no-unnecessary-act': 2,
-      'testing-library/prefer-user-event': 2,
-      'testing-library/prefer-find-by': 2,
       'react/jsx-curly-brace-presence': [2, 'never'],
       'react/jsx-sort-props': 2,
       'react/jsx-first-prop-new-line': [2, 'multiline-multiprop'],
@@ -80,4 +81,3 @@ const config = {
     }
   };
   module.exports = config;
-  
