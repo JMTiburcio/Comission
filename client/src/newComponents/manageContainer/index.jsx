@@ -11,13 +11,30 @@ function ManageContainer({ page }) {
   
   useEffect(() => {
       const fetchJobs = async () => {
+        const query = { userId: user._id }
         if(filter === 'Open'){
-          const res = await axiosInstance.get(`/users/postedjobs/${user._id}`) 
+          query.status = 'open'
+          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
           setJobData(
             res.data.sort((p1, p2) => {
               return new Date(p2.createdAt) - new Date(p1.createdAt);
             }));
-        } else {
+        } else if(filter === 'Draft') {
+          query.status = 'draft'
+          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
+          setJobData(
+            res.data.sort((p1, p2) => {
+              return new Date(p2.createdAt) - new Date(p1.createdAt);
+            }));
+        } else if(filter === 'Close') {
+          query.status = 'close'
+          // query.status = ''
+          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
+          setJobData(
+            res.data.sort((p1, p2) => {
+              return new Date(p2.createdAt) - new Date(p1.createdAt);
+            }));
+        } else if(filter === 'Applied' || filter === 'Saved'){
           const res = await axiosInstance.get(`/users/appliedjobs/${user._id}`) 
           setJobData(
             res.data.sort((p1, p2) => {
