@@ -88,13 +88,28 @@ function CreateJobAssess({ previousPage, submitForm, jobData, setJobData }) {
         }
         
         <footer className='createJobAssess__footer'>
-          <button type='button' onClick={(e) => {
-              setJobData({...jobData, status: "Draft"});
-              submitForm(e);
-            }}>Save</button>
+          <button 
+            className='createJobAssess__footerSave'
+            type='button' 
+            onClick={submitForm}
+          >
+            Save
+          </button>
           <div>
-            <button type='button' onClick={previousPage}>Back</button>
-            <button type='button' onClick={submitForm}>Post job for free</button>
+            <button 
+              className='createJobAssess__footerBtn'
+              type='button' 
+              onClick={previousPage}
+            >
+              Back
+            </button>
+            <button 
+              className='createJobAssess__footerBtn'
+              type='button' 
+              onClick={submitForm}
+            >
+              Post job for free
+            </button>
           </div>
         </footer>
       </section>

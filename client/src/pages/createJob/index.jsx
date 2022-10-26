@@ -38,15 +38,14 @@ function CreateJob() {
         }],
         qualification: false,
         img: "job.png",
-        status: "Open",
+        status: "open",
     });
 
     const submitForm = async (e) => {
-        e.preventDefault();
         try {
-            if(e.target.textContent === "Save"){
+            if(e.target.className === "createJobAssess__footerSave"){
                 const form = jobData;
-                await axiosInstance.post("/jobs", {...form, status: "Draft"});
+                await axiosInstance.post("/jobs", {...form, status: "draft"});
             } else {
                 await axiosInstance.post("/jobs", jobData);
             }
