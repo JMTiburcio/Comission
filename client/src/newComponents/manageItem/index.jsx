@@ -40,15 +40,25 @@ function ManageItem({ job, user, jobData, setJobData, filter }) {
   return (
     <div className='manageItem'>
       <div className='manageItem__imgWrapper'>
-        <a href={"/myjob/"+job._id}>
+        <a href={filter === "Open" ? "/myjob/"+job._id+"/applicants" : "/myjob/"+job._id}>
           <img className='manageItem__img' src={`${PF}${job.img}`} alt="#" />
         </a>
       </div>
       <div className='manageItem__content'>
         <div className='manageItem__desc'>
-          <span className='manageItem__title'>{job.title}</span>
-          <span className='manageItem__company'>{job.company}</span>
-          <span className='manageItem__location'>{job.location} ({job.type})</span>
+          <a 
+            className='manageItem__link' 
+            href={filter === "Open" ? "/myjob/"+job._id+"/applicants" : 
+                  filter === "Draft" ? "/myjob/"+job._id :
+                  filter === "Close" ? "/myjob/"+job._id :
+                  filter === "Saved" || filter === "Applied" ? "/job/view/"+job._id 
+                  
+                  : "/myjob/"+job._id}
+          >
+            <span className='manageItem__title'>{job.title}</span>
+            <span className='manageItem__company'>{job.company}</span>
+            <span className='manageItem__location'>{job.location} ({job.type})</span>
+          </a>
         </div>
         {
           filter === "Draft" ? 
@@ -68,6 +78,19 @@ function ManageItem({ job, user, jobData, setJobData, filter }) {
           filter === "Close" ?
           <div className='manageItem__draft'>
             <span className='manageItem__draftTime'><b>Closed</b> • Posted {format(job.createdAt)}</span>
+          </div> :
+          
+          filter === "Saved" || filter === "Applied" ?
+          <div className='manageItem__draft'>
+            <span className='manageItem__draftTime'>
+              { job.status === "open" ? "Actively recruiting" : 
+                job.status === "close" ? "No longer accepting applications"
+                : "unknown status"
+              }
+            </span>
+            <span className='manageItem__draftTime'>
+              Posted {format(job.createdAt)}
+            </span>
           </div>
           : <></>
         }

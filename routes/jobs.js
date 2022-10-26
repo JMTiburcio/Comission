@@ -80,7 +80,7 @@ router.get("/:id", async (req, res) => {
 //get a query
 
 router.get("/all/search/", async (req, res) => {
-  const query = {}
+  const query = { status: "open" }
   const qTitle = req.query.title
   const qCompany = req.query.company
   const qLocation = req.query.location

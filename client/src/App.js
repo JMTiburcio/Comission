@@ -13,6 +13,8 @@ import UpdateJob from "./pages/updateJob";
 import PostedJob from "./pages/postedJob";
 import SavedJob from "./pages/savedJob";
 import MyJob from "./pages/myJob";
+import Applicants from "./pages/applicants"
+import JobView from "./pages/jobView"
 import NewHome from "./pages/newHome";
 
 import {
@@ -38,7 +40,9 @@ function App() {
         <Route path="/createJob" element={user ? <CreateJob/> : <Login/>}/>
         <Route path="/postedJobs" element={user ? <PostedJob/> : <Login/>}/>
         <Route path="/savedJobs" element={user ? <SavedJob/> : <Login/>}/>
+        <Route path="/job/view/:jobId" element={user ? <JobView/> : <Login/>}/>
         <Route path="/myJob/:jobId" element={user ? <MyJob/> : <Login/>}/>
+        <Route path="/myJob/:jobId/applicants" element={user ? <Applicants/> : <Login/>}/>
         <Route path="/myJob/form/:jobId" element={user ? <UpdateJob/> : <Login/>}/>
         <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
       </Routes>
