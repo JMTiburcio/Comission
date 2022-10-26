@@ -11,7 +11,7 @@ function ManageContainer({ page }) {
   
   useEffect(() => {
       const fetchJobs = async () => {
-        if(page === 'postedJob'){
+        if(filter === 'Open'){
           const res = await axiosInstance.get(`/users/postedjobs/${user._id}`) 
           setJobData(
             res.data.sort((p1, p2) => {
@@ -26,7 +26,7 @@ function ManageContainer({ page }) {
         }
       }
       fetchJobs();
-    }, [user]);
+    }, [user, filter]);
 
   return (
     <section className='manageContainer__section'>
