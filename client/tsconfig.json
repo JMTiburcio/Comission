@@ -3,6 +3,7 @@
     "module": "es2020",
     "target": "es2020",
     "lib": [ "es2017", "es2015", "dom", "dom.iterable", "es2020" ],
+    "checkJs": true,
     "allowUnreachableCode": false,
     "alwaysStrict": true,
     "noImplicitReturns": true,
@@ -26,11 +27,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "sourceMap": true,
     "jsx": "react-jsx",
-    "baseUrl": "client",
     "noFallthroughCasesInSwitch": true
   },
-  "exclude": ["node_modules", "client/node_modules" ],
-  "include": [
-    "client"
-  ]
+  "exclude": ["node_modules"]
 }
