@@ -126,9 +126,16 @@ router.put("/:id/unfollow", async (req, res) => {
   
 //get posted jobs
 
-router.get("/postedjobs/:id", async (req, res) => {
-  try {    
-    const jobs = await Job.find({userId: req.params.id});
+router.get("/postedjobs/", async (req, res) => {
+  const query = {}
+  const qUserId = req.query.userId
+  const qStatus = req.query.status
+
+  if(qUserId) { query.userId = qUserId }
+  if(qStatus) { query.status = qStatus }
+
+  try {
+    const jobs = await Job.find(query);
     res.status(200).json(jobs);
   } catch (err) {
     res.status(500).json(err);
