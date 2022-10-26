@@ -155,26 +155,31 @@
     justify-content: space-between;
 }
 
-.createJobAssess__footer a {
+.createJobAssess__footer > button {
     color: rgb(10, 102, 194);
-    text-decoration: none;
+    background-color: white;
+    border: none;
     font-size: 16px;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .createJobAssess__footer div button {
-    margin: 4px 4px 4px 0;
-    padding: 8px 15px 8px 15px;
+    margin: 4px 0px 4px 16px;
+    padding: 8px 20px;
     border-radius: 20px;
     color: rgb(70, 70, 70);
     background-color: white;
     border: 1px solid rgb(70, 70, 70);
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
 }
 
 .createJobAssess__footer div button + button {
     background-color: rgb(10, 102, 194);
     color: white;
+    border-color: rgb(10, 102, 194);
 }
 
 .createJobAssess__sideBar {
@@ -193,5 +198,5 @@
 }
 
 .no-display {
-    display: none !important
+    display: none !important;
 }
