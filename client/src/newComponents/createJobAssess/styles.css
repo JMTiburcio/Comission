@@ -155,7 +155,7 @@
     justify-content: space-between;
 }
 
-.createJobAssess__footer > button {
+.createJobAssess__footerSave {
     color: rgb(10, 102, 194);
     background-color: white;
     border: none;
@@ -164,7 +164,7 @@
     cursor: pointer;
 }
 
-.createJobAssess__footer div button {
+.createJobAssess__footerBtn {
     margin: 4px 0px 4px 16px;
     padding: 8px 20px;
     border-radius: 20px;
