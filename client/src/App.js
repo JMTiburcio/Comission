@@ -15,7 +15,6 @@ import SavedJob from "./pages/savedJob";
 import MyJob from "./pages/myJob";
 import Applicants from "./pages/applicants"
 import JobView from "./pages/jobView"
-import NewHome from "./pages/newHome";
 
 import {
   BrowserRouter,
@@ -44,7 +43,6 @@ function App() {
         <Route path="/myJob/:jobId" element={user ? <MyJob/> : <Login/>}/>
         <Route path="/myJob/:jobId/applicants" element={user ? <Applicants/> : <Login/>}/>
         <Route path="/myJob/form/:jobId" element={user ? <UpdateJob/> : <Login/>}/>
-        <Route path="/newHome" element={user ? <NewHome/> : <Login/>}/>
       </Routes>
     </BrowserRouter>
   );
