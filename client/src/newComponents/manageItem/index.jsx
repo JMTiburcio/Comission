@@ -7,6 +7,8 @@ import WorkIcon from '@mui/icons-material/Work';
 import CreateIcon from '@mui/icons-material/Create';
 import { axiosInstance } from '../../config';
 
+import JobStatus from '../jobStatus';
+
 const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [open, setOpen] = useState(false);
@@ -82,6 +84,7 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
               <b>{job?.applicants.length}</b> applicant{job?.applicants.length > 1 ? 's' : ''}
             </span>
           )}
+          <JobStatus status={job.status} />
         </div>
       </div>
 
