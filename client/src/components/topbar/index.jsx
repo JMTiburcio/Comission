@@ -1,67 +1,65 @@
-import "./styles.css";
-import React, { useContext } from 'react';
+import './styles.css';
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { AuthContext } from "../../context/AuthContext";
 
 import SearchIcon from '@mui/icons-material/Search';
 import PersonIcon from '@mui/icons-material/Person';
 import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { AuthContext } from '../../context/AuthContext';
 
-function TopBar() {
-
-  const {user} = useContext(AuthContext);
+const TopBar = () => {
+  const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
-    <div className='topbarContainer'>
+    <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link style={{ textDecoration: 'none' }} to="/">
           <span className="Logo">Comission</span>
         </Link>
       </div>
       <div className="topbarCenter">
         <div className="SearchBar">
-          <SearchIcon className='SearchIcon'/>
-          <input placeholder='Search for friends, posts or video' className="SearchInput" />
+          <SearchIcon className="SearchIcon" />
+          <input className="SearchInput" placeholder="Search for friends, posts or video" />
         </div>
       </div>
       <div className="topbarRight">
         <div className="topbarLinks">
-          <Link to="/jobs" style={{textDecoration:"none"}}>
+          <Link style={{ textDecoration: 'none' }} to="/jobs">
             <span className="topbarLink">Jobs</span>
           </Link>
-          <Link to="/createJob" style={{textDecoration:"none"}}>
-          <span className="topbarLink">Create a Job</span>
+          <Link style={{ textDecoration: 'none' }} to="/createJob">
+            <span className="topbarLink">Create a Job</span>
           </Link>
-          <Link to="/postedJobs" style={{textDecoration:"none"}}>
-          <span className="topbarLink">Manage Jobs</span>
+          <Link style={{ textDecoration: 'none' }} to="/postedJobs">
+            <span className="topbarLink">Manage Jobs</span>
           </Link>
         </div>
         <div className="topbarIcons">
           <div className="topbarIconItem">
-            <PersonIcon/>
+            <PersonIcon />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <ChatIcon/>
+            <ChatIcon />
             <span className="topbarIconBadge">1</span>
           </div>
           <div className="topbarIconItem">
-            <NotificationsIcon/>
+            <NotificationsIcon />
             <span className="topbarIconBadge">1</span>
           </div>
         </div>
         <Link to={`/profile/${user.username}`}>
-          <img 
-            src={user.profilePicture ? PF+user.profilePicture : PF+"person/noAvatar.png"} 
-            alt="" 
-            className="topbarImg" 
+          <img
+            alt=""
+            className="topbarImg"
+            src={user.profilePicture ? PF + user.profilePicture : `${PF}person/noAvatar.png`}
           />
         </Link>
       </div>
     </div>
   );
-
-}
+};
 
 export default TopBar;
