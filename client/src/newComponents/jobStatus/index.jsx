@@ -7,7 +7,7 @@ const JobStatus = ({ status }) => {
       case 'closed':
         return (<span className="jobStatus">No longer accepting applications</span>);
       case 'draft':
-        return '';
+        return null;
       default:
         return (<span className="jobStatus">Unknown status</span>);
     }
