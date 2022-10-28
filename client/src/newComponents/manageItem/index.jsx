@@ -1,133 +1,125 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import './styles.css';
-import { axiosInstance } from "../../config";
-import { format } from "timeago.js";
+import { format } from 'timeago.js';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
 import CreateIcon from '@mui/icons-material/Create';
+import { axiosInstance } from '../../config';
 
-function ManageItem({ job, user, jobData, setJobData, filter }) {
+const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [open, setOpen] = useState(false);
-  let menuRef = useRef();
+  const menuRef = useRef();
 
   useEffect(() => {
-    let handler = (e)=>{
-      if(!menuRef.current.contains(e.target)){
+    const handler = (e) => {
+      if (!menuRef?.current.contains(e.target)) {
         setOpen(false);
-      }      
+      }
     };
 
-    document.addEventListener("mousedown", handler);    
+    document.addEventListener('mousedown', handler);
     
-    return() =>{
-      document.removeEventListener("mousedown", handler);
-    }
-
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
   });
 
   const handleDelete = async () => {
     try {
-      await axiosInstance.delete(`/jobs/${job._id}`, {data: {userId:user._id}})
-      setJobData([...jobData.filter(e => e._id !== job._id)])
-    } catch(err) {
-      console.log(err)
+      await axiosInstance.delete(`/jobs/${job._id}`, { data: { userId: user._id } });
+      setJobData([...jobData.filter((e) => e._id !== job._id)]);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-  const toggleDropdown = open ? "--show" : ""
+  const itemLink = (option, id) => {
+    switch (option) {
+      case 'Open':
+        return `/myjob/${id}/applicants`;
+      case 'Applied':
+        return `/job/view/${job._id}`;
+      case 'Draft':
+        return `/myjob/${job._id}`;
+      case 'Close':
+        return `/myjob/${job._id}`;
+      default:
+        return '';
+    }
+  };
+
+  const toggleDropdown = open ? '--show' : '';
 
   return (
-    <div className='manageItem'>
-      <div className='manageItem__imgWrapper'>
-        <a href={filter === "Open" ? "/myjob/"+job._id+"/applicants" : "/myjob/"+job._id}>
-          <img className='manageItem__img' src={`${PF}${job.img}`} alt="#" />
+    <div className="manageItem">
+      <div className="manageItem__imgWrapper">
+        <a href={filter === 'Open' ? `/myjob/${job._id}/applicants` : `/myjob/${job._id}`}>
+          <img alt="#" className="manageItem__img" src={`${PF}${job.img}`} />
         </a>
       </div>
-      <div className='manageItem__content'>
-        <div className='manageItem__desc'>
-          <a 
-            className='manageItem__link' 
-            href={filter === "Open" ? "/myjob/"+job._id+"/applicants" : 
-                  filter === "Draft" ? "/myjob/"+job._id :
-                  filter === "Close" ? "/myjob/"+job._id :
-                  filter === "Saved" || filter === "Applied" ? "/job/view/"+job._id 
-                  
-                  : "/myjob/"+job._id}
+      <div className="manageItem__content">
+        <div className="manageItem__desc">
+          <a
+            className="manageItem__link"
+            href={itemLink(filter, job._id)}
           >
-            <span className='manageItem__title'>{job.title}</span>
-            <span className='manageItem__company'>{job.company}</span>
-            <span className='manageItem__location'>{job.location} ({job.type})</span>
+            <span className="manageItem__title">{job.title}</span>
+            <span className="manageItem__company">{job.company}</span>
+            <span className="manageItem__location">{job.location} ({job.type})</span>
           </a>
         </div>
-        {
-          filter === "Draft" ? 
-          <div className='manageItem__draft'>
-            <span className='manageItem__draftTime'><b>Draft</b> • Created {format(job.createdAt)}</span>
-            <a className='manageItem__draftLink' href={"/myJob/form/"+job._id}>Complete draft</a>
-          </div> :
-
-          filter === "Open" ?
-          <div className='manageItem__draft'>
-            <span className='manageItem__draftTime'><b>Active</b> • Posted {format(job.createdAt)}</span>
-            <span className='manageItem__draftTime'>
-              <b>{Object.keys(job).length ? job.applicants.length : ""}</b> applicant(s)
-            </span>
-          </div> :
-
-          filter === "Close" ?
-          <div className='manageItem__draft'>
-            <span className='manageItem__draftTime'><b>Closed</b> • Posted {format(job.createdAt)}</span>
-          </div> :
+        
+        <div className="manageItem__draft">
+          <span className="manageItem__draftTime"><b>{filter}</b> • Created {format(job.createdAt)}</span>
+          { filter === 'Draft' && (
+            <a className="manageItem__draftLink" href={`/myJob/form/${job._id}`}>Complete draft</a>
+          )}
           
-          filter === "Saved" || filter === "Applied" ?
-          <div className='manageItem__draft'>
-            <span className='manageItem__draftTime'>
-              { job.status === "open" ? "Actively recruiting" : 
-                job.status === "close" ? "No longer accepting applications"
-                : "unknown status"
-              }
+          { filter === 'Open' && (
+            <span className="manageItem__draftTime">
+              <b>{job?.applicants.length}</b> applicant{job?.applicants.length > 1 ? 's' : ''}
             </span>
-            <span className='manageItem__draftTime'>
-              Posted {format(job.createdAt)}
-            </span>
-          </div>
-          : <></>
-        }
+          )}
+        </div>
       </div>
 
       {
-        filter === "Open" || filter === "Draft" ?
-          <div className='manageItem__action' ref={menuRef}>
-            <button className="manageItem__button" onClick={() => setOpen(!open)}>
-              <MoreHorizIcon style={{fontSize:24}}/>
+        (filter === 'Open' || filter === 'Draft') && (
+          <div ref={menuRef} className="manageItem__action">
+            <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
+              <MoreHorizIcon style={{ fontSize: 24 }} />
             </button>
             <div className={`manageItem__dropdown${toggleDropdown}`}>
-              <div className="manageItem__dropdownOption" onClick={handleDelete}>
-                <DeleteIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
-                <span>delete draft</span>
-              </div>
-              <a className='manageItem__link' href={"/myJob/"+job._id}>
-                <div className='manageItem__dropdownOption'>
-                  <WorkIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
+              <button onClick={handleDelete} type="button">
+                <div className="manageItem__dropdownOption">
+                  <DeleteIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
+                  <span>delete draft</span>
+                </div>
+              </button>
+              <a className="manageItem__link" href={`/myJob/${job._id}`}>
+                <div className="manageItem__dropdownOption">
+                  <WorkIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                   <span>manage job</span>
                 </div>
               </a>
-              { 
-                filter === "Open" ? 
-                <a className='manageItem__link' href={"/myJob/"+job._id+"/applicants"}>
-                  <div className='manageItem__dropdownOption'>
-                    <CreateIcon style={{fontSize:24, color:'#5e5e5e', marginRight:5}}/>
-                    <span>applicants</span>
-                  </div>
-                </a> : <></>
+              {
+                filter === 'Open' && (
+                  <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
+                    <div className="manageItem__dropdownOption">
+                      <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
+                      <span>applicants</span>
+                    </div>
+                  </a>
+                )
               }
             </div>
-          </div> : <></>
+          </div>
+        )
       }
     </div>
   );
-}
+};
 
 export default ManageItem;

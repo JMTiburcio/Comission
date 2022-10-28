@@ -1,105 +1,58 @@
-import React, { useEffect, useState, useContext } from 'react';
-import './styles.css';
-import { AuthContext } from "../../context/AuthContext";
-import { axiosInstance } from "../../config";
+/* eslint-disable no-underscore-dangle */
+import { useEffect, useState, useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { axiosInstance } from '../../config';
 import ManageItem from '../manageItem';
+import { sortByDate } from '../../utils';
+import './styles.css';
 
-function ManageContainer({ page }) {
+const buttonFilter = (filter, label) => (filter === label ? 'manageContainer__filter--active' : 'manageContainer__filter');
+
+const JobButton = ({ filter, label, setFilter }) => (
+  <button className={`${buttonFilter(filter, label)}`} onClick={() => setFilter(label)} type="button">{label}</button>
+);
+
+const ManageContainer = ({ page }) => {
   const { user } = useContext(AuthContext);
-  const [jobData, setJobData] = useState([])
-  const [filter, setFilter] = useState(page==='postedJob' ? "Open" : "Applied")
-  
+  const [jobData, setJobData] = useState([]);
+  const [filter, setFilter] = useState(page === 'postedJob' ? 'Open' : 'Applied');
+
   useEffect(() => {
-      const fetchJobs = async () => {
-        const query = { userId: user._id }
-        if(filter === 'Open'){
-          query.status = 'open'
-          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
-          setJobData(
-            res.data.sort((p1, p2) => {
-              return new Date(p2.createdAt) - new Date(p1.createdAt);
-            }));
-        } else if(filter === 'Draft') {
-          query.status = 'draft'
-          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
-          setJobData(
-            res.data.sort((p1, p2) => {
-              return new Date(p2.createdAt) - new Date(p1.createdAt);
-            }));
-        } else if(filter === 'Close') {
-          query.status = 'close'
-          // query.status = ''
-          const res = await axiosInstance.get(`/users/postedjobs/`, { params: query }) 
-          setJobData(
-            res.data.sort((p1, p2) => {
-              return new Date(p2.createdAt) - new Date(p1.createdAt);
-            }));
-        } else if(filter === 'Applied' || filter === 'Saved'){
-          const res = await axiosInstance.get(`/users/appliedjobs/${user._id}`) 
-          setJobData(
-            res.data.sort((p1, p2) => {
-              return new Date(p2.createdAt) - new Date(p1.createdAt);
-            }));
-        }
-      }
-      fetchJobs();
-    }, [user, filter]);
+    const fetchJobs = async () => {
+      const query = { userId: user._id, status: filter.toLowerCase() };
+      const isApplied = ['Applied', 'Saved'].includes(filter);
+      
+      const result = isApplied
+        ? await axiosInstance.get(`/users/appliedjobs/${user._id}`)
+        : await axiosInstance.get('/users/postedjobs/', { params: query });
+
+      result?.data && setJobData(result.data.sort(sortByDate));
+    };
+    fetchJobs();
+  }, [user, filter]);
 
   return (
-    <section className='manageContainer__section'>
-      <div className='manageContainer'>
-        <h1 className='manageContainer__header'>Posted Jobs</h1>
-        <div className='manageContainer__filterBar'>
-          {
-            page === 'postedJob' ?
-            <ul className='manageContainer__filterList'>
-              <li><button 
-                className={"manageContainer__filter"+(filter === "Open" ? '--active' : '')}
-                onClick={() => setFilter("Open")}
-              >
-                Open
-              </button></li>
-              <li><button 
-                className={"manageContainer__filter"+(filter === "Draft" ? '--active' : '')}
-                onClick={() => setFilter("Draft")}
-              >
-                Draft
-              </button></li>
-              <li><button 
-                className={"manageContainer__filter"+(filter === "Close" ? '--active' : '')}
-                onClick={() => setFilter("Close")}
-              >
-                Close
-              </button></li>
-            </ul>
-            :
-            <ul className='manageContainer__filterList'>
-              {/* <li><button 
-                className={"manageContainer__filter"+(filter === "Saved" ? '--active' : '')}
-                onClick={() => setFilter("Saved")}
-              >
-                Saved
-              </button></li> */}
-              <li><button 
-                className={"manageContainer__filter"+(filter === "Applied" ? '--active' : '')}
-                onClick={() => setFilter("Applied")}
-              >
-                Applied
-              </button></li>
-            </ul>
-          }
-          
+    <section className="manageContainer__section">
+      <div className="manageContainer">
+        <h1 className="manageContainer__header">Posted Jobs</h1>
+        <div className="manageContainer__filterBar">
+          <ul className="manageContainer__filterList">
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Open" setFilter={setFilter} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Draft" setFilter={setFilter} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Close" setFilter={setFilter} /></li>}
+            {page === 'savedJob' && <li><JobButton filter={filter} label="Applied" setFilter={setFilter} /></li>}
+          </ul>
         </div>
-        <ul className='manageContainer__resultList'>
-          {jobData.map(job => (
+        <ul className="manageContainer__resultList">
+          {jobData.map((job) => (
             <li key={job._id}>
-              <ManageItem job={job} user={user} jobData={jobData} setJobData={setJobData} filter={filter}/>
-            </li>  
+              <ManageItem filter={filter} job={job} jobData={jobData} setJobData={setJobData} user={user} />
+            </li>
           ))}
         </ul>
       </div>
     </section>
   );
-}
+};
 
 export default ManageContainer;

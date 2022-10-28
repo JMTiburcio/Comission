@@ -1,15 +1,15 @@
 import React from 'react';
-import "./styles.css"
+import './styles.css';
 
-function Friend({user}) {
+const Friend = ({ user }) => {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     return (
-        <li className="sidebarFriend">
-            <img src={PF+user.profilePicture} alt="" className="sidebarFriendImg" />
-            <span className="sidebarFriendName">{user.username}</span>
-        </li>        
+      <li className="sidebarFriend">
+        <img alt="" className="sidebarFriendImg" src={PF + user.profilePicture} />
+        <span className="sidebarFriendName">{user.username}</span>
+      </li>
     );
-}
+};
 
 export default Friend;
