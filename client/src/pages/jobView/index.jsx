@@ -1,20 +1,21 @@
 import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { format } from 'timeago.js';
 import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
 import './styles.css';
 
 import TopBar from '../../components/topbar';
 import ManageAside from '../../newComponents/manageAside';
-import JobStatus from '../../newComponents/jobStatus';
+import JobInfo from '../../newComponents/jobInfo';
+import JobApply from '../../newComponents/jobApply';
+import JobRecruiter from '../../newComponents/jobRecruiter';
+import JobDescription from '../../newComponents/jobDescription';
 
 const JobView = () => {
     const { jobId } = useParams();
     const [job, setJob] = useState(false);
     const [recruiter, setRecruiter] = useState({});
     const { user } = useContext(AuthContext);
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     useEffect(() => {
       const fetchJobs = async () => {
@@ -37,6 +38,16 @@ const JobView = () => {
         fetchRecruiter();
       }
       }, [job, user]);
+
+    const applyHandler = async () => {
+      try {
+          await axiosInstance.put(`/jobs/apply/${job._id}`, { userId: user._id });
+          const res = await axiosInstance.get(`/jobs/${job._id}`);
+          setJob(res.data);
+      } catch (err) {
+          console.log(err);
+      }
+    };
     
     return (
       <>
@@ -45,31 +56,17 @@ const JobView = () => {
           { job ? (
             <section className="jobView__content">
               <div className="jobView__overview">
-                <h2>{job.title}</h2>
-                <h4>
-                  {job.location}  -  {format(job.createdAt)} -  {job.applicants.length} applicant{job.applicants.length !== 1 ? 's' : ''}
-                </h4>
-                <ul>
-                  <li><span>{job.type}</span></li>
-                  <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
-                  <li><span>See recent hiring trends on <b>{job.company}</b></span></li>
-                  <li><JobStatus status={job.status} /></li>
-                </ul>
+                <JobInfo job={job} />
+                <div className="jobs__contentRightButton">
+                  <JobApply applyHandler={applyHandler} job={job} user={user} />
+                </div>
               </div>
               <div className="jobView__recruiter">
-                <h3>Meet the hiring team</h3>
-                <section>
-                  <img alt="#" src={recruiter.profilePicture ? PF + recruiter.profilePicture : `${PF}person/noAvatar.png`} />
-                  <div className="jobView__recruiterDesc">
-                    <h5>{recruiter.username}</h5>
-                    <p>Tech Recruiter | Analista de Recrutamento e Seleção na Comission</p>
-                  </div>
-                  <a href="#">Message</a>
-                </section>
+                <JobRecruiter recruiter={recruiter} />
               </div>
               <div className="jobView__description">
                 <h3>About the job</h3>
-                <p>{job.desc}</p>
+                <JobDescription job={job} />
               </div>
             </section>
           )
