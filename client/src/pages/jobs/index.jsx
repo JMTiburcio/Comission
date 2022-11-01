@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './styles.css';
 import { axiosInstance } from '../../config';
 import Job from '../../newComponents/job';
@@ -54,9 +55,11 @@ const Jobs = () => {
     <div className="jobs">
       <header className="jobs__header">
         <nav className="jobs__headerNav">
+        <Link style={{ textDecoration: 'none' }} to="/">
           <h1 className="jobs__comission">
             Comission
           </h1>
+        </Link>  
           <section className="jobs__searchBar">
             <form className="jobs__headerForm">
               <section className="jobs__searchJob">
