@@ -47,7 +47,7 @@ const ManageContainer = ({ page }) => {
           <ul className="manageContainer__filterList">
             {page === 'postedJob' && <li><JobButton filter={filter} label="Open" setFilter={setFilter} setJobData={setJobData} /></li>}
             {page === 'postedJob' && <li><JobButton filter={filter} label="Draft" setFilter={setFilter} setJobData={setJobData} /></li>}
-            {page === 'postedJob' && <li><JobButton filter={filter} label="Close" setFilter={setFilter} setJobData={setJobData} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Closed" setFilter={setFilter} setJobData={setJobData} /></li>}
             {page === 'savedJob' && <li><JobButton filter={filter} label="Applied" setFilter={setFilter} setJobData={setJobData} /></li>}
           </ul>
         </div>

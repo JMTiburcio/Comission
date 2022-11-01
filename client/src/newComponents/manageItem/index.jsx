@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
 import CreateIcon from '@mui/icons-material/Create';
 import { axiosInstance } from '../../config';
+import JobDropdown from '../jobDropdown';
 
 const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -26,15 +27,6 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
     };
   });
 
-  const handleDelete = async () => {
-    try {
-      await axiosInstance.delete(`/jobs/${job._id}`, { data: { userId: user._id } });
-      setJobData([...jobData.filter((e) => e._id !== job._id)]);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const itemLink = (option, id) => {
     switch (option) {
       case 'Open':
@@ -49,8 +41,6 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
         return '';
     }
   };
-
-  const toggleDropdown = open ? '--show' : '';
 
   return (
     <div className="manageItem">
@@ -84,40 +74,13 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
           )}
         </div>
       </div>
+      <div ref={menuRef} className="manageItem__action">
+        <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
+          <MoreHorizIcon style={{ fontSize: 24 }} />
+        </button>
+        <JobDropdown filter={filter} job={job} open={open} user={user} jobData={jobData} setJobData={setJobData} />
+      </div>
 
-      {
-        (filter === 'Open' || filter === 'Draft') && (
-          <div ref={menuRef} className="manageItem__action">
-            <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
-              <MoreHorizIcon style={{ fontSize: 24 }} />
-            </button>
-            <div className={`manageItem__dropdown${toggleDropdown}`}>
-              <div className="manageItem__dropdownOption">
-                <a className="manageItem__link" onClick={handleDelete}>
-                  <DeleteIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                  <span>delete draft</span>
-                </a>
-              </div>
-              <div className="manageItem__dropdownOption">
-                <a className="manageItem__link" href={`/myJob/${job._id}`}>
-                  <WorkIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                  <span>manage job</span>
-                </a>
-              </div>
-              {
-                filter === 'Open' && (
-                  <div className="manageItem__dropdownOption">
-                    <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                      <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                      <span>applicants</span>
-                    </a>
-                  </div>
-                )
-              }
-            </div>
-          </div>
-        )
-      }
     </div>
   );
 };
