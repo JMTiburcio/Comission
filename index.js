@@ -9,8 +9,6 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const jobRoute = require("./routes/jobs");
-const conversationRoute = require("./routes/conversations");
-const messsageRoute = require("./routes/messages");
 const path = require("path");
 const cors = require("cors");
 
@@ -54,8 +52,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/jobs", jobRoute);
-app.use("/api/conversations", conversationRoute);
-app.use("/api/messages", messsageRoute);
+
 
 app.use(express.static(path.join(__dirname, "/client/build")));
 

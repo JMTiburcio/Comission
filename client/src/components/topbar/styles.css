@@ -70,7 +70,7 @@
 
 .topbarIconItem {
     margin-right: 15px;
-    cursor: pointer;
+    cursor: not-allowed;
     position: relative;
 }
 
