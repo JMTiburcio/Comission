@@ -2,10 +2,6 @@ import { useRef, useEffect, useState } from 'react';
 import './styles.css';
 import { format } from 'timeago.js';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import DeleteIcon from '@mui/icons-material/Delete';
-import WorkIcon from '@mui/icons-material/Work';
-import CreateIcon from '@mui/icons-material/Create';
-import { axiosInstance } from '../../config';
 import JobDropdown from '../jobDropdown';
 
 const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
@@ -74,13 +70,16 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
           )}
         </div>
       </div>
-      <div ref={menuRef} className="manageItem__action">
-        <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
-          <MoreHorizIcon style={{ fontSize: 24 }} />
-        </button>
-        <JobDropdown filter={filter} job={job} open={open} user={user} jobData={jobData} setJobData={setJobData} />
-      </div>
 
+      {filter !== 'Applied' && (
+        <div ref={menuRef} className="manageItem__action">
+          <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
+            <MoreHorizIcon style={{ fontSize: 24 }} />
+          </button>
+          <JobDropdown filter={filter} job={job} open={open} user={user} jobData={jobData} setJobData={setJobData} />
+        </div>
+      )}
+      
     </div>
   );
 };
