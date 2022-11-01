@@ -2,6 +2,8 @@ import './styles.css';
 import DeleteIcon from '@mui/icons-material/Delete';
 import WorkIcon from '@mui/icons-material/Work';
 import CreateIcon from '@mui/icons-material/Create';
+import PersonIcon from '@mui/icons-material/Person';
+import GroupsIcon from '@mui/icons-material/Groups';
 import { axiosInstance } from '../../config';
 
 
@@ -15,9 +17,14 @@ const JobDropdown = ({ filter, job, jobData, setJobData, open, user }) => {
     }
   };
 
-  const handleClose = async () => {
+  const handleStatus = async () => {
     try {
-      await axiosInstance.put(`/jobs/${job._id}`, {...job, status: 'closed'});
+      const isOpen = filter === 'Open';
+
+      isOpen
+        ? await axiosInstance.put(`/jobs/${job._id}`, { userId: user._id, status: 'closed' })
+        : await axiosInstance.put(`/jobs/${job._id}`, { userId: user._id, status: 'open' });
+
       setJobData([...jobData.filter((e) => e._id !== job._id)]);
       } catch (err) {
       console.log(err);
@@ -41,20 +48,20 @@ const JobDropdown = ({ filter, job, jobData, setJobData, open, user }) => {
         filter === 'Open' && (
           <>
             <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" onClick={handleClose}>
+              <a className="manageItem__link" onClick={handleStatus}>
                 <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>close Job</span>
+                <span>close job</span>
               </a>
             </div>
             <div className="manageItem__dropdownOption">
               <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>view Applicants</span>
+                <GroupsIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
+                <span>view applicants</span>
               </a>
             </div>
             <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
+              <a className="manageItem__link" href={`/job/view/${job._id}`}>
+                <PersonIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                 <span>view job as candidate</span>
               </a>
             </div>
@@ -79,14 +86,14 @@ const JobDropdown = ({ filter, job, jobData, setJobData, open, user }) => {
         filter === 'Closed' && (
           <>
             <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
+              <a className="manageItem__link" onClick={handleStatus}>
                 <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>repost Job</span>
+                <span>repost job</span>
               </a>
             </div>
             <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
+              <a className="manageItem__link" href={`/job/view/${job._id}`}>
+                <PersonIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                 <span>view job as candidate</span>
               </a>
             </div>
