@@ -42,7 +42,7 @@ const ManageContainer = ({ page }) => {
   return (
     <section className="manageContainer__section">
       <div className="manageContainer">
-        <h1 className="manageContainer__header">Posted Jobs</h1>
+        <h1 className="manageContainer__header">{page === 'postedJob' ? 'Posted Jobs' : 'My Jobs'}</h1>
         <div className="manageContainer__filterBar">
           <ul className="manageContainer__filterList">
             {page === 'postedJob' && <li><JobButton filter={filter} label="Open" setFilter={setFilter} setJobData={setJobData} /></li>}
