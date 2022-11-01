@@ -95,8 +95,9 @@
     z-index: 999;
 }
 
-.manageItem__dropdownOption {
+.manageItem__dropdownOption > * {
     display: flex;
+    width: 100%;
     align-items: center;
     padding: 10px;
     cursor: pointer;

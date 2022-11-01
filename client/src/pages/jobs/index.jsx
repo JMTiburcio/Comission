@@ -131,7 +131,7 @@ const Jobs = () => {
 
       <section className="jobs__content">
         <div className="jobs__contentLeft">
-          <h3>/Static/ 6,822,000+ Jobs in United States</h3>
+          <h3>6,822,000+ Jobs in United States</h3>
           <ul className="jobs__resultList">
             { jobs.map((p) => (
               <li

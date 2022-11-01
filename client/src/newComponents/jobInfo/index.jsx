@@ -15,7 +15,7 @@ const JobInfo = ({ job }) => {
       </h4>
       <ul>
         <li><span>{job.type}</span></li>
-        <li><span>/Static/ 201 - 500 employees  -  Staffing and Recruiting</span></li>
+        <li><span>201 - 500 employees  -  Staffing and Recruiting</span></li>
         <li><span>See recent hiring trends on <b>{job.company}</b></span></li>
         <li><JobStatus status={job.status} /></li>
       </ul>

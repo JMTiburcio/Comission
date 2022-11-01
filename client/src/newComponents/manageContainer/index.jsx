@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { useEffect, useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
@@ -8,8 +7,17 @@ import './styles.css';
 
 const buttonFilter = (filter, label) => (filter === label ? 'manageContainer__filter--active' : 'manageContainer__filter');
 
-const JobButton = ({ filter, label, setFilter }) => (
-  <button className={`${buttonFilter(filter, label)}`} onClick={() => setFilter(label)} type="button">{label}</button>
+const JobButton = ({ filter, label, setFilter, setJobData }) => (
+  <button 
+    className={`${buttonFilter(filter, label)}`} 
+    onClick={() => {
+      setJobData([]);
+      setFilter(label);
+    }} 
+    type="button"
+  >
+    {label}
+  </button>
 );
 
 const ManageContainer = ({ page }) => {
@@ -37,10 +45,10 @@ const ManageContainer = ({ page }) => {
         <h1 className="manageContainer__header">Posted Jobs</h1>
         <div className="manageContainer__filterBar">
           <ul className="manageContainer__filterList">
-            {page === 'postedJob' && <li><JobButton filter={filter} label="Open" setFilter={setFilter} /></li>}
-            {page === 'postedJob' && <li><JobButton filter={filter} label="Draft" setFilter={setFilter} /></li>}
-            {page === 'postedJob' && <li><JobButton filter={filter} label="Close" setFilter={setFilter} /></li>}
-            {page === 'savedJob' && <li><JobButton filter={filter} label="Applied" setFilter={setFilter} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Open" setFilter={setFilter} setJobData={setJobData} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Draft" setFilter={setFilter} setJobData={setJobData} /></li>}
+            {page === 'postedJob' && <li><JobButton filter={filter} label="Close" setFilter={setFilter} setJobData={setJobData} /></li>}
+            {page === 'savedJob' && <li><JobButton filter={filter} label="Applied" setFilter={setFilter} setJobData={setJobData} /></li>}
           </ul>
         </div>
         <ul className="manageContainer__resultList">

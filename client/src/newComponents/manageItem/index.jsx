@@ -7,8 +7,6 @@ import WorkIcon from '@mui/icons-material/Work';
 import CreateIcon from '@mui/icons-material/Create';
 import { axiosInstance } from '../../config';
 
-import JobStatus from '../jobStatus';
-
 const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [open, setOpen] = useState(false);
@@ -84,7 +82,6 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
               <b>{job?.applicants.length}</b> applicant{job?.applicants.length > 1 ? 's' : ''}
             </span>
           )}
-          <JobStatus status={job.status} />
         </div>
       </div>
 
@@ -95,26 +92,26 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
               <MoreHorizIcon style={{ fontSize: 24 }} />
             </button>
             <div className={`manageItem__dropdown${toggleDropdown}`}>
-              <button onClick={handleDelete} type="button">
-                <div className="manageItem__dropdownOption">
+              <div className="manageItem__dropdownOption">
+                <a className="manageItem__link" onClick={handleDelete}>
                   <DeleteIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                   <span>delete draft</span>
-                </div>
-              </button>
-              <a className="manageItem__link" href={`/myJob/${job._id}`}>
-                <div className="manageItem__dropdownOption">
+                </a>
+              </div>
+              <div className="manageItem__dropdownOption">
+                <a className="manageItem__link" href={`/myJob/${job._id}`}>
                   <WorkIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                   <span>manage job</span>
-                </div>
-              </a>
+                </a>
+              </div>
               {
                 filter === 'Open' && (
-                  <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                    <div className="manageItem__dropdownOption">
+                  <div className="manageItem__dropdownOption">
+                    <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
                       <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
                       <span>applicants</span>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 )
               }
             </div>
