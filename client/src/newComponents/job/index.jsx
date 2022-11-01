@@ -11,8 +11,8 @@ const Job = ({ job, selectedJob }) => {
         <img alt="#" src={`${PF}${job.img}`} />
         <div className="job__information">
           <h2>{job.title}</h2>
-          <h4>{job.location}</h4>
-          <p>/Static/ Avenida Cauaxi</p>
+          <h4>{job.company}</h4>
+          <p>{job.location} - {job.type}</p>
           <span>{format(job.createdAt)}</span>
         </div>
       </div>
