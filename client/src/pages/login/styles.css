@@ -89,3 +89,8 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.loginOptions {
+    display: flex;
+    justify-content: space-around;
+}

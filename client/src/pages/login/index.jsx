@@ -23,13 +23,21 @@ const Login = () => {
       );
   };
 
+  const handleGuest = (e) => {
+    e.preventDefault();
+    loginCall({
+      email: 'guest@guest.com', password: '123456' },
+      dispatch
+    );
+};
+
   return (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">Lamasocial</h3>
+          <h3 className="loginLogo">Comission</h3>
           <span className="loginDesc">
-            Connect with friends and the world around you on Lamasocial.
+            Connect with friends and the world around you on Comission.
           </span>
         </div>
         <div className="loginRight">
@@ -52,10 +60,15 @@ const Login = () => {
             <button className="loginButton" disabled={isFetching} onClick={handleClick} type="submit">
               {isFetching ? <CircularProgress size="25px" style={{ color: 'white' }} /> : 'Log In'}
             </button>
-            <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton" onClick={() => navigate('/register')} type="button">
               {isFetching ? <CircularProgress size="25px" style={{ color: 'white' }} /> : 'Create Account'}
             </button>
+            <div className="loginOptions">
+              <span className="loginForgot">Forgot Password?</span>
+              <button type='button' disabled={isFetching} className="loginGuest" onClick={handleGuest}>
+                Continue as a guest
+              </button>
+            </div>
           </form>
         </div>
       </div>
