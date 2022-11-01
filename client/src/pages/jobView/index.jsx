@@ -57,9 +57,11 @@ const JobView = () => {
             <section className="jobView__content">
               <div className="jobView__overview">
                 <JobInfo job={job} />
-                <div className="jobs__contentRightButton">
-                  <JobApply applyHandler={applyHandler} job={job} user={user} />
-                </div>
+                { job.status === 'open' && (
+                  <div className="jobView__apply">
+                    <JobApply applyHandler={applyHandler} job={job} user={user} />
+                  </div>
+                )}
               </div>
               <div className="jobView__recruiter">
                 <JobRecruiter recruiter={recruiter} />

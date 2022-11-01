@@ -32,6 +32,10 @@
     margin: 5px 0;
 }
 
+.jobView__apply {
+    margin: 15px 0;
+}
+
 .jobView__recruiter section {
     display: flex;
     align-items: center;
