@@ -44,8 +44,8 @@ const CreateJob = () => {
     const submitForm = async (e) => {
         try {
             const onlySave = e.target.className === 'createJobAssess__footerSave';
-            setJobData((current) => ({ ...current, status: onlySave ? 'Draft' : jobData.status }));
-            await axiosInstance.post('/jobs', { ...jobData, status: onlySave ? 'Draft' : jobData.status });
+            setJobData((current) => ({ ...current, status: onlySave ? 'draft' : jobData.status }));
+            await axiosInstance.post('/jobs', { ...jobData, status: onlySave ? 'draft' : jobData.status });
             navigate('/jobs');
         } catch (err) {
             console.log(err);
