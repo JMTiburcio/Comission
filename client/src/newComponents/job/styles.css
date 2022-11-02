@@ -1,15 +1,6 @@
 .job__result{
     display: flex;
     padding: 10px;
-    cursor: pointer;
-}
-
-.job__result:hover {
-    background-color: rgb(245, 245, 245);
-}
-
-.job__result:hover h2{
-    text-decoration: underline;
 }
 
 .job__result img{

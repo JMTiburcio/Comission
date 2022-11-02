@@ -31,7 +31,7 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
         return `/job/view/${job._id}`;
       case 'Draft':
         return `/myjob/${job._id}`;
-      case 'Close':
+      case 'Closed':
         return `/myjob/${job._id}`;
       default:
         return '';

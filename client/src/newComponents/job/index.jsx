@@ -12,7 +12,7 @@ const Job = ({ job, selectedJob }) => {
         <div className="job__information">
           <h2>{job.title}</h2>
           <h4>{job.company}</h4>
-          <p>{job.location} - {job.type}</p>
+          <p>{`${job.location} - (${job.workPlace})`}</p>
           <span>{format(job.createdAt)}</span>
         </div>
       </div>

@@ -9,18 +9,18 @@ import MyJobAside from '../../newComponents/myJobAside';
 
 const MyJob = () => {
     const { jobId } = useParams();
-    const [job, setJob] = useState({});
+    const [job, setJob] = useState(false);
 
     useEffect(() => {
-        const fetchJobs = async () => {
-            try {
-                const res = await axiosInstance.get(`/jobs/${jobId}`);
-                setJob(res.data);
-            } catch (err) {
-                console.log(err);
-            }
-        };
-        fetchJobs();
+      const fetchJobs = async () => {
+        try {
+          const res = await axiosInstance.get(`/jobs/${jobId}`);
+          setJob(res.data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+      fetchJobs();
     }, [jobId]);
 
     return (

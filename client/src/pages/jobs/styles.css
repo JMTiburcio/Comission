@@ -103,3 +103,8 @@
     list-style: none;
     background-color: white;
 }
+
+.jobs__resultList > li:hover {
+    background-color: rgb(245, 245, 245);
+    cursor: pointer;
+}

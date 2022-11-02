@@ -1,31 +1,48 @@
-import React from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import './styles.css';
-import { format } from 'timeago.js';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 
-const MyJobTopCard = ({ job }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+import { AuthContext } from '../../context/AuthContext';
+import Job from '../job';
+import JobStatus from '../jobStatus';
+import JobDropdown from '../jobDropdown';
+
+
+const MyJobTopCard = ({ job }) => {  
+  const { user } = useContext(AuthContext);
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef();
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (!menuRef?.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handler);
+
+    return () => {
+      document.removeEventListener('mousedown', handler);
+    };
+  });
 
   return (
-    <div className="myJob__topCard">
-      <div className="myJob__info">
-        <div className="myJob__imgWrapper">
-          <img alt="#" className="myJob__img" src={`${PF}${job.img}`} />
+    <div className="myJobTopCard">
+      {job && (
+        <div className="myJobTopCard__info">
+          <Job job={job} selectedJob={false}/>
+          <JobStatus status={job.status} />
         </div>
-        <div className="myJob__content">
-          <div className="myJob__desc">
-            <span className="myJob__title">{job.title}</span>
-            <span className="myJob__company">{job.company} • {job.location}</span>
-          </div>
-          <div className="myJob__draft">
-            <span className="myJob__draftTime"><strong>Draft</strong> • Created {format(job.createdAt)}</span>
-          </div>
-        </div>
-        <div className="myJob__action">
-          <a className="myJob__post" href={`/myJob/form/${job._id}`}>Complete Draft</a>
-          <button className="myJob__button" type="button">
+      )}
+      <div className="myJobTopCard__action" >
+        <button className="btnBlue" href={`/myJob/form/${job._id}`}>View Applicants</button>
+        <button className="btnWhite" href={`/myJob/form/${job._id}`}>Complete Draft</button>
+        <div ref={menuRef}>
+          <button className="myJobTopCard__button" onClick={() => setOpen(!open)} type="button">
             <MoreHorizIcon style={{ fontSize: 24 }} />
           </button>
+          <JobDropdown filter="Open" job={job} open={open} user={user} />
         </div>
       </div>
     </div>

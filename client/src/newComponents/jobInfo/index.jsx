@@ -11,7 +11,7 @@ const JobInfo = ({ job }) => {
       <img alt="company_img" className="manageItem__img" src={`${PF}${job.img}`} />
       <h2>{job.title}</h2>
       <h4>
-        {job.location}  -  {format(job.createdAt)} -  {job.applicants.length} applicant{job.applicants.length !== 1 ? 's' : ''}
+        {`${job.company} - ${job.location} (${job.workPlace}) ${format(job.createdAt)}`} -  {job.applicants.length} applicant{job.applicants.length !== 1 ? 's' : ''}
       </h4>
       <ul>
         <li><span>{job.type}</span></li>
