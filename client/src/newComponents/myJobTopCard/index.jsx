@@ -27,6 +27,8 @@ const MyJobTopCard = ({ job }) => {
     };
   });
 
+  const toggleDropdown = open ? '--show' : '';
+
   return (
     <div className="myJobTopCard">
       {job && (
@@ -35,15 +37,17 @@ const MyJobTopCard = ({ job }) => {
           <JobStatus status={job.status} />
         </div>
       )}
-      <div className="myJobTopCard__action" >
-        <button className="btnBlue" href={`/myJob/form/${job._id}`}>View Applicants</button>
-        <button className="btnWhite" href={`/myJob/form/${job._id}`}>Complete Draft</button>
-        <div ref={menuRef}>
+      <div className="myJobTopCard__options" >
+        <button className="btnBlue myJobTopCard__button" href={`/myJob/form/${job._id}`}>View Applicants</button>
+        <button className="btnWhite myJobTopCard__button" href={`/myJob/form/${job._id}`}>Complete Draft</button>
+        {/* <div className='myJobTopCard__action' ref={menuRef}>
           <button className="myJobTopCard__button" onClick={() => setOpen(!open)} type="button">
-            <MoreHorizIcon style={{ fontSize: 24 }} />
+            <MoreHorizIcon style={{ width: 28, height: 24 }} />
           </button>
-          <JobDropdown filter="Open" job={job} open={open} user={user} />
-        </div>
+          <div className={`myJobTopCard__dropdown${toggleDropdown}`}>
+            <JobDropdown filter="Open" job={job} user={user} />
+          </div>
+        </div> */}
       </div>
     </div>
   );

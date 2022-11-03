@@ -38,6 +38,8 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
     }
   };
 
+  const toggleDropdown = open ? '--show' : '';
+
   return (
     <div className="manageItem">
       <div className="manageItem__imgWrapper">
@@ -76,7 +78,9 @@ const ManageItem = ({ job, user, jobData, setJobData, filter }) => {
           <button className="manageItem__button" onClick={() => setOpen(!open)} type="button">
             <MoreHorizIcon style={{ fontSize: 24 }} />
           </button>
-          <JobDropdown filter={filter} job={job} open={open} user={user} jobData={jobData} setJobData={setJobData} />
+          <div className={`manageItem__dropdown${toggleDropdown}`}>
+            <JobDropdown filter={filter} job={job} open={open} user={user} jobData={jobData} setJobData={setJobData} />
+          </div>
         </div>
       )}
       

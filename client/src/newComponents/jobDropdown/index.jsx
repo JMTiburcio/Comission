@@ -7,7 +7,27 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import { axiosInstance } from '../../config';
 
 
-const JobDropdown = ({ filter, job, jobData, setJobData, open, user }) => {
+const DropDownOption = ({ click=false, Icon, link=false, option } ) => { 
+  return (
+    <div className="manageItem__dropdownOption">
+      { link && (
+        <a className="dropDownOption__link" href={link}>
+          <Icon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }}/>
+          <span>{option}</span>
+        </a>
+      )}
+      
+      { click && (
+        <a className="dropDownOption__link" onClick={click}>
+          <Icon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }}/>
+          <span>{option}</span>
+        </a>
+      )}
+    </div>
+)}
+
+
+const JobDropdown = ({ filter, job, jobData, setJobData, user }) => {
   const handleDelete = async () => {
     try {
       await axiosInstance.delete(`/jobs/${job._id}`, { data: { userId: user._id } });
@@ -31,77 +51,32 @@ const JobDropdown = ({ filter, job, jobData, setJobData, open, user }) => {
   }
   };
 
-
-  const toggleDropdown = open ? '--show' : '';
-
   return (
-    <div className={`manageItem__dropdown${toggleDropdown}`}>
+    <>
+      { filter === 'Open' && (
+        <>
+          <DropDownOption link={`/myJob/${job._id}`} Icon={WorkIcon} option="manage job" />
+          <DropDownOption click={handleStatus} Icon={CreateIcon} option="close job" />
+          <DropDownOption link={`/myJob/${job._id}/applicants`} Icon={GroupsIcon} option="view applicants" />
+          <DropDownOption link={`/job/view/${job._id}`} Icon={PersonIcon} option="view job as candidate" />
+        </> 
+      )}
 
-      <div className="manageItem__dropdownOption">
-        <a className="manageItem__link" href={`/myJob/${job._id}`}>
-          <WorkIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-          <span>manage job</span>
-        </a>
-      </div>
+      { filter === 'Draft' && (
+        <>
+          <DropDownOption link={`/myJob/${job._id}`} Icon={WorkIcon} option="manage job" />
+          <DropDownOption click={handleDelete} Icon={DeleteIcon} option="delete draft" />
+        </>
+      )}
 
-      {
-        filter === 'Open' && (
-          <>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" onClick={handleStatus}>
-                <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>close job</span>
-              </a>
-            </div>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/myJob/${job._id}/applicants`}>
-                <GroupsIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>view applicants</span>
-              </a>
-            </div>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/job/view/${job._id}`}>
-                <PersonIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>view job as candidate</span>
-              </a>
-            </div>
-          </> 
-        )
-      }
-
-      {
-        filter === 'Draft' && (
-          <>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" onClick={handleDelete}>
-                <DeleteIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>delete draft</span>
-              </a>
-            </div>
-          </>
-        )
-      }
-
-      {
-        filter === 'Closed' && (
-          <>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" onClick={handleStatus}>
-                <CreateIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>repost job</span>
-              </a>
-            </div>
-            <div className="manageItem__dropdownOption">
-              <a className="manageItem__link" href={`/job/view/${job._id}`}>
-                <PersonIcon style={{ fontSize: 24, color: '#5e5e5e', marginRight: 5 }} />
-                <span>view job as candidate</span>
-              </a>
-            </div>
-          </>
-        )
-      }
-
-    </div>
+      { filter === 'Closed' && (
+        <>
+          <DropDownOption link={`/myJob/${job._id}`} Icon={WorkIcon} option="manage job" />
+          <DropDownOption click={handleStatus} Icon={CreateIcon} option="repost job" />
+          <DropDownOption link={`/job/view/${job._id}`} Icon={PersonIcon} option="view job as candidate" />
+        </>
+      )}
+    </>
 )};
 
 export default JobDropdown;
