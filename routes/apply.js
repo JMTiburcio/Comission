@@ -19,6 +19,21 @@ router.post("/", async (req, res) => {
   }
 });
 
+//delete appliment
+router.delete("/", async (req, res) => {
+  const query = {};
+  query.userId = req.body.userId;
+  query.jobId = req.body.jobId;
+  try {
+    const appliments = await Apply.find(query);
+    const appliment = appliments[0];
+    await appliment.deleteOne();
+    res.status(200).json("the appliment has been canceled.");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 //query appliments
 router.get("/search/", async (req, res) => {
   const query = {};

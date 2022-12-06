@@ -10,7 +10,6 @@ const CreateJobAssess = ({ previousPage, submitForm, jobData, setJobData }) => {
       screeningQuestions: [...jobData.screeningQuestions,
       {
         id: generateId(),
-        type: 'Degree',
         mustHave: false,
         response: 'Boolean',
         answer: 'Yes'

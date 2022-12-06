@@ -7,6 +7,7 @@ import CreateJobAssess from '../../newComponents/createJobAssess';
 
 import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
+import { generateId } from '../../utils';
 import TopBar from '../../components/topbar';
 
 const CreateJob = () => {
@@ -30,7 +31,7 @@ const CreateJob = () => {
             address: ''
         },
         screeningQuestions: [{
-            id: 1,
+            id: generateId(),
             mustHave: false,
             response: 'Boolean',
             answer: 'Yes',

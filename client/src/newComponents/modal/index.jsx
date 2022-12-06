@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import './styles.css';
+import { useNavigate } from 'react-router';
 import CloseIcon from '@mui/icons-material/Close';
 
 import { axiosInstance } from '../../config';
@@ -10,6 +11,7 @@ import ApplyReview from '../../newComponents/applyReview';
 
 
 const Modal = ({ open, onClose, job }) => {
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [page, setPage] = useState(1);
   const [applyForm, setApplyForm] = useState({
@@ -34,9 +36,7 @@ const Modal = ({ open, onClose, job }) => {
   const submitForm = async () => {
     try {
       const res = await axiosInstance.post('/apply', applyForm);
-      console.log(res);
-      setPage(1);
-      onClose();
+      navigate('/savedJobs');
     } catch (err) {
       console.log(err);
     };
