@@ -17,6 +17,7 @@ const JobView = () => {
     const [job, setJob] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [recruiter, setRecruiter] = useState({});
+    const [isApplied, setIsApplied] = useState(null);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -39,7 +40,13 @@ const JobView = () => {
         };
         fetchRecruiter();
       }
-      }, [job, user]);
+    }, [job, user]);
+
+    useEffect(() => {
+      if(job && user) {
+        setIsApplied(job.applicants.includes(user._id));
+      }
+    }, [job, user])
 
     const applyHandler = async () => {
       try {
@@ -50,6 +57,7 @@ const JobView = () => {
           console.log(err);
       }
     };
+
     
     return (
       <>
@@ -59,10 +67,10 @@ const JobView = () => {
             <section className="jobView__content">
               <div className="jobView__overview">
                 <JobInfo job={job} />
-                { job.status === 'open' && (
+                { ((job.status === 'open') && (isApplied !== null)) && (
                   <div className="jobView__apply">
-                    <JobApply applyHandler={() => setOpenModal(true)} job={job} user={user} />
-                    <Modal open={openModal} onClose={() => setOpenModal(false)} job={job} />
+                    <JobApply openModal={() => setOpenModal(true)} isApplied={isApplied} />
+                    <Modal open={openModal} onClose={() => setOpenModal(false)} job={job} isApplied={isApplied} />
                   </div>
                 )}
               </div>

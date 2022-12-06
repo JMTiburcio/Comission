@@ -1,14 +1,14 @@
 import './styles.css';
 import CreateIcon from '@mui/icons-material/Create';
 
-const JobApply = ({ job, user, applyHandler }) => (
+const JobApply = ({ openModal, isApplied }) => (
   <button
-    className={`jobs__applyButton${job.applicants.includes(user._id) ? '--cancel' : ''}`}
-    onClick={applyHandler}
+    className={`jobs__applyButton${isApplied ? '--cancel' : ''}`}
+    onClick={() => openModal(isApplied)}
     type="button"
   >
-    {(job.applicants.includes(user._id) ? '' : <CreateIcon style={{ fontSize: 18 }} />)}
-    {(job.applicants.includes(user._id) ? 'Cancel' : 'Apply')}
+    {(isApplied ? '' : <CreateIcon style={{ fontSize: 18 }} />)}
+    {(isApplied ? 'Cancel' : 'Apply')}
   </button>
 );
 

@@ -10,7 +10,7 @@ import ApplyQuestions from '../../newComponents/applyQuestions';
 import ApplyReview from '../../newComponents/applyReview';
 
 
-const Modal = ({ open, onClose, job }) => {
+const Modal = ({ open, onClose, job, isApplied }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [page, setPage] = useState(1);
@@ -35,7 +35,16 @@ const Modal = ({ open, onClose, job }) => {
 
   const submitForm = async () => {
     try {
-      const res = await axiosInstance.post('/apply', applyForm);
+      await axiosInstance.post('/apply', applyForm);
+      navigate('/savedJobs');
+    } catch (err) {
+      console.log(err);
+    };
+  };
+
+  const cancelHandler = async () => {
+    try {
+      await axiosInstance.delete('/apply/'+user._id, {data: {"userId": user._id, "jobId": job._id}});
       navigate('/savedJobs');
     } catch (err) {
       console.log(err);
@@ -44,7 +53,7 @@ const Modal = ({ open, onClose, job }) => {
 
   return (
     <>
-      { open && (
+      { (open && !isApplied) && (
         <div onClick={onClose} className='overlay'>
           <div
               onClick={(e) => {
@@ -78,6 +87,24 @@ const Modal = ({ open, onClose, job }) => {
                   nextPage={submitForm} 
                   setApplyForm={submitForm} 
                 />}
+            </div>
+          </div>
+        </div>
+      )}
+
+
+      { (open && isApplied) && (
+        <div onClick={onClose} className='overlay'>
+          <div
+              onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className='modal__container'
+          >
+            <h1>Do you want to cancel?</h1>
+            <div>
+              <button onClick={cancelHandler}>Yes</button>
+              <button onClick={onClose}>No</button>
             </div>
           </div>
         </div>

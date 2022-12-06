@@ -8,27 +8,43 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
   const newApply = new Apply(req.body);
   const job = await Jobs.findById(req.body.jobId);
-  const user = await User.findById(req.body.userId)
+  const user = await User.findById(req.body.userId);
   try {
-    const savedApply = await newApply.save();
-    await job.updateOne({ $push: { applicants: req.body.userId } });
-    await user.updateOne({ $push: { applications: req.body.jobId } });
-    res.status(200).json(savedApply);
+    if(job && user){
+      const savedApply = await newApply.save();
+      await job.updateOne({ $push: { applicants: req.body.userId } });
+      await user.updateOne({ $push: { applications: req.body.jobId } });
+      res.status(200).json(savedApply);
+    } else {
+      res.status(400).json("job or user not found!");
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //delete appliment
-router.delete("/", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   const query = {};
+  const job = await Jobs.findById(req.body.jobId);
+  const user = await User.findById(req.body.userId);
   query.userId = req.body.userId;
   query.jobId = req.body.jobId;
   try {
-    const appliments = await Apply.find(query);
-    const appliment = appliments[0];
-    await appliment.deleteOne();
-    res.status(200).json("the appliment has been canceled.");
+    if(job && user){
+      if (req.params.id === req.body.userId) {
+        const appliments = await Apply.find(query);
+        const appliment = appliments[0];
+        await appliment.deleteOne();
+        await job.updateOne({ $pull: { applicants: query.userId } });
+        await user.updateOne({ $pull: { applications: query.jobId } });
+        res.status(200).json("the appliment has been canceled.");
+      } else {
+        res.status(403).json("you can only cancel your own appliment");
+      }
+    } else {
+      res.status(400).json("job or user not found!");
+    }
   } catch (err) {
     res.status(500).json(err);
   }

@@ -22,9 +22,10 @@ const JobDesc = ({ jobs, setJobs, selectedJob, setSelectedJob }) => {
       }
     }, [selectedJob, user]);
 
-    const applyHandler = async () => {
+    const applyHandler = async (isApplied) => {
       try {
-          await axiosInstance.put(`/jobs/apply/${selectedJob._id}`, { userId: user._id });
+        isApplied ? console.log("Applied") : console.log("Not applied");
+          // await axiosInstance.put(`/jobs/apply/${selectedJob._id}`, { userId: user._id });
           const updatedJob = await axiosInstance.get(`/jobs/${selectedJob._id}`);
           setJobs([...jobs.slice(0, jobs.indexOf(selectedJob)),
             updatedJob.data, ...jobs.slice(jobs.indexOf(selectedJob) + 1)]);
