@@ -1,0 +1,54 @@
+.applyReview__content {
+    background-color: white;
+    width: 100%;
+}
+
+.applyReview__content > h1 {
+    margin: 0;
+    padding-bottom: 4px;
+    color: rgb(40, 40, 40);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.applyReview__content > p {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(140, 140, 140);
+}
+
+.applyReview__content h3 {
+    margin: 10px 0px 0px 0px;
+    padding-top: 10px;
+    color: rgb(40, 40, 40);
+    font-size: 18px;
+    font-weight: 500;
+    border-top: 1px solid rgb(220, 220, 220);
+}
+
+.applyReview__content h6 {
+    margin: 8px 0px 0px 0px;
+    color: rgb(140, 140, 140);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.applyReview__content span {
+    font-size: 15px;
+    font-weight: 400;
+}
+
+
+.applyReview__footer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid rgb(180, 180, 180);
+}
+
+.applyReview__footer > button {
+    margin-left: 10px;
+}

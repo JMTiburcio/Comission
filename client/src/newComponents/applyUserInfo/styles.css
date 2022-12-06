@@ -1,0 +1,58 @@
+.applyUserInfo__content {
+    background-color: white;
+    width: 100%;
+}
+
+.applyUserInfo__content > h1 {
+    margin: 0;
+    padding-bottom: 4px;
+    color: rgb(40, 40, 40);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.applyUserInfo__content > p {
+    margin: 0;
+    padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.applyUserInfo__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.applyUserInfo__formOption {
+    display: flex;
+    flex-direction: column;
+    color: rgb(153, 153, 153);
+}
+
+.applyUserInfo__formOption > label {
+    margin: 12px 0 4px 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.applyUserInfo__formOption > input {
+    height: 25px;
+    padding-left: 8px;
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 4px;
+} 
+
+.applyUserInfo__formOption > select {
+    height: 29px;
+    padding: 1px 2px 1px 2px;
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 4px;
+}
+
+.applyUserInfo__footer {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 30px;
+    padding-top: 8px;
+    border-top: 1px solid rgb(180, 180, 180);
+}

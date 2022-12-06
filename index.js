@@ -9,6 +9,7 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const jobRoute = require("./routes/jobs");
+const applyRoute = require("./routes/apply");
 const path = require("path");
 const cors = require("cors");
 
@@ -52,6 +53,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/jobs", jobRoute);
+app.use("/api/apply", applyRoute);
 
 
 app.use(express.static(path.join(__dirname, "/client/build")));

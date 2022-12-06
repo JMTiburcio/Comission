@@ -10,10 +10,12 @@ import JobInfo from '../../newComponents/jobInfo';
 import JobApply from '../../newComponents/jobApply';
 import JobRecruiter from '../../newComponents/jobRecruiter';
 import JobDescription from '../../newComponents/jobDescription';
+import Modal from '../../newComponents/modal';
 
 const JobView = () => {
     const { jobId } = useParams();
     const [job, setJob] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
     const [recruiter, setRecruiter] = useState({});
     const { user } = useContext(AuthContext);
 
@@ -59,7 +61,8 @@ const JobView = () => {
                 <JobInfo job={job} />
                 { job.status === 'open' && (
                   <div className="jobView__apply">
-                    <JobApply applyHandler={applyHandler} job={job} user={user} />
+                    <JobApply applyHandler={() => setOpenModal(true)} job={job} user={user} />
+                    <Modal open={openModal} onClose={() => setOpenModal(false)} job={job} />
                   </div>
                 )}
               </div>
