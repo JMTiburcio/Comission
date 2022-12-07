@@ -15,11 +15,6 @@ const CompanySchema = new mongoose.Schema(
             max: 50,
             unique: true
         },
-        password:{
-            type: String,
-            require: true,
-            min: 6
-        },
         profilePicture:{
             type: String,
             default: ""
@@ -36,21 +31,25 @@ const CompanySchema = new mongoose.Schema(
             type: Array,
             default: []
         },
-        isAdmin:{
-            type: Boolean,
-            default: false
+        admin:{
+            type: String,
+            required: true,
         },
         desc:{
             type: String,
             max: 50
         },
-        city:{
+        location:{
             type: String,
             max: 50
         },
-        size:{
-            type: Number,
-        }
+        category:{
+            type: String,
+            max: 50
+        },
+        employees:{
+            type: Array,
+        },
     },
     { timestamps: true }
 );

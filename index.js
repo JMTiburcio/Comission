@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const multer = require("multer");
 const userRoute = require("./routes/users");
+const companyRoute = require("./routes/companies");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const jobRoute = require("./routes/jobs");
@@ -51,6 +52,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/companies", companyRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/jobs", jobRoute);
 app.use("/api/apply", applyRoute);
