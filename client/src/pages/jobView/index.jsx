@@ -15,9 +15,9 @@ import Modal from '../../newComponents/modal';
 const JobView = () => {
     const { jobId } = useParams();
     const [job, setJob] = useState(false);
+    const [isApplied, setIsApplied] = useState(false);
     const [openModal, setOpenModal] = useState(false);
     const [recruiter, setRecruiter] = useState({});
-    const [isApplied, setIsApplied] = useState(null);
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
@@ -47,16 +47,6 @@ const JobView = () => {
         setIsApplied(job.applicants.includes(user._id));
       }
     }, [job, user])
-
-    const applyHandler = async () => {
-      try {
-          await axiosInstance.put(`/jobs/apply/${job._id}`, { userId: user._id });
-          const res = await axiosInstance.get(`/jobs/${job._id}`);
-          setJob(res.data);
-      } catch (err) {
-          console.log(err);
-      }
-    };
 
     
     return (

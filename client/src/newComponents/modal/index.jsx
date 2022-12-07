@@ -99,12 +99,13 @@ const Modal = ({ open, onClose, job, isApplied }) => {
               onClick={(e) => {
               e.stopPropagation();
             }}
-            className='modal__container'
+            className='modal__cancel'
           >
-            <h1>Do you want to cancel?</h1>
-            <div>
-              <button onClick={cancelHandler}>Yes</button>
-              <button onClick={onClose}>No</button>
+            <h3>Cancel</h3>
+            <p>Are you sure you want to cancel the appliment?</p>
+            <div className='modal__cancelOptions'>
+              <button className='btnBlue' onClick={cancelHandler}>Yes</button>
+              <button className='btnWhite' onClick={onClose}>No</button>
             </div>
           </div>
         </div>
