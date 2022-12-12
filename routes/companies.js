@@ -2,30 +2,6 @@ const User = require("../models/User");
 const Company = require("../models/Company");
 const router = require("express").Router();
 
-//update user
-// router.put("/:id", async (req, res) => {
-//   if (req.body.userId === req.params.id || req.body.isAdmin) {
-//     if (req.body.password) {
-//       try {
-//         const salt = await bcrypt.genSalt(10);
-//         req.body.password = await bcrypt.hash(req.body.password, salt);
-//       } catch (err) {
-//         return res.status(500).json(err);
-//       }
-//     }
-//     try {
-//       const user = await User.findByIdAndUpdate(req.params.id, {
-//         $set: req.body,
-//       });
-//       res.status(200).json("Account has been updated");
-//     } catch (err) {
-//       return res.status(500).json(err);
-//     }
-//   } else {
-//     return res.status(403).json("You can update only your account!");
-//   }
-// });
-
 //create company
 router.post("/", async (req, res) => {
   const newCompany = new Company(req.body);
@@ -42,33 +18,57 @@ router.post("/", async (req, res) => {
   }
 });
 
-
-//delete company
-router.delete("/:id", async (req, res) => {
-  if (req.body.userId === req.params.id || req.body.isAdmin) {
-    try {
-      await Company.findByIdAndDelete(req.params.id);
-      res.status(200).json("Company has been deleted");
-    } catch (err) {
-      return res.status(500).json(err);
-    }
-  } else {
-    return res.status(403).json("You can delete only your account!");
-  }
-});
-
 //get a company
 router.get("/", async (req, res) => {
   const companyId = req.query.companyId;
-  const name = req.query.name;
-
+  const name = req.query.name.toLowerCase();
   try {
     const company = companyId 
       ? await Company.findById(companyId) 
       : await Company.findOne({name:name});
-    res.status(200).json(company);
+    company ? res.status(200).json(company) : res.status(400).json("company not found");
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+//delete company
+router.delete("/:id", async (req, res) => {
+  try {
+    const company = await Company.findById(req.params.id);
+    if(company){
+      if (req.body.userId === company.admin || req.body.isAdmin) {
+        await Company.findByIdAndDelete(req.params.id);
+        res.status(200).json("Company's profile has been deleted");
+      } else {
+        return res.status(403).json("You don't have permission to delete this company's profile!");
+      }
+    } else {
+      return res.status(400).json("Company not found");
+    }
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+//update user
+router.put("/:id", async (req, res) => {
+  try {
+    const company = await Company.findById(req.params.id);
+    if(company){
+      if (req.body.userId === company.admin || req.body.isAdmin) {
+        await Company.findByIdAndUpdate(req.params.id, {
+          $set: req.body,
+        });
+        res.status(200).json("Company has been updated");
+      } else {
+        return res.status(403).json("You don't have permission to delete this company's profile!");
+      }
+    } else {
+      return res.status(400).json("Company not found");
+    }
+  } catch (err) {
+    return res.status(500).json(err);
   }
 });
 

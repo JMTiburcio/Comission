@@ -8,6 +8,7 @@ import {
 import Home from './pages/home';
 import Login from './pages/login';
 import Profile from './pages/profile';
+import Company from './pages/company';
 import Register from './pages/register';
 import { AuthContext } from './context/AuthContext';
 
@@ -29,6 +30,7 @@ const App = () => {
       <Routes>
         <Route element={user ? <Home /> : <Login />} path="/" />
         <Route element={user ? <Profile /> : <Login />} path="/profile/:username" />
+        <Route element={user ? <Company /> : <Login />} path="/company/:name" />
         <Route element={user ? <Navigate to="/" /> : <Login />} path="/login" />
         <Route element={user ? <Navigate to="/" /> : <Register />} path="/register" />
 

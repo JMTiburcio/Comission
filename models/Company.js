@@ -15,6 +15,12 @@ const CompanySchema = new mongoose.Schema(
             max: 50,
             unique: true
         },
+        webiste:{
+            type: String,
+            require: true,
+            max: 50,
+            unique: true
+        },
         profilePicture:{
             type: String,
             default: ""
@@ -35,7 +41,7 @@ const CompanySchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        desc:{
+        about:{
             type: String,
             max: 50
         },
@@ -49,6 +55,12 @@ const CompanySchema = new mongoose.Schema(
         },
         employees:{
             type: Array,
+        },
+        size:{
+            type: String,
+        },
+        founded:{
+            type: Number,
         },
     },
     { timestamps: true }
