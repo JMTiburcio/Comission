@@ -36,7 +36,7 @@ const Post = ({ post }) => {
         setIsLiked(!isLiked);
     };
     return (
-      <div className="post">
+      <div className="post card">
         <div className="postWrapper">
           <div className="postTop">
             <div className="postTopLeft">

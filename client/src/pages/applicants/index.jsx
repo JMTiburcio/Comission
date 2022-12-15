@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
 import { axiosInstance } from '../../config';
-import TopBar from '../../components/topbar';
+import NavBar from '../../newComponents/navbar';
 import MyJobTopCard from '../../newComponents/myJobTopCard';
 import MyJobContainer from '../../newComponents/myJobContainer';
 import MyJobAside from '../../newComponents/myJobAside';
@@ -25,7 +25,7 @@ const Applicants = () => {
 
     return (
       <>
-        <TopBar />
+        <NavBar />
         <main className="applicants">
           <MyJobTopCard job={job} />
           <section className="applicants__container">

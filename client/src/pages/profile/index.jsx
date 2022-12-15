@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { axiosInstance } from '../../config';
 
-import Topbar from '../../components/topbar';
+import NavBar from '../../newComponents/navbar';
 import Sidebar from '../../components/sidebar';
 import Feed from '../../components/feed';
 import Rightbar from '../../components/rightbar';
@@ -25,7 +25,7 @@ const Profile = () => {
   
   return (
     <>
-      <Topbar />
+      <NavBar />
       <div className="profile">
         <Sidebar />
         <div className="profileRight">

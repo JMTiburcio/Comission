@@ -3,6 +3,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    background-color: rgb(235, 235, 235);
+}
+
+.card {
+    background-color: white;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 10px;
+}
+
 .btnWhite {
     padding: 8px 20px;
     background-color: white;

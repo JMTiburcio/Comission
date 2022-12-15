@@ -4,7 +4,7 @@ import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
 import './styles.css';
 
-import TopBar from '../../components/topbar';
+import NavBar from '../../newComponents/navbar';
 import ManageAside from '../../newComponents/manageAside';
 import JobInfo from '../../newComponents/jobInfo';
 import JobApply from '../../newComponents/jobApply';
@@ -51,7 +51,7 @@ const JobView = () => {
     
     return (
       <>
-        <TopBar />
+        <NavBar />
         <main className="jobView">
           { job ? (
             <section className="jobView__content">

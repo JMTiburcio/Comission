@@ -8,7 +8,7 @@ import CreateJobAssess from '../../newComponents/createJobAssess';
 import { AuthContext } from '../../context/AuthContext';
 import { axiosInstance } from '../../config';
 import { generateId } from '../../utils';
-import TopBar from '../../components/topbar';
+import NavBar from '../../newComponents/navbar';
 
 const CreateJob = () => {
     const { user } = useContext(AuthContext);
@@ -63,7 +63,7 @@ const CreateJob = () => {
 
     return (
       <>
-        <TopBar />
+        <NavBar />
         {page === 1 && <InitialForm jobData={jobData} nextPage={nextPage} setJobData={setJobData} />}
         {page === 2 && <CreateJobDesc jobData={jobData} nextPage={nextPage} previousPage={previousPage} setJobData={setJobData} />}
         {page === 3 && <CreateJobAssess jobData={jobData} previousPage={previousPage} setJobData={setJobData} submitForm={submitForm} />}

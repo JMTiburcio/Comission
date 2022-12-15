@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { axiosInstance } from '../../config';
 
-import Topbar from '../../components/topbar';
+import NavBar from '../../newComponents/navbar';
 import CompanyCover from "../../newComponents/companyCover";
 import CompanyAbout from "../../newComponents/companyAbout";
 import ManageAside from "../../newComponents/manageAside";
@@ -25,7 +25,7 @@ const Company = () => {
   
   return (
     <>
-      <Topbar />
+      <NavBar />
       <div className="company">
         <section>
           <CompanyCover company={company}/>

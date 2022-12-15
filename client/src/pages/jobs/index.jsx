@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import { axiosInstance } from '../../config';
+
 import Job from '../../newComponents/job';
 import JobDesc from '../../newComponents/jobDesc';
 import JobFilter from '../../newComponents/jobFilter';

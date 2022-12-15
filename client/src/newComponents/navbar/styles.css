@@ -1,47 +1,50 @@
 .topbarContainer {
-    height:50px;
-    width: 100%;
-    background-color: #1877f2;
+    height:60px;
+    width: 84%;
+    padding: 0px 8%;
+    margin-bottom: 20px;
+    background-color: white;
     display: flex;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 999;
+    border-bottom: 1px solid rgb(201, 201, 201);
 }
 
 .topbarLeft {
-    flex:3;
+    flex:2;
+    display: flex;
+    align-items: center;
 }
 
 .Logo {
     font-size: 24px;
-    margin-left: 20px;
-    font-weight: bold;
-    color: white;
+    font-weight: 800;
+    color: rgb(40, 40, 230);
     cursor: pointer;
-}
-
-.topbarCenter {
-    flex:5;
 }
 
 .SearchBar {
     width: 100%;
     height: 30px;
-    background-color: white;
-    border-radius: 30px;
+    margin-left: 20px;
+    background-color: rgb(240, 240, 255);
     display: flex;
     align-items: center;
+    border-radius: 5px;
 }
 
 .SearchIcon {
     font-size: 20px !important;
+    color: rgb(100, 100, 100);
     margin-left: 10px;
 }
 
 .SearchInput {
+    background-color: transparent;
     border: none;
-    width: 70%;
+    width: 90%;
 }
 
 .SearchInput:focus{
@@ -49,15 +52,13 @@
 }
 
 .topbarRight {
-    flex:4;
+    flex:3;
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
-    justify-content: space-around;
-    color: white;
 }
 
 .topbarLink {
-    color: white;
     margin-right: 10px;
     font-size: 14px;
     font-weight: bold;
@@ -69,29 +70,46 @@
 }
 
 .topbarIconItem {
-    margin-right: 15px;
-    cursor: not-allowed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    color: rgb(100, 100, 100);
+    text-decoration: none;
+    cursor: pointer;
     position: relative;
+}
+
+.topbarIconItem:hover {
+    color: black;
 }
 
 .topbarIconBadge {
     width: 15px;
     height: 15px;
-    background-color: red;
+    background-color: rgb(204, 16, 22);
     border-radius: 50%;
     color: white;
     position: absolute;
-    top: -5px;
-    right: -5px;
+    top: -3px;
+    right: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
 }
 
+.topbarIconName {
+    display: block;
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
 .topbarImg {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     object-fit: cover;
     cursor: pointer;

@@ -42,7 +42,7 @@ const Share = () => {
     };
 
   return (
-    <div className="share">
+    <div className="share card">
       <div className="shareWrapper">
         <div className="shareTop">
           <img
