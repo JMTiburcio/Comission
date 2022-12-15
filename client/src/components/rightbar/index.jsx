@@ -2,11 +2,12 @@ import { useContext, useEffect, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { Link } from 'react-router-dom';
-import { axiosInstance } from '../../config';
 import './styles.css';
 
 import { Users } from '../../dummyData';
+import { axiosInstance } from '../../config';
 import { AuthContext } from '../../context/AuthContext';
+import Footer from '../../newComponents/footer';
 import Online from '../online';
 
 const RightBar = ({ user }) => {
@@ -118,6 +119,8 @@ const RightBar = ({ user }) => {
           </>
 )}
       </div>
+      
+      <Footer />
     </div>
   );
 };
