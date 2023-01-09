@@ -10,6 +10,15 @@ import ChatIcon from '@mui/icons-material/Chat';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { AuthContext } from '../../context/AuthContext';
 
+const Item = ({ link, Icon, title, notification }) => {
+  return (
+    <Link className="topbarIconItem" to={link}>
+      <Icon />
+      <span className="topbarIconBadge">{notification}</span>
+      <span className="topbarIconName">{title}</span>
+    </Link>
+)}
+
 const NavBar = () => {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -26,31 +35,12 @@ const NavBar = () => {
       </div>
       <div className="topbarRight">
         <div className="topbarIcons">
-          <Link className="topbarIconItem" to={`/`}>
-            <HomeIcon />
-            <span className="topbarIconBadge">1</span>
-            <span className="topbarIconName">Home</span>
-          </Link>
-          <Link className="topbarIconItem" to={`/mynetwork`}>
-            <GroupIcon />
-            <span className="topbarIconBadge">1</span>
-            <span className="topbarIconName">My Network</span>
-          </Link>
-          <Link className="topbarIconItem" to={`/jobs`}>
-            <WorkIcon />
-            <span className="topbarIconBadge">1</span>
-            <span className="topbarIconName">Jobs</span>
-          </Link>
-          <Link className="topbarIconItem" to={`/messaging`}>
-            <ChatIcon />
-            <span className="topbarIconBadge">1</span>
-            <span className="topbarIconName">Messaging</span>
-          </Link>
-          <Link className="topbarIconItem" to={`/notifications`}>
-            <NotificationsIcon />
-            <span className="topbarIconBadge">1</span>
-            <span className="topbarIconName">Notifications</span>
-          </Link>
+          <Item link={`/`} Icon={HomeIcon} title='Home' notification={1}/>
+          <Item link={`/mynetwork`} Icon={GroupIcon} title='My Network' notification={1}/>
+          <Item link={`/jobs`} Icon={WorkIcon} title='Jobs' notification={1}/>
+          <Item link={`/messaging`} Icon={ChatIcon} title='Messaging' notification={1}/>
+          <Item link={`/notifications`} Icon={NotificationsIcon} title='Notifications' notification={1}/>
+          
           <Link className="topbarIconItem" to={`/profile/${user.username}`}>
             <img
               alt=""
