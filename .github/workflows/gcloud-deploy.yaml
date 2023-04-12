@@ -30,8 +30,8 @@ jobs:
       - name: Build React app
         run: |
           cd client
-          npm ci
-          npm run build
+          yarn install --frozen-lockfile
+          yarn build
       - name: Deploy to Google App Engine
         uses: google-github-actions/deploy-appengine@v1
         with:
