@@ -1,8 +1,5 @@
 runtime: nodejs14
 
-includes:
-  - env_variables.yaml
-
 handlers:
   - url: /.*
     secure: always
