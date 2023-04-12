@@ -4,7 +4,7 @@ name: Deploy to Google App Engine
 on:
   push:
     branches:
-      - prod
+      - deploy
 
 jobs:
   deploy:
@@ -21,6 +21,11 @@ jobs:
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Build React app
+        run: |
+          cd client
+          npm ci
+          npm run build
       - name: Deploy to Google App Engine
         uses: google-github-actions/deploy-appengine@v1
         with:

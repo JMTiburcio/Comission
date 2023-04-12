@@ -1,6 +1,22 @@
 runtime: nodejs14
 
+env_variables:
+  REACT_APP_PUBLIC_FOLDER: http://localhost:8800/images/
+  GENERATE_SOURCEMAP: false
+  DISABLE_ESLINT_PLUGIN: true
+
 handlers:
+  - url: /static
+    static_dir: client/build/static
+
+  - url: /(.*\.(json|ico|js))$
+    static_files: client/build/\1
+    upload: client/build/.*\.(json|ico|js)$
+
+  - url: /(.*\.(css|png|jpg|gif|woff|woff2|ttf|svg|eot))$
+    static_files: client/build/\1
+    upload: client/build/.*\.(css|png|jpg|gif|woff|woff2|ttf|svg|eot)$
+
   - url: /.*
     secure: always
     redirect_http_response_code: 301
