@@ -1,0 +1,28 @@
+# .github/workflows/gcloud-deploy.yaml
+
+name: Deploy to Google App Engine
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    name: Deploy to Google App Engine
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up environment variables
+        run: |
+          echo "env_variables:" >> app.yaml
+          echo "  MONGO_URL: ${{ secrets.MONGO_URL }}" >> app.yaml
+      - name: Authenticate with Google Cloud Platform
+        id: auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+      - name: Deploy to Google App Engine
+        uses: google-github-actions/deploy-appengine@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+          deliverables: app.yaml
