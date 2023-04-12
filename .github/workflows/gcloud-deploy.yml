@@ -11,9 +11,9 @@ jobs:
     name: Deploy to Google App Engine
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Set up environment variables
         run: echo "MONGO_URL=${{ secrets.MONGO_URL }}" > env_variables.yaml
-      - uses: actions/checkout@v2
       - name: Authenticate with Google Cloud Platform
         id: auth
         uses: google-github-actions/auth@v1
