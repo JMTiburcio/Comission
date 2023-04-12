@@ -64,7 +64,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 // });
 
 app.get("/", (req, res) => {
-  res.send("Hello to Job Portal API");
+  res.send(`Backend is running: ${process.env.MONGO_URL}`);
 });
 
 app.listen(process.env.PORT || 8800, () => {
